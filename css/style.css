@@ -3,7 +3,7 @@
    ================================ */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.2; /* Kompaktāks teksts */
+  line-height: 1.0; /* Kompaktāks teksts */
   margin: 0;
   padding: 0;
   background-color: #fdfdfd;
