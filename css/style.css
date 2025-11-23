@@ -1,1 +1,136 @@
-/* ================================ 1. Globālie stili (attiecas uz visām lapām) ================================ */ body { font-family: Arial, Helvetica, sans-serif; line-height: 1.0; /* Kompaktāks teksts */ margin: 0; padding: 0; background-color: #fdfdfd; color: #333; } header, footer { background-color: #003366; /* Tumši zilais */ color: #fff; text-align: center; padding: 20px; } header h1, footer p { margin: 0; } /* ================================ 2. Kopējie komponenti ================================ */ main { max-width: 900px; margin: 30px auto; padding: 0 20px; } /* Vienotais stils visām sadaļām */ section { margin-bottom: 30px; padding: 20px; background-color: #f9f9f9; border-left: 4px solid #003366; border-radius: 4px; transition: background-color 0.3s ease, border-left-color 0.3s ease; } section:hover { background-color: #eef2f7; /* Pāreja uz gaišāku fonu */ border-left-color: #005f99; /* Nedaudz gaišāks zilais uz hover */ } h2 { color: #003366; margin-top: 0; } ul { list-style-type: disc; padding-left: 20px; } li { margin-bottom: 8px; } /* ================================ 3. Lapu specifiskie stili ================================ */ /* About lapai */ main.about section.vision p { font-style: italic; color: #444; } /* Contact lapai */ main.contact form { display: flex; flex-direction: column; gap: 10px; } main.contact input, main.contact textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; } main.contact button { background-color: #003366; color: #fff; border: none; padding: 12px; cursor: pointer; border-radius: 4px; transition: background-color 0.3s ease; } main.contact button:hover { background-color: #005f99; } /* Partners lapai */ main.partners section { background-color: #fff; border-left-color: #28a745; } /* ================================ 4. Navigācijas izvēlne ================================ */ nav { background-color: #003366; /* Tumši zilais fons navigācijai */ padding: 10px 0; } nav ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 20px; } nav ul li { /* flex jau nodrošina horizontālu izvietojumu, inline nav vajadzīgs */ } nav ul li a { color: #fff; /* balts teksts uz tumši zilā fona */ text-decoration: none; font-weight: bold; transition: color 0.3s ease; } nav ul li a:hover { color: #ffcc00; /* akcenta krāsa uz hover */ }
+/* ================================
+   1. Globālie stili (attiecas uz visām lapām)
+   ================================ */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.0; /* Kompaktāks teksts */
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #333;
+}
+
+header, footer {
+  background-color: #003366; /* Tumši zilais */
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+header h1, footer p {
+  margin: 0;
+}
+
+/* ================================
+   2. Kopējie komponenti
+   ================================ */
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* Vienotais stils visām sadaļām */
+section {
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #003366;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+section:hover {
+  background-color: #eef2f7; /* Pāreja uz gaišāku fonu */
+  border-left-color: #005f99; /* Nedaudz gaišāks zilais uz hover */
+}
+
+h2 {
+  color: #003366;
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ================================
+   3. Lapu specifiskie stili
+   ================================ */
+
+/* About lapai */
+main.about section.vision p {
+  font-style: italic;
+  color: #444;
+}
+
+/* Contact lapai */
+main.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+main.contact input, 
+main.contact textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+main.contact button {
+  background-color: #003366;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+main.contact button:hover {
+  background-color: #005f99;
+}
+
+/* Partners lapai */
+main.partners section {
+  background-color: #fff;
+  border-left-color: #28a745;
+}
+
+/* ================================
+   4. Navigācijas izvēlne 
+   ================================ */
+nav {
+  background-color: #003366; /* Tumši zilais fons navigācijai */
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav ul li {
+  /* flex jau nodrošina horizontālu izvietojumu, inline nav vajadzīgs */
+}
+
+nav ul li a {
+  color: #fff; /* balts teksts uz tumši zilā fona */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ffcc00; /* akcenta krāsa uz hover */
+}
