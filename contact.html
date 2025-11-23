@@ -11,7 +11,7 @@
   <header>
     <h1>Kontakti</h1>
   </header>
-<nav>
+  <nav>
     <ul>
       <li><a href="index.html">Sākums</a></li>
       <li><a href="about.html">Par mums</a></li>
@@ -31,7 +31,7 @@
     <!-- Kontaktforma -->
     <section class="contact-form">
       <h2>Raksti mums</h2>
-      <form action="#" method="post">
+      <form action="https://formspree.io/f/xzzwkaaq" method="POST">
         <label for="name">Vārds, Uzvārds:</label>
         <input type="text" id="name" name="name" required>
 
@@ -40,6 +40,9 @@
 
         <label for="message">Ziņa:</label>
         <textarea id="message" name="message" rows="6" required></textarea>
+
+        <!-- Paldies lapas pāradresācija -->
+        <input type="hidden" name="_next" value="paldies.html">
 
         <button type="submit">Nosūtīt</button>
       </form>
