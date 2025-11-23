@@ -10,15 +10,29 @@ body {
   color: #333;
 }
 
-header, footer {
+header {
   background-color: #003366; /* Tumši zilais */
   color: #fff;
   text-align: center;
   padding: 20px;
 }
 
-header h1, footer p {
+header h1 {
   margin: 0;
+  font-size: 1.8em;
+}
+
+footer {
+  background-color: #003366; /* Tumši zilais */
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  margin-top: 40px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9em;
 }
 
 /* ================================
@@ -103,21 +117,15 @@ main.partners section {
 /* ================================
    4. Navigācijas izvēlne
    ================================ */
-nav {
-  background-color: #003366; /* Tumši zilais fons navigācijai */
-  padding: 10px 0;
-}
-
 nav ul {
   list-style: none;          /* noņem buletus */
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 0;
   display: flex;             /* horizontāls izvietojums */
   justify-content: center;   /* centrē elementus */
   gap: 20px;                 /* atstarpes starp elementiem */
 }
 
-/* Navigācija */
 nav ul li a {
   color: #fff;               /* balts teksts uz tumši zilā fona */
   text-decoration: none;
@@ -133,7 +141,9 @@ nav ul li a:active {
   color: #cc9900;             /* tumšāks tonis klikšķa brīdī */
 }
 
-/* Teksta sekcijas */
+/* ================================
+   5. Teksta sekciju efekti
+   ================================ */
 .content-block {
   background-color: #f9f9f9;
   padding: 20px;
@@ -142,17 +152,24 @@ nav ul li a:active {
   transition: background-color 0.3s ease;
 }
 
-/* Hover – desktop */
 .content-block:hover {
   background-color: #f0f0f0;
 }
 
-/* Active – klikšķa brīdī (desktop + mobile) */
 .content-block:active {
   background-color: #e0e0e0;
 }
 
-/* Focus-within – kad sekcijā ir aktīvs elements (piem., forma, teksts) */
 .content-block:focus-within {
   background-color: #f0f0f0;
+}
+
+/* ================================
+   6. Responsivitāte
+   ================================ */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
