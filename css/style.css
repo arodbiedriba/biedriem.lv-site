@@ -1,44 +1,88 @@
-/* style.css - kopējais dizains visām lapām */
-
+/* ================================
+   1. Globālie stili (attiecas uz visām lapām)
+   ================================ */
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  background: #fdfdfd;
+  background-color: #fdfdfd;
   color: #333;
 }
 
-header {
-  background: #004080;
-  color: white;
-  padding: 1em;
+header, footer {
+  background-color: #007acc;
+  color: #fff;
   text-align: center;
+  padding: 20px;
 }
 
-nav {
-  background: #e0e0e0;
-  padding: 0.5em;
-  text-align: center;
+header h1, footer p {
+  margin: 0;
 }
 
-nav a {
-  margin: 0 1em;
-  text-decoration: none;
-  color: #004080;
-  font-weight: bold;
-}
-
-nav a:hover {
-  text-decoration: underline;
+/* ================================
+   2. Kopējie komponenti
+   ================================ */
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
 }
 
 section {
-  padding: 2em;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #007acc;
+  border-radius: 4px;
 }
 
-footer {
-  background: #f0f0f0;
-  text-align: center;
-  padding: 1em;
-  margin-top: 2em;
+h2 {
+  color: #007acc;
+  margin-top: 0;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ================================
+   3. Lapu specifiskie stili
+   ================================ */
+
+/* About lapai */
+main.about section.intro {
+  background-color: #eef6fb;
+  border-left-color: #005f99;
+}
+
+main.about section.vision p {
+  font-style: italic;
+  color: #444;
+}
+
+/* Contact lapai */
+main.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+main.contact input, 
+main.contact textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Partners lapai */
+main.partners section {
+  background-color: #fff;
+  border-left-color: #28a745;
 }
