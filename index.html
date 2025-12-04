@@ -4,106 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Partneru organizācijas</title>
+  <link rel="stylesheet" href="css/style.css"> <!-- atsauce uz kopējo stilu -->
   <style>
-    /* Pamatstils */
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    header h1 {
-      margin: 0 0 0.5rem 0;
-      font-size: 2rem;
-    }
-
-    header p {
-      margin: 0;
-      font-size: 1rem;
-      color: #666;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem 1rem;
+      text-align: center;
+      padding: 1rem;
     }
 
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+
+    /* Vienots stils pogām */
     .org-list {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       width: 100%;
       max-width: 400px;
+      margin: 0 auto;
     }
 
     .org-list a {
       text-decoration: none;
-      text-align: center;
-      padding: 1rem 1.5rem;
-      background-color: #0073e6;
-      color: #fff;
+      background-color: #004080;
+      color: #ffffff;
+      padding: 1rem;
+      border-radius: 8px;
       font-weight: bold;
-      border-radius: 6px;
-      transition: background-color 0.3s, transform 0.2s;
+      font-size: 1.1rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
 
     .org-list a:hover {
-      background-color: #005bb5;
+      background-color: #0066cc;
       transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
     }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.875rem;
-      color: #999;
-      background-color: #ffffff;
-      box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
-    }
-
+    /* Responsīvs dizains */
     @media (min-width: 600px) {
       .org-list {
         flex-direction: row;
-        justify-content: center;
       }
-
       .org-list a {
         flex: 1;
       }
     }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #777;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Partneru organizācijas</h1>
-    <p>Izvēlieties organizāciju, kurai vēlaties pāriet:</p>
-  </header>
+  <h1>Partneru organizācijas</h1>
+  <p>Izvēlies organizāciju, kuras mājaslapu vēlies apmeklēt</p>
 
-  <main>
-    <div class="org-list">
-      <a href="./npa/index.html">Neatkarīgā policistu arodbiedrība</a>
-      <a href="./itsa/index.html">Informācijas tehnoloģiju speciālistu arodbiedrība</a>
-      <a href="./lja/index.html">Latviešu juristu apvienība</a>
-    </div>
-  </main>
+  <div class="org-list">
+    <a href="npa/index.html">Neatkarīgā policistu arodbiedrība</a>
+    <a href="itsa/index.html">Informācijas tehnoloģiju speciālistu arodbiedrība</a>
+    <a href="lja/index.html">Latviešu juristu apvienība</a>
+  </div>
 
-  <footer>
-    &copy; 2008–2025 Partneru organizācijas
-  </footer>
+  <footer>&copy; 2008–2025 Partneru organizācijas</footer>
 </body>
 </html>
