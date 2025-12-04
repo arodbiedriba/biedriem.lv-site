@@ -1,13 +1,26 @@
-
 /* ===== Pamata stili ===== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     color: #222;
+    line-height: 1.5;
 }
 
-/* ===== Navigācija un galvene ===== */
+a {
+    color: inherit;
+}
+
+/* ===== Headeri ===== */
+
+/* Parastais header iekšējām lapām (NPA, ITSA, u.c.) */
 header {
     background-color: #ffffff;
     padding: 1.5rem 1rem;
@@ -25,7 +38,29 @@ header p {
     color: #555;
 }
 
-/* ===== Navigācijas izvēlne ===== */
+/* Hero tipa header globālajai sākumlapai */
+.site-header {
+    background: linear-gradient(135deg, #007ACC, #005FA3);
+    color: #ffffff;
+    padding: 2.5rem 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: none;
+}
+
+.site-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+}
+
+.site-header p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ===== Navigācija ===== */
+
 nav ul {
     list-style: none;
     padding: 0;
@@ -38,38 +73,64 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #007ACC; /* ZILĀ PAMATKRĀSA */
+    color: #007ACC;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #005FA3; /* HOVER TONIS */
+    color: #005FA3;
 }
 
-/* ===== Pogas (galvenā izvēle, organizāciju saraksts) ===== */
+/* ===== Vispārējais saturs ===== */
+
+main {
+    padding: 1.5rem 1rem;
+}
+
+/* Konteiners centrētam saturam */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ===== Globāls pogu stils (CTA pogas) ===== */
+
+.btn,
 .org-btn,
 .org-list a,
-button,
-.btn {
+.pdf-button {
     display: block;
     text-decoration: none;
-    background-color: #007ACC; /* ZILĀ PAMATKRĀSA */
-    color: white;
+    background-color: #007ACC;
+    color: #ffffff;
     padding: 1rem;
     border-radius: 6px;
     font-weight: bold;
     text-align: center;
-    transition: 0.3s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
 }
 
+.btn:hover,
 .org-btn:hover,
 .org-list a:hover,
-button:hover,
-.btn:hover {
-    background-color: #005FA3; /* HOVER TONIS */
+.pdf-button:hover {
+    background-color: #005FA3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 95, 163, 0.25);
 }
 
-/* Organizāciju pogas izkārtojums */
+/* Vienkāršs saraksts bez punktiņiem */
+.no-style {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== Organizāciju saraksti (vecais risinājums, ja izmanto) ===== */
+
 .org-list {
     max-width: 400px;
     margin: 0 auto;
@@ -87,34 +148,57 @@ button:hover,
     }
 }
 
-/* ===== Saturs ===== */
-main {
-    padding: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
+/* ===== Sākumlapa: kartīšu režģis (globālā index) ===== */
+
+.home-main {
+    padding: 1rem 0 2rem;
 }
 
-.no-style {
-    list-style: none;
-    padding: 0;
+.org-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.2rem;
+}
+
+@media (min-width: 768px) {
+    .org-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.card-link {
+    display: block;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    text-decoration: none;
+    color: #222;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.card-link h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.card-link p {
     margin: 0;
+    font-size: 0.95rem;
+    color: #555;
 }
 
-/* ===== Kājene ===== */
-footer {
-    margin-top: 2rem;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.9rem;
-    background-color: #f5f5f5;
-    color: #444;
+.card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    border-color: #007ACC;
 }
+
 /* ===== Kontaktu lapa ===== */
 
 .contact-page {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem 2rem;
+    padding: 1.5rem 0 2rem;
 }
 
 .contact-layout {
@@ -131,10 +215,10 @@ footer {
 
 .contact-card {
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
-    border: 1px solid #e4e4e4;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
 .contact-card h2 {
@@ -161,7 +245,7 @@ footer {
     color: #555;
 }
 
-/* ===== Forma ===== */
+/* ===== Forma (inputs + textarea) ===== */
 
 .form-group {
     display: flex;
@@ -191,7 +275,7 @@ footer {
     outline: none;
     border-color: #007ACC;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.15);
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.18);
 }
 
 .form-textarea {
@@ -231,4 +315,15 @@ footer {
     margin-top: 0.75rem;
     font-size: 0.85rem;
     color: #666;
+}
+
+/* ===== Kājene ===== */
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    background-color: #f5f5f5;
+    color: #444;
 }
