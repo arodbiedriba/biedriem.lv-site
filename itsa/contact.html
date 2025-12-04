@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakti - Informācijas tehnoloģiju speciālistu arodbiedrība</title>
-  <!-- Atsauce uz vienoto CSS failu -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header>
@@ -20,38 +19,87 @@
     </nav>
   </header>
 
-  <main class="contact">
-    <!-- Kontaktinformācija -->
-    <section class="contact-info">
-      <h2>Sazinies ar mums</h2>
-      <p><strong>Adrese:</strong> Rīga, Latvija</p>
-      <p><strong>Tālrunis:</strong> +371 27886624</p>
-      <p><strong>E-pasts:</strong> info@biedriem.lv</p>
-    </section>
+  <main class="contact-page">
+    <div class="container contact-layout">
+      <!-- Kontaktinformācija -->
+      <section class="contact-card contact-info">
+        <h2>Sazinies ar mums</h2>
+        <p><strong>Adrese:</strong> Rīga, Latvija</p>
+        <p><strong>Tālrunis:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
+        <p><strong>E-pasts:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+        <p class="contact-note">
+          Ja tev ir jautājumi par dalību arodbiedrībā, darba apstākļiem vai savu tiesību aizsardzību,
+          droši sazinies ar mums – atbildēsim cik vien ātri iespējams.
+        </p>
+      </section>
 
-    <!-- Kontaktforma -->
-    <section class="contact-form">
-      <h2>Raksti mums</h2>
-      <form id="contactForm" action="https://formspree.io/f/xzzwkaaq" method="POST">
-        <label for="name">Vārds, Uzvārds:</label>
-        <input type="text" id="name" name="name" required>
+      <!-- Kontaktforma -->
+      <section class="contact-card">
+        <h2>Raksti mums</h2>
+        <form id="contactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Vārds, uzvārds</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="Piemēram, Jānis Bērziņš"
+              required
+            >
+          </div>
 
-        <label for="email">E-pasts:</label>
-        <input type="email" id="email" name="email" required>
+          <div class="form-group">
+            <label for="email">E-pasts</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="piemers@epasts.lv"
+              required
+            >
+          </div>
 
-        <label for="message">Ziņa:</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
+          <div class="form-group">
+            <label for="subject">Tēma</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="form-input"
+              placeholder="Par ko ir tavs jautājums?"
+            >
+          </div>
 
-        <button type="submit">Nosūtīt</button>
-      </form>
-    </section>
+          <div class="form-group">
+            <label for="message">Ziņa</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              rows="5"
+              placeholder="Apraksti savu jautājumu vai situāciju pēc iespējas konkrēti."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Nosūtīt ziņu</button>
+          </div>
+
+          <p class="form-hint">
+            Nosūtot ziņu, tu piekrīti, ka izmantosim tavu e-pastu vai tālruni saziņai par iesniegto jautājumu.
+          </p>
+        </form>
+      </section>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2008–2025 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
 
-  <!-- JavaScript pāradresācija -->
   <script>
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', async function(e) {
@@ -62,7 +110,6 @@
         headers: { 'Accept': 'application/json' }
       });
       if (response.ok) {
-        // Pāradresācija uz paldies.html
         window.location.href = "paldies.html";
       } else {
         alert("Radās kļūda, mēģini vēlreiz!");
