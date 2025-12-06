@@ -5,9 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Neatkarīgā policistu arodbiedrība</title>
   <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* Ziņu lentas stils – tāds pats kā globālajā lapā */
+    .news-ticker {
+      background: #0c275c;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite; /* mierīgs temps */
+    }
+
+    /* Apstājas, kad lietotājs uzliek peli virs lentas */
+    .news-ticker:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
 <body>
-  <header>
+  <header class="home-header">
     <h1>Neatkarīgā policistu arodbiedrība</h1>
     <p>Policijas darbinieku tiesību un interešu aizstāvība</p>
     <nav>
@@ -21,7 +51,14 @@
     </nav>
   </header>
 
-  <main>
+  <!-- NPA specifiskā ziņu lenta (TVNET) -->
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="newsTickerNpa">
+      Ielādē aktuālās ziņas policijas un drošības jomā...
+    </span>
+  </div>
+
+  <main class="home-main">
     <section>
       <p>
         Neatkarīgā policistu arodbiedrība (NPA) apvieno policijas darbiniekus, tai skaitā amatpersonas ar
@@ -49,5 +86,28 @@
   <footer>
     <p>&copy; 2008–2025 Neatkarīgā policistu arodbiedrība</p>
   </footer>
+
+  <script>
+    // NPA ziņu lenta: TVNET RSS caur rss2json
+    const RSS_TVNET = "https://api.rss2json.com/v1/api.json?rss_url=https://www.tvnet.lv/rss";
+
+    fetch(RSS_TVNET)
+      .then(response => response.json())
+      .then(data => {
+        if (!data.items) return;
+
+        const headlines = data.items
+          .slice(0, 10)              // cik ziņas ņemam
+          .map(item => item.title)
+          .join(" • ");
+
+        document.getElementById("newsTickerNpa").textContent =
+          "📰 " + headlines;
+      })
+      .catch(err => {
+        document.getElementById("newsTickerNpa").textContent =
+          "Neizdevās ielādēt aktuālās ziņas.";
+      });
+  </script>
 </body>
 </html>
