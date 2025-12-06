@@ -5,11 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Informācijas tehnoloģiju speciālistu arodbiedrība</title>
   <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* Ziņu lenta – ITSA lapai (CERT.LV) */
+    .news-ticker {
+      background: #004d40;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--itsa">
     <h1>Informācijas tehnoloģiju speciālistu arodbiedrība</h1>
-    <p>IT speciālistu interešu un tiesību aizsardzībai</p>
+    <p class="subtagline">
+      IT speciālistu darba vides un profesionālo interešu aizstāvība —<br>
+      <strong>par drošu, godīgu un ilgtspējīgu digitālo darba vidi Latvijā.</strong>
+    </p>
     <nav>
       <ul>
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
@@ -21,17 +55,64 @@
     </nav>
   </header>
 
-  <main>
+  <!-- ITSA ziņu lenta: CERT.LV (kiberdrošības brīdinājumi) -->
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerItsa">
+      Ielādē CERT.LV kiberdrošības brīdinājumus...
+    </span>
+  </div>
+
+  <main class="home-main itsa-theme">
     <section>
       <p>
-        Informācijas tehnoloģiju speciālistu arodbiedrība apvieno IT nozares darbiniekus, lai aizstāvētu
-        viņu darba tiesības, nodrošinātu sociālās garantijas un veicinātu profesionālu darba vidi.
+        Informācijas tehnoloģiju speciālistu arodbiedrība (ITSA) apvieno IT nozares darbiniekus, lai aizstāvētu
+        viņu darba, sociālās un profesionālās intereses, veicinātu kvalitatīvu darba vidi un atbildīgu digitālā
+        tirgus attīstību.
       </p>
+      <p>
+        ITSA īpašu uzmanību pievērš kiberdrošībai, datu aizsardzībai, attālinātā darba un darba slodzes jautājumiem,
+        kā arī taisnīgai atalgojuma un virsstundu apmaksas praksei.
+      </p>
+    </section>
+
+    <section>
+      <h2>Darba virzieni</h2>
+      <ul class="no-style">
+        <li>• Darba tiesību un darba vides jautājumu uzraudzība IT nozarē.</li>
+        <li>• Konsultācijas par datu aizsardzību un kiberdrošības prasībām.</li>
+        <li>• IT speciālistu interešu pārstāvība dialogā ar darba devējiem un valsts institūcijām.</li>
+        <li>• Nozares labās prakses un profesionālās ētikas veicināšana.</li>
+      </ul>
     </section>
   </main>
 
   <footer>
     <p>&copy; 2008–2025 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
+
+  <script>
+    // CERT.LV – ITSA primārā lenta
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss.xml";
+
+    function extractTitles(data, max = 10) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+    fetch(RSS_CERT)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "🔐 " + titles.join(" • ")
+          : "Nav pieejamu CERT.LV kiberdrošības brīdinājumu.";
+        document.getElementById("tickerItsa").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsa").textContent =
+          "Neizdevās ielādēt CERT.LV kiberdrošības brīdinājumus.";
+      });
+  </script>
+
 </body>
 </html>
