@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lenta – NPA lapai (IEM + LV portāls) */
+    /* Ziņu lenta – NPA (Iekšlietu ministrija + LV portāls) */
     .news-ticker {
       background: #0c275c;
       color: white;
@@ -76,9 +76,9 @@
     </section>
 
     <section>
-      <h2>Koplīgums ar Valsts policiju</h2>
+      <h2 class="kopligums-heading">Koplīgums ar Valsts policiju</h2>
 
-      <!-- KOPLĪGUMA FOTO BLOKS (stils definēts style.css) -->
+      <!-- KOPLĪGUMA FOTO BLOKS -->
       <div class="agreement-image-block">
         <a href="../img/NPA_VP_Kopligums_master.png" target="_blank">
           <picture>
@@ -111,7 +111,7 @@
   </footer>
 
   <script>
-    // RSS avoti: Iekšlietu ministrija + LV portāls
+    // RSS avoti: Iekšlietu ministrija + LV portāls caur rss2json
     const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
@@ -120,7 +120,6 @@
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // Apvienotā lenta: IEM + LV portāls
     Promise.all([
       fetch(RSS_IEM).then(r => r.json()).catch(() => null),
       fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
