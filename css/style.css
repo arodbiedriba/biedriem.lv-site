@@ -382,3 +382,45 @@ footer {
     text-align: center;
     color: #0c275c;
 }
+/* ===== Organizāciju individuālās krāsas (header) ===== */
+
+/* NPA – tumši zils (atstāj kā bāzes .home-header vai, ja gribi ekspl. klasi) */
+.home-header--npa {
+    background: linear-gradient(135deg, #003B70, #001F4D);
+}
+
+/* LJA – tumši zaļš */
+.home-header--lja {
+    background: linear-gradient(135deg, #0b4f2c, #022b17);
+}
+
+/* ITSA – tehnoloģisks tumši tirkīzzils */
+.home-header--itsa {
+    background: linear-gradient(135deg, #004d40, #00251a);
+}
+
+/* ===== Organizāciju pamatteksta krāsas (body/main) ===== */
+
+.npa-theme {
+    color: #0c275c; /* tumši zils teksts NPA lapā */
+}
+
+.lja-theme {
+    color: #0b4f2c; /* tumši zaļš teksts LJA lapā */
+}
+
+.itsa-theme {
+    color: #0b3a3a; /* tumši tirkīzzils / pelēkzils ITSA lapai */
+}
+
+/* LJA virsraksti – tumši zaļi */
+.lja-theme h2,
+.lja-theme h3 {
+    color: #0b4f2c;
+}
+
+/* ITSA virsraksti – tumši tirkīzzili */
+.itsa-theme h2,
+.itsa-theme h3 {
+    color: #0b3a3a;
+}
