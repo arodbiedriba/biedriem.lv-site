@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lentas – saskaņotas ar kopējo dizainu */
+    /* Ziņu lentas – LJA lapai */
     .news-ticker {
-      background: #0c275c;
+      background: #0b4f2c;
       color: white;
       padding: 10px 0;
       overflow: hidden;
@@ -21,8 +21,8 @@
     }
 
     .news-ticker.secondary {
-      background: #123b82;
-      margin-top: 20px; /* neliela atstarpe no satura */
+      background: #145f38;
+      margin-top: 20px;
     }
 
     .news-ticker-content {
@@ -39,27 +39,11 @@
       0%   { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
-
-    /* LJA lapas tumši zilais pamatteksts */
-    .lja-theme {
-      color: #0c275c;
-    }
-
-    /* LJA virsraksti */
-    .lja-theme h2,
-    .lja-theme h3 {
-      color: #0c275c;
-      margin-top: 1.5rem;
-    }
-
-    .lja-theme .no-style li {
-      margin-bottom: 0.3rem;
-    }
   </style>
 </head>
 
 <body>
-  <header class="home-header">
+  <header class="home-header home-header--lja">
     <h1>Latviešu juristu apvienība</h1>
     <p class="subtagline">
       Biedrība, kas veicina tiesiskumu un demokrātiju Latvijā —<br>
@@ -108,7 +92,7 @@
     </section>
   </main>
 
-  <!-- APĀKŠĒJĀ LENTA: LSM (plašāks tiesiskuma / sabiedrības konteksts) -->
+  <!-- APĀKŠĒJĀ LENTA: LSM (plašāks konteksts) -->
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerLjaLsm">
       Ielādē LSM tiesiskuma un sabiedrisko procesu ziņas...
@@ -120,9 +104,9 @@
   </footer>
 
   <script>
-    // LV portāls – primārā juridiskā lenta
+    // LV portāls – augšējā lenta
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
-    // LSM – papildlenta apakšā
+    // LSM – apakšējā lenta
     const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
 
     function extractTitles(data, max = 10) {
@@ -130,7 +114,7 @@
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // LV portāls (augšējā lenta)
+    // LV portāls
     fetch(RSS_LVPORTALS)
       .then(r => r.json())
       .then(data => {
@@ -145,7 +129,7 @@
           "Neizdevās ielādēt LV portāla juridiskās ziņas.";
       });
 
-    // LSM (apakšējā lenta)
+    // LSM
     fetch(RSS_LSM)
       .then(r => r.json())
       .then(data => {
@@ -160,5 +144,6 @@
           "Neizdevās ielādēt LSM ziņas.";
       });
   </script>
+
 </body>
 </html>
