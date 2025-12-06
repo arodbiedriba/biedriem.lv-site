@@ -5,11 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Latviešu juristu apvienība</title>
   <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* Ziņu lentas – saskaņotas ar kopējo dizainu */
+    .news-ticker {
+      background: #0c275c;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #123b82;
+      margin-top: 20px; /* neliela atstarpe no satura */
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* LJA lapas tumši zilais pamatteksts */
+    .lja-theme {
+      color: #0c275c;
+    }
+
+    /* LJA virsraksti */
+    .lja-theme h2,
+    .lja-theme h3 {
+      color: #0c275c;
+      margin-top: 1.5rem;
+    }
+
+    .lja-theme .no-style li {
+      margin-bottom: 0.3rem;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header">
     <h1>Latviešu juristu apvienība</h1>
-    <p>Biedrība, kas veicina tiesiskumu un demokrātiju Latvijā</p>
+    <p class="subtagline">
+      Biedrība, kas veicina tiesiskumu un demokrātiju Latvijā —<br>
+      <strong>apvienojot juristus profesionālai sadarbībai un tiesiskai valstij.</strong>
+    </p>
     <nav>
       <ul>
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
@@ -21,9 +76,19 @@
     </nav>
   </header>
 
-  <main>
+  <!-- AUGŠĒJĀ LENTA: LV portāls (juridiskās ziņas) -->
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerLjaLv">
+      Ielādē LV portāla juridiskās ziņas...
+    </span>
+  </div>
+
+  <main class="home-main lja-theme">
     <section>
-      <p>Latviešu juristu apvienība (LJA) veicina tiesiskumu un demokrātiju Latvijā, izmantojot juridiskus līdzekļus.</p>
+      <p>
+        Latviešu juristu apvienība (LJA) veicina tiesiskumu un demokrātiju Latvijā, izmantojot juridiskus
+        līdzekļus, stiprinot tiesību kultūru un veidojot profesionālu dialogu starp juristiem, valsts institūcijām un sabiedrību.
+      </p>
     </section>
 
     <section>
@@ -36,13 +101,64 @@
         <li><strong>Reģistrācijas apliecības Nr. un datums:</strong> B009011, 25.04.2008</li>
       </ul>
 
-      <h3>Darbības mērķis:</h3>
-      <p>Tiesiskiem līdzekļiem panākt, lai Latvija kļūtu par demokrātisku un tiesisku valsti.</p>
+      <h3>Darbības mērķis</h3>
+      <p>
+        Tiesiskiem līdzekļiem panākt, lai Latvija kļūtu par demokrātisku un tiesisku valsti.
+      </p>
     </section>
   </main>
+
+  <!-- APĀKŠĒJĀ LENTA: LSM (plašāks tiesiskuma / sabiedrības konteksts) -->
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerLjaLsm">
+      Ielādē LSM tiesiskuma un sabiedrisko procesu ziņas...
+    </span>
+  </div>
 
   <footer>
     <p>&copy; 2008–2025 Latviešu juristu apvienība</p>
   </footer>
+
+  <script>
+    // LV portāls – primārā juridiskā lenta
+    const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+    // LSM – papildlenta apakšā
+    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
+
+    function extractTitles(data, max = 10) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+    // LV portāls (augšējā lenta)
+    fetch(RSS_LVPORTALS)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "⚖️ " + titles.join(" • ")
+          : "Nav pieejamu LV portāla juridisko ziņu.";
+        document.getElementById("tickerLjaLv").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerLjaLv").textContent =
+          "Neizdevās ielādēt LV portāla juridiskās ziņas.";
+      });
+
+    // LSM (apakšējā lenta)
+    fetch(RSS_LSM)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "📰 " + titles.join(" • ")
+          : "Nav pieejamu LSM ziņu.";
+        document.getElementById("tickerLjaLsm").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerLjaLsm").textContent =
+          "Neizdevās ielādēt LSM ziņas.";
+      });
+  </script>
 </body>
 </html>
