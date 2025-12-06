@@ -20,7 +20,7 @@ a {
 
 /* ===== Headeri ===== */
 
-/* Parastais header iekšējām lapām (NPA, ITSA u.c.) */
+/* Parastais header iekšējām lapām (ja kādā neizmanto home-header) */
 header {
     background-color: #ffffff;
     padding: 1.5rem 1rem;
@@ -38,9 +38,9 @@ header p {
     color: #555;
 }
 
-/* Hero tipa header saknes lapai – tumšāks, “policijas” tonis */
+/* Hero tipa header saknes / organizāciju lapām */
 .home-header {
-    background: linear-gradient(135deg, #003B70, #001F4D); /* tumšs zils */
+    background: linear-gradient(135deg, #003B70, #001F4D); /* bāzes tumši zils */
     color: #ffffff;
     text-align: center;
     padding: 2.5rem 1rem 2rem;
@@ -52,7 +52,7 @@ header p {
     font-size: 2rem;
 }
 
-/* Teksts zem virsraksta – skaidri balts, lai ir salasāms */
+/* Teksts zem virsraksta – skaidri balts */
 .home-header p {
     margin: 0;
     font-size: 1rem;
@@ -170,7 +170,7 @@ main {
     text-decoration: none;
     padding: 1.4rem 1.2rem;
     border-radius: 14px;
-    background: linear-gradient(135deg, #004B8D, #002F5F); /* tumšāks zils */
+    background: linear-gradient(135deg, #004B8D, #002F5F);
     color: #ffffff;
     box-shadow: 0 12px 28px rgba(0, 47, 95, 0.5);
     transition: transform 0.18s ease, box-shadow 0.18s ease, background-position 0.2s ease;
@@ -328,7 +328,7 @@ footer {
     color: #444;
 }
 
-/* ===== Izceltā NPA saukļa stils (subtagline) ===== */
+/* ===== Izceltā saukļa stils (subtagline) ===== */
 
 .subtagline {
     font-size: 1.25rem;
@@ -340,10 +340,11 @@ footer {
 }
 
 .subtagline strong {
-    color: #ffeb3b; /* dzelteni izcelts akcents */
+    color: #ffeb3b;
     font-weight: 700;
 }
-/* Koplīguma foto bloks */
+
+/* Koplīguma foto bloks (NPA) */
 .agreement-image-block {
     text-align: center;
     margin: 1.5rem auto;
@@ -359,7 +360,6 @@ footer {
     cursor: zoom-in;
 }
 
-/* Pelēks uzraksts zem bildes */
 .img-caption {
     font-size: 0.95rem;
     color: #555;
@@ -367,60 +367,59 @@ footer {
     font-style: italic;
 }
 
-/* Hover efekts */
 .agreement-image:hover {
     transform: scale(1.02);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
-/* NPA lapas tumši zilais pamatteksts */
-.npa-theme {
-    color: #0c275c;
-}
 
-/* Virsraksts virs koplīguma foto – centrēts un tumši zils */
-.npa-theme h2 {
+/* Koplīguma virsraksta specifiska centrēšana NPA lapā */
+.kopligums-heading {
     text-align: center;
     color: #0c275c;
 }
-/* ===== Organizāciju individuālās krāsas (header) ===== */
 
-/* NPA – tumši zils (atstāj kā bāzes .home-header vai, ja gribi ekspl. klasi) */
+/* ===== Organizāciju individuālās header krāsas ===== */
+
+/* NPA – tumši zils (policija) */
 .home-header--npa {
     background: linear-gradient(135deg, #003B70, #001F4D);
 }
 
-/* LJA – tumši zaļš */
+/* LJA – tumši zaļš (tiesiskums) */
 .home-header--lja {
-    background: linear-gradient(135deg, #0b4f2c, #022b17);
+    background: linear-gradient(135deg, #145214, #06330a);
 }
 
-/* ITSA – tehnoloģisks tumši tirkīzzils */
+/* ITSA – tehnoloģisks zilgan-teal (IT) */
 .home-header--itsa {
-    background: linear-gradient(135deg, #004d40, #00251a);
+    background: linear-gradient(135deg, #005b96, #00335b);
 }
 
 /* ===== Organizāciju pamatteksta krāsas (body/main) ===== */
 
+/* NPA teksts – tumši zils */
 .npa-theme {
-    color: #0c275c; /* tumši zils teksts NPA lapā */
+    color: #0c275c;
 }
 
+/* LJA teksts – tumši zaļš */
 .lja-theme {
-    color: #0b4f2c; /* tumši zaļš teksts LJA lapā */
+    color: #145214;
 }
 
+/* ITSA teksts – tumši zilgan-teal */
 .itsa-theme {
-    color: #0b3a3a; /* tumši tirkīzzils / pelēkzils ITSA lapai */
+    color: #004b6b;
 }
 
 /* LJA virsraksti – tumši zaļi */
 .lja-theme h2,
 .lja-theme h3 {
-    color: #0b4f2c;
+    color: #145214;
 }
 
-/* ITSA virsraksti – tumši tirkīzzili */
+/* ITSA virsraksti – tumši teal */
 .itsa-theme h2,
 .itsa-theme h3 {
-    color: #0b3a3a;
+    color: #004b6b;
 }
