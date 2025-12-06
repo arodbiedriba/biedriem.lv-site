@@ -24,7 +24,7 @@
       animation: ticker 90s linear infinite; /* LĒNS TEMPS */
     }
 
-    /* Apstājas, kad lietotājs uzliek peli */
+    /* Apstājas, kad uzliek peli */
     .news-ticker:hover .news-ticker-content {
       animation-play-state: paused;
     }
@@ -32,6 +32,29 @@
     @keyframes ticker {
       0%   { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
+    }
+
+    /* =====================================
+       F L Ī Ž U   U Z L A B O J U M I
+       ===================================== */
+
+    .org-title {
+      text-align: center !important;
+      width: 100%;
+      display: block;
+      font-size: 1.3rem;             /* lielāks pamata izmērs */
+      line-height: 1.4;
+      padding: 10px 5px;
+      word-wrap: break-word;         /* sadala garus vārdus */
+      overflow-wrap: break-word;
+    }
+
+    /* Mobilajiem – vēl lielāks un labāk salasāms */
+    @media (max-width: 600px) {
+      .org-title {
+        font-size: 1.5rem;
+        padding: 15px 8px;
+      }
     }
   </style>
 </head>
@@ -51,6 +74,7 @@
 
   <main class="home-main">
     <div class="org-list">
+
       <a class="org-tile" href="npa/index.html">
         <span class="org-title">Neatkarīgā policistu arodbiedrība</span>
       </a>
@@ -62,6 +86,7 @@
       <a class="org-tile" href="lja/index.html">
         <span class="org-title">Latviešu juristu apvienība</span>
       </a>
+
     </div>
   </main>
 
