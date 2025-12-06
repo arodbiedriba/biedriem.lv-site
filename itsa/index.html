@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lenta – ITSA lapai (CERT.LV) */
+    /* Ziņu lenta – ITSA (CERT.LV – kiberdrošības brīdinājumi) */
     .news-ticker {
       background: #004d40;
       color: white;
@@ -55,7 +55,7 @@
     </nav>
   </header>
 
-  <!-- ITSA ziņu lenta: CERT.LV (kiberdrošības brīdinājumi) -->
+  <!-- ITSA ziņu lenta: CERT.LV -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsa">
       Ielādē CERT.LV kiberdrošības brīdinājumus...
@@ -91,7 +91,7 @@
   </footer>
 
   <script>
-    // CERT.LV – ITSA primārā lenta
+    // CERT.LV – ITSA primārā ziņu lenta
     const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss.xml";
 
     function extractTitles(data, max = 10) {
