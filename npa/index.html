@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lentas – saskaņā ar globālo dizainu */
+    /* Ziņu lenta – saskaņota ar globālo dizainu */
     .news-ticker {
       background: #0c275c;
       color: white;
@@ -20,14 +20,10 @@
       margin-bottom: 4px;
     }
 
-    .news-ticker.secondary {
-      background: #123b82; /* nedaudz atšķirīgs tonis otrajai lentai */
-    }
-
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; /* mierīgs temps */
+      animation: ticker 90s linear infinite;
     }
 
     .news-ticker:hover .news-ticker-content {
@@ -40,10 +36,12 @@
     }
   </style>
 </head>
+
 <body>
   <header class="home-header">
     <h1>Neatkarīgā policistu arodbiedrība</h1>
     <p>Policijas darbinieku tiesību un interešu aizstāvība</p>
+
     <nav>
       <ul>
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
@@ -55,17 +53,10 @@
     </nav>
   </header>
 
-  <!-- PRIMĀRĀ ZIŅU LENTA: Iekšlietu ministrija + LV portāls -->
+  <!-- NPA PRIMĀRĀ LENTA: Iekšlietu ministrija + LV portāls -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerPrimary">
       Ielādē oficiālās ziņas...
-    </span>
-  </div>
-
-  <!-- SEKUNDĀRĀ ZIŅU LENTA: TVNET -->
-  <div class="news-ticker secondary">
-    <span class="news-ticker-content" id="tickerSecondary">
-      Ielādē TVNET aktualitātes...
     </span>
   </div>
 
@@ -99,21 +90,21 @@
   </footer>
 
   <script>
-    // RSS avotu URL caur rss2json
+    // RSS: Iekšlietu ministrija + LV portāls
     const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
-    const RSS_TVNET     = "https://api.rss2json.com/v1/api.json?rss_url=https://www.tvnet.lv/rss";
 
     function extractTitles(data, max = 8) {
       if (!data || !data.items) return [];
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // 1. lenta: Iekšlietu ministrija + LV portāls
+    // Apvienotā lenta: IEM + LV portāls
     Promise.all([
       fetch(RSS_IEM).then(r => r.json()).catch(() => null),
       fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
     ]).then(([iemData, lvData]) => {
+
       let titles = [];
       titles = titles.concat(extractTitles(iemData, 6));
       titles = titles.concat(extractTitles(lvData, 6));
@@ -123,27 +114,12 @@
         : "Nav pieejamu oficiālo ziņu.";
 
       document.getElementById("tickerPrimary").textContent = text;
+
     }).catch(() => {
       document.getElementById("tickerPrimary").textContent =
         "Neizdevās ielādēt oficiālās ziņas.";
     });
-
-    // 2. lenta: TVNET
-    fetch(RSS_TVNET)
-      .then(r => r.json())
-      .then(data => {
-        const titles = extractTitles(data, 10);
-
-        const text = titles.length
-          ? "📰 " + titles.join(" • ")
-          : "Nav pieejamu TVNET ziņu.";
-
-        document.getElementById("tickerSecondary").textContent = text;
-      })
-      .catch(() => {
-        document.getElementById("tickerSecondary").textContent =
-          "Neizdevās ielādēt TVNET ziņas.";
-      });
   </script>
+
 </body>
 </html>
