@@ -34,13 +34,31 @@
       0%   { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
+
+    /* Misijas rindiņas stils */
+    .subtagline {
+      font-size: 1.25rem;
+      line-height: 1.45;
+      margin-top: 10px;
+      color: #ffffff;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+    }
+
+    .subtagline strong {
+      color: #ffeb3b; /* dzelteni izcelts akcents */
+      font-weight: 700;
+    }
   </style>
 </head>
 
 <body>
   <header class="home-header">
     <h1>Neatkarīgā policistu arodbiedrība</h1>
-    <p>Policijas darbinieku tiesību un interešu aizstāvība</p>
+    <p class="subtagline">
+      Policijas darbinieku tiesību un interešu aizstāvība —<br>
+      <strong>vienīgā Valsts policijas darbinieku arodbiedrība ar spēkā esošu koplīgumu.</strong>
+    </p>
 
     <nav>
       <ul>
@@ -90,7 +108,7 @@
   </footer>
 
   <script>
-    // RSS: Iekšlietu ministrija + LV portāls
+    // RSS avoti: Iekšlietu ministrija + LV portāls
     const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
