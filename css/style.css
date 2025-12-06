@@ -372,3 +372,13 @@ footer {
     transform: scale(1.02);
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
 }
+/* NPA lapas tumši zilais pamatteksts */
+.npa-theme {
+    color: #0c275c;
+}
+
+/* Virsraksts virs koplīguma foto – centrēts un tumši zils */
+.npa-theme h2 {
+    text-align: center;
+    color: #0c275c;
+}
