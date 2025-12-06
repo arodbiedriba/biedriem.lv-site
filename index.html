@@ -16,15 +16,19 @@
       font-size: 18px;
       font-weight: 500;
       cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #123b82; /* nedaudz atšķirīgs tonis otrajai lentai */
     }
 
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; /* LĒNS TEMPS */
+      animation: ticker 90s linear infinite; /* mierīgs temps */
     }
 
-    /* Apstājas, kad uzliek peli */
     .news-ticker:hover .news-ticker-content {
       animation-play-state: paused;
     }
@@ -34,22 +38,18 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* =====================================
-       F L Ī Ž U   U Z L A B O J U M I
-       ===================================== */
-
+    /* Flīžu uzraksti – centrēti un salasāmi arī telefonā */
     .org-title {
       text-align: center !important;
       width: 100%;
       display: block;
-      font-size: 1.3rem;             /* lielāks pamata izmērs */
+      font-size: 1.3rem;
       line-height: 1.4;
       padding: 10px 5px;
-      word-wrap: break-word;         /* sadala garus vārdus */
+      word-wrap: break-word;
       overflow-wrap: break-word;
     }
 
-    /* Mobilajiem – vēl lielāks un labāk salasāms */
     @media (max-width: 600px) {
       .org-title {
         font-size: 1.5rem;
@@ -65,16 +65,15 @@
     <p>Izvēlies organizāciju, kuru vēlies apmeklēt</p>
   </header>
 
-  <!-- Skrejošā ziņu lenta -->
+  <!-- AUGŠĀ: TVNET ziņu lenta -->
   <div class="news-ticker">
-    <span class="news-ticker-content" id="newsTicker">
-      Ielādē jaunākās ziņas...
+    <span class="news-ticker-content" id="newsTickerTvnet">
+      Ielādē TVNET aktualitātes...
     </span>
   </div>
 
   <main class="home-main">
     <div class="org-list">
-
       <a class="org-tile" href="npa/index.html">
         <span class="org-title">Neatkarīgā policistu arodbiedrība</span>
       </a>
@@ -86,7 +85,13 @@
       <a class="org-tile" href="lja/index.html">
         <span class="org-title">Latviešu juristu apvienība</span>
       </a>
+    </div>
 
+    <!-- ZEM FLĪZĒM: LSM ziņu lenta -->
+    <div class="news-ticker secondary">
+      <span class="news-ticker-content" id="newsTickerLsm">
+        Ielādē LSM ziņas...
+      </span>
     </div>
   </main>
 
@@ -95,24 +100,44 @@
   </footer>
 
   <script>
-    // Latvijas ziņu RSS (LSM)
-    const RSS_URL = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
+    // TVNET RSS (augšējā lenta)
+    const RSS_TVNET = "https://api.rss2json.com/v1/api.json?rss_url=https://www.tvnet.lv/rss";
+    // LSM RSS (apakšējā lenta zem flīzēm)
+    const RSS_LSM   = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
 
-    fetch(RSS_URL)
+    function extractTitles(data, max = 10) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+    // TVNET lenta augšā
+    fetch(RSS_TVNET)
       .then(response => response.json())
       .then(data => {
-        if (!data.items) return;
-
-        let headlines = data.items
-          .slice(0, 10)          // cik ziņas rādām
-          .map(item => item.title)
-          .join(" • ");
-
-        document.getElementById("newsTicker").textContent = "📰 " + headlines;
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "📰 " + titles.join(" • ")
+          : "Nav pieejamu TVNET ziņu.";
+        document.getElementById("newsTickerTvnet").textContent = text;
       })
-      .catch(err => {
-        document.getElementById("newsTicker").textContent =
-          "Neizdevās ielādēt jaunākās ziņas.";
+      .catch(() => {
+        document.getElementById("newsTickerTvnet").textContent =
+          "Neizdevās ielādēt TVNET ziņas.";
+      });
+
+    // LSM lenta zem flīzēm
+    fetch(RSS_LSM)
+      .then(response => response.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "📰 " + titles.join(" • ")
+          : "Nav pieejamu LSM ziņu.";
+        document.getElementById("newsTickerLsm").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("newsTickerLsm").textContent =
+          "Neizdevās ielādēt LSM ziņas.";
       });
   </script>
 </body>
