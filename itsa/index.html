@@ -55,10 +55,10 @@
     </nav>
   </header>
 
-  <!-- ITSA ziņu lenta: CERT.LV -->
+  <!-- ITSA ziņu lenta: apvienotas CERT.LV plūsmas -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsa">
-      Ielādē CERT.LV kiberdrošības brīdinājumus...
+      Ielādē CERT.LV kiberdrošības ziņas...
     </span>
   </div>
 
@@ -91,27 +91,48 @@
   </footer>
 
   <script>
-    // CERT.LV – ITSA primārā ziņu lenta
-    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss.xml";
+    // CERT.LV – apvienotas RSS plūsmas ITSA ziņu lentai
+    // Piezīme: zemāk RSS_URL_1/2/3 jāaizstāj ar reālajām CERT.LV RSS saitēm
+    // no lapas "CERT.LV RSS padeves". [web:81]
 
-    function extractTitles(data, max = 10) {
-      if (!data || !data.items) return [];
-      return data.items.slice(0, max).map(item => item.title);
+    const RSS_FEEDS = [
+      "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss.xml",
+      // Piemērs: brīdinājumi
+      "https://api.rss2json.com/v1/api.json?rss_url=RSS_URL_2",
+      // Piemērs: ieteikumi lietotājiem
+      "https://api.rss2json.com/v1/api.json?rss_url=RSS_URL_3"
+    ];
+
+    function extractTitlesMerged(items, max = 10) {
+      return items
+        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+        .slice(0, max)
+        .map(item => item.title);
     }
 
-    fetch(RSS_CERT)
-      .then(r => r.json())
-      .then(data => {
-        const titles = extractTitles(data, 10);
-        const text = titles.length
-          ? "🔐 " + titles.join(" • ")
-          : "Nav pieejamu CERT.LV kiberdrošības brīdinājumu.";
-        document.getElementById("tickerItsa").textContent = text;
-      })
-      .catch(() => {
-        document.getElementById("tickerItsa").textContent =
-          "Neizdevās ielādēt CERT.LV kiberdrošības brīdinājumus.";
-      });
+    function loadItsaTicker() {
+      Promise.all(RSS_FEEDS.map(url =>
+        fetch(url).then(r => r.json()).catch(() => null)
+      ))
+        .then(results => {
+          const mergedItems = results
+            .filter(r => r && r.items)
+            .flatMap(r => r.items || []);
+
+          const titles = extractTitlesMerged(mergedItems, 10);
+          const text = titles.length
+            ? "🔐 " + titles.join(" • ")
+            : "Nav pieejamu CERT.LV kiberdrošības ziņu.";
+
+          document.getElementById("tickerItsa").textContent = text;
+        })
+        .catch(() => {
+          document.getElementById("tickerItsa").textContent =
+            "Neizdevās ielādēt CERT.LV kiberdrošības ziņas.";
+        });
+    }
+
+    loadItsaTicker();
   </script>
 
 </body>
