@@ -61,7 +61,7 @@
     </nav>
   </header>
 
-  <!-- AUGŠĒJĀ LENTA: CERT.LV ziņas (kiberdrošība) -->
+  <!-- AUGŠĒJĀ LENTA: CERT.LV ziņas (latviski, kiberdrošība) -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsaTop">
       Ielādē CERT.LV kiberdrošības ziņas...
@@ -106,11 +106,12 @@
   <script>
     // === RSS avoti (izmantojam rss2json kā starpnieku) ===
 
-    // CERT.LV oficiālais RSS (angļu val., bet tehniski kvalitatīvs)
-    // Avots: starptautiskais CERT RSS saraksts: https://cert.lv/en/feed/rss/all
-    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/en/feed/rss/all";
+    // CERT.LV "Visas ziņas" latviski – no RSS padevēm
+    // https://cert.lv/lv/rss/zinas.xml
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
 
-    // LMT jaunumi (no lapas <link rel=\"alternate\" ... href=\"/rss/lv/\" >)
+    // LMT jaunumi (latviskais RSS)
+    // https://www.lmt.lv/rss/lv/
     const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
 
     function extractTitles(items, max = 10) {
@@ -118,7 +119,6 @@
       return items.slice(0, max).map(item => item.title);
     }
 
-    // Mazā helper-funkcija, lai sakārtotu pēc datuma, ja vajadzētu apvienot vairākus avotus
     function extractTitlesSorted(items, max = 15) {
       return items
         .sort((a, b) => new Date(b.pubDate || b.pub_date || 0) - new Date(a.pubDate || a.pub_date || 0))
@@ -126,7 +126,7 @@
         .map(item => item.title);
     }
 
-    // AUGŠĒJĀ LENTA – CERT.LV
+    // AUGŠĒJĀ LENTA – CERT.LV (LATVISKI)
     fetch(RSS_CERT)
       .then(r => r.json())
       .then(data => {
