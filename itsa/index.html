@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lenta – ITSA (CERT.LV – kiberdrošības brīdinājumi/ziņas) */
+    /* Ziņu lentas – ITSA (augšā CERT+NIC, apakšā LMT Technews) */
     .news-ticker {
-      background: #005b96; /* zilgani-tehnoloģisks, saskaņots ar home-header--itsa */
+      background: #005b96; /* saskaņots ar ITSA header */
       color: white;
       padding: 10px 0;
       overflow: hidden;
@@ -20,13 +20,19 @@
       margin-bottom: 4px;
     }
 
+    .news-ticker.secondary {
+      background: #004067; /* nedaudz tumšāks tonis apakšējai lentei */
+      margin-top: 20px;
+    }
+
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; /* tas pats temps kā NPA/LJA lapām */
+      animation: ticker 90s linear infinite; /* vienots temps ar citām lapām */
     }
 
-    .news-ticker:hover .news-ticker-content {
+    .news-ticker:hover .news-ticker-content,
+    .news-ticker.secondary:hover .news-ticker-content {
       animation-play-state: paused;
     }
 
@@ -55,10 +61,10 @@
     </nav>
   </header>
 
-  <!-- ITSA ziņu lenta: CERT.LV "Visas ziņas" RSS -->
+  <!-- AUGŠĒJĀ LENTA: CERT.LV + NIC.LV (apvienotas Latvijas drošības/infrastruktūras ziņas) -->
   <div class="news-ticker">
-    <span class="news-ticker-content" id="tickerItsa">
-      Ielādē CERT.LV kiberdrošības ziņas...
+    <span class="news-ticker-content" id="tickerItsaTop">
+      Ielādē CERT.LV un NIC.LV ziņas...
     </span>
   </div>
 
@@ -86,31 +92,73 @@
     </section>
   </main>
 
+  <!-- APĀKŠĒJĀ LENTA: LMT Technews (tehnoloģiju jaunumi) -->
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerItsaBottom">
+      Ielādē LMT Technews tehnoloģiju ziņas...
+    </span>
+  </div>
+
   <footer>
     <p>&copy; 2008–2025 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
 
   <script>
-    // CERT.LV – "Visas ziņas" RSS
-    const RSS_CERT_ALL = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
+    // Augšējā lenta: CERT.LV + NIC.LV apvienotas ziņas
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss.xml";
+    const RSS_NIC  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.nic.lv/lv/rss.xml";
 
-    function extractTitles(data, max = 10) {
-      if (!data || !data.items) return [];
-      return data.items.slice(0, max).map(item => item.title);
+    // Apakšējā lenta: LMT Technews
+    const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/lv/rss.xml";
+
+    function extractTitles(items, max = 10) {
+      if (!items) return [];
+      return items.slice(0, max).map(item => item.title);
     }
 
-    fetch(RSS_CERT_ALL)
-      .then(r => r.json())
-      .then(data => {
-        const titles = extractTitles(data, 10);
+    function extractTitlesMerged(items, max = 15) {
+      return items
+        .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate))
+        .slice(0, max)
+        .map(item => item.title);
+    }
+
+    // Augšējā lenta – apvienot CERT + NIC
+    Promise.all([
+      fetch(RSS_CERT).then(r => r.json()).catch(() => null),
+      fetch(RSS_NIC).then(r => r.json()).catch(() => null)
+    ])
+      .then(([certData, nicData]) => {
+        const mergedItems = []
+          .concat((certData && certData.items) || [])
+          .concat((nicData && nicData.items) || []);
+
+        const titles = extractTitlesMerged(mergedItems, 15);
+
         const text = titles.length
           ? "🔐 " + titles.join(" • ")
-          : "Nav pieejamu CERT.LV kiberdrošības ziņu.";
-        document.getElementById("tickerItsa").textContent = text;
+          : "Nav pieejamu CERT.LV un NIC.LV ziņu.";
+
+        document.getElementById("tickerItsaTop").textContent = text;
       })
       .catch(() => {
-        document.getElementById("tickerItsa").textContent =
-          "Neizdevās ielādēt CERT.LV kiberdrošības ziņas.";
+        document.getElementById("tickerItsaTop").textContent =
+          "Neizdevās ielādēt CERT.LV un NIC.LV ziņas.";
+      });
+
+    // Apakšējā lenta – LMT Technews
+    fetch(RSS_LMT)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data.items || [], 12);
+        const text = titles.length
+          ? "💡 " + titles.join(" • ")
+          : "Nav pieejamu LMT Technews tehnoloģiju ziņu.";
+        document.getElementById("tickerItsaBottom").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaBottom").textContent =
+          "Neizdevās ielādēt LMT Technews tehnoloģiju ziņas.";
       });
   </script>
 
