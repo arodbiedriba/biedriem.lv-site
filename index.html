@@ -62,6 +62,13 @@
     </p>
   </header>
 
+  <!-- AUGŠĒJĀ lenta -->
+  <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – augšā">
+    <span class="news-track" id="newsTickerTop">
+      Ielādē ziņas...
+    </span>
+  </div>
+
   <main class="home-main">
     <div class="org-list">
       <a class="org-tile" href="npa/index.html">
@@ -83,9 +90,9 @@
       </a>
     </div>
 
-    <!-- Apvienotā LSM + LV portāls lenta zem flīzēm -->
-    <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente">
-      <span class="news-track" id="newsTickerLsm">
+    <!-- APAKŠĒJĀ lenta zem flīzēm -->
+    <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – apakšā">
+      <span class="news-track" id="newsTickerBottom">
         Ielādē ziņas...
       </span>
     </div>
@@ -96,28 +103,71 @@
   </footer>
 
   <script>
-    // LSM + LV portāls RSS (pārveidoti ar rss2json)
+    // LSM + LV portāls RSS
     const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
-    const ticker = document.querySelector('.news-ticker');
-    const track  = document.getElementById('newsTickerLsm');
+    const topTrack    = document.getElementById('newsTickerTop');
+    const bottomTrack = document.getElementById('newsTickerBottom');
 
-    const speed  = 35;   // px sekundē – lasāms ātrums
-    const stepMs = 40;   // cik bieži pārrēķinām (ms)
+    const speed  = 55;   // px sekundē – nedaudz ātrāk
+    const stepMs = 40;
 
-    let offset      = 0;
-    let playing     = true;
-    let dragging    = false;
-    let dragStartX  = 0;
-    let offsetStart = 0;
+    // katrai lentai savs stāvoklis
+    function makeTicker(trackElement, containerElement) {
+      let offset      = 0;
+      let playing     = true;
+      let dragging    = false;
+      let dragStartX  = 0;
+      let offsetStart = 0;
+
+      function tick() {
+        if (!playing || dragging) return;
+        offset -= (speed * stepMs) / 1000;
+        const trackWidth = trackElement.offsetWidth;
+        if (-offset > trackWidth) {
+          offset = 0;
+        }
+        trackElement.style.transform = `translateX(${offset}px)`;
+      }
+
+      setInterval(tick, stepMs);
+
+      containerElement.addEventListener('mouseenter', () => {
+        playing = false;
+      });
+
+      containerElement.addEventListener('mouseleave', () => {
+        if (!dragging) playing = true;
+      });
+
+      containerElement.addEventListener('mousedown', (e) => {
+        dragging = true;
+        playing = false;
+        dragStartX = e.clientX;
+        offsetStart = offset;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragStartX;
+        offset = offsetStart + dx;
+        trackElement.style.transform = `translateX(${offset}px)`;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!dragging) return;
+        dragging = false;
+        playing = true;
+      });
+    }
 
     function extractTitles(data, max = 6) {
       if (!data || !data.items) return [];
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // Ielādējam LSM + LV portālu, apvienojam vienā sarakstā
+    // Ielādējam LSM + LV portālu, apvienojam un ieliekam abās lentās
     Promise.all([
       fetch(RSS_LSM).then(r => r.json()).catch(() => null),
       fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
@@ -130,60 +180,22 @@
         .concat(lsmTitles.map(t => "📰 " + t))
         .concat(lvTitles.map(t => "⚖️ " + t));
 
-      if (allTitles.length) {
-        const text = allTitles.join(" • ");
-        // Dublējam saturu, lai lente var riņķot
-        track.textContent = text + " • " + text;
-      } else {
-        track.textContent = "Nav pieejamu LSM vai LV portāla ziņu.";
-      }
+      const text = allTitles.length
+        ? allTitles.join(" • ")
+        : "Nav pieejamu LSM vai LV portāla ziņu.";
+
+      const finalText = allTitles.length ? text + " • " + text : text;
+
+      topTrack.textContent    = finalText;
+      bottomTrack.textContent = finalText;
+
+      // Tikai pēc satura ielikšanas startējam kustību
+      makeTicker(topTrack,    topTrack.parentElement);
+      makeTicker(bottomTrack, bottomTrack.parentElement);
     }).catch(() => {
-      track.textContent = "Neizdevās ielādēt ziņu lentes saturu.";
-    });
-
-    // Animācija
-    function tick() {
-      if (!playing || dragging) return;
-
-      offset -= (speed * stepMs) / 1000;
-      const trackWidth = track.offsetWidth;
-
-      if (-offset > trackWidth) {
-        offset = 0;
-      }
-      track.style.transform = `translateX(${offset}px)`;
-    }
-
-    setInterval(tick, stepMs);
-
-    // Hover – pauze
-    ticker.addEventListener('mouseenter', () => {
-      playing = false;
-    });
-
-    ticker.addEventListener('mouseleave', () => {
-      if (!dragging) playing = true;
-    });
-
-    // Drag “patīšana”
-    ticker.addEventListener('mousedown', (e) => {
-      dragging = true;
-      playing = false;
-      dragStartX = e.clientX;
-      offsetStart = offset;
-    });
-
-    window.addEventListener('mousemove', (e) => {
-      if (!dragging) return;
-      const dx = e.clientX - dragStartX;
-      offset = offsetStart + dx;
-      track.style.transform = `translateX(${offset}px)`;
-    });
-
-    window.addEventListener('mouseup', () => {
-      if (!dragging) return;
-      dragging = false;
-      playing = true;
+      const fallback = "Neizdevās ielādēt ziņu lentes saturu.";
+      topTrack.textContent    = fallback;
+      bottomTrack.textContent = fallback;
     });
   </script>
 </body>
