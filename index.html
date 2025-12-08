@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sadarbības organizācijas</title>
+
+  <!-- SEO: title un meta description ar mērķa frāzi -->
+  <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
+  <meta name="description"
+        content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā. Biedriem.lv ir kopīga platforma policistu, IT speciālistu un juristu arodbiedrībām.">
+
   <link rel="stylesheet" href="css/style.css">
 
   <style>
     .news-ticker {
-      background: #0c275c;
+      background: #123b82;
       color: white;
       padding: 10px 0;
       overflow: hidden;
@@ -16,19 +21,14 @@
       font-size: 18px;
       font-weight: 500;
       cursor: default;
+      margin-top: 20px;
       margin-bottom: 4px;
-    }
-
-    /* LSM lenta zem flīzēm – PIEVIENOTA ATSTARPE NO AUGŠAS */
-    .news-ticker.secondary {
-      background: #123b82;
-      margin-top: 20px;  /* ← ŠIS NODROŠINA IDENTISKU ATSTARPI */
     }
 
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; /* mierīgs temps */
+      animation: ticker 90s linear infinite;
     }
 
     .news-ticker:hover .news-ticker-content {
@@ -40,7 +40,6 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* Flīžu uzraksti – centrēti un salasāmi arī telefonā */
     .org-title {
       text-align: center !important;
       width: 100%;
@@ -63,34 +62,35 @@
 
 <body>
   <header class="home-header">
-    <h1>Sadarbības organizācijas</h1>
-    <p>Izvēlies organizāciju, kuru vēlies apmeklēt</p>
+    <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
+    <p>
+      Biedriem.lv ir platforma, kur apvienotas policistu arodbiedrība, informācijas tehnoloģiju speciālistu arodbiedrība un latviešu juristu apvienība.
+    </p>
   </header>
-
-  <!-- AUGŠĀ: TVNET ziņu lenta -->
-  <div class="news-ticker">
-    <span class="news-ticker-content" id="newsTickerTvnet">
-      Ielādē TVNET aktualitātes...
-    </span>
-  </div>
 
   <main class="home-main">
     <div class="org-list">
       <a class="org-tile" href="npa/index.html">
-        <span class="org-title">Neatkarīgā policistu arodbiedrība</span>
+        <span class="org-title">
+          Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā
+        </span>
       </a>
 
       <a class="org-tile" href="itsa/index.html">
-        <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
+        <span class="org-title">
+          Informācijas tehnoloģiju speciālistu arodbiedrība
+        </span>
       </a>
 
       <a class="org-tile" href="lja/index.html">
-        <span class="org-title">Latviešu juristu apvienība</span>
+        <span class="org-title">
+          Latviešu juristu apvienība
+        </span>
       </a>
     </div>
 
-    <!-- ZEM FLĪZĒM: LSM ziņu lenta ar simetrisku atstarpi -->
-    <div class="news-ticker secondary">
+    <!-- Tikai LSM ziņu lenta zem flīzēm -->
+    <div class="news-ticker" aria-label="LSM ziņu lente">
       <span class="news-ticker-content" id="newsTickerLsm">
         Ielādē LSM ziņas...
       </span>
@@ -98,36 +98,24 @@
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Sadarbības organizācijas</p>
+    <p>&copy; 2008–2025 Biedriem.lv – policistu arodbiedrība un sadarbības organizācijas</p>
   </footer>
 
   <script>
-    const RSS_LSM   = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
+    const RSS_LSM = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
 
     function extractTitles(data, max = 10) {
       if (!data || !data.items) return [];
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // TVNET lente augšā
-    fetch(RSS_TVNET)
-      .then(r => r.json())
-      .then(data => {
-        const titles = extractTitles(data, 10);
-        document.getElementById("newsTickerTvnet").textContent =
-          titles.length ? "📰 " + titles.join(" • ") : "Nav pieejamu TVNET ziņu.";
-      })
-      .catch(() => {
-        document.getElementById("newsTickerTvnet").textContent = "Neizdevās ielādēt TVNET ziņas.";
-      });
-
-    // LSM lente zem flīzēm
+    // LSM ziņu lente
     fetch(RSS_LSM)
       .then(r => r.json())
       .then(data => {
         const titles = extractTitles(data, 10);
         document.getElementById("newsTickerLsm").textContent =
-          titles.length ? "📰 " + titles.join(" • ") : "Nav pieejamu LSM ziņu.";
+          (titles.length ? "📰 " + titles.join(" • ") : "Nav pieejamu LSM ziņu.");
       })
       .catch(() => {
         document.getElementById("newsTickerLsm").textContent = "Neizdevās ielādēt LSM ziņas.";
