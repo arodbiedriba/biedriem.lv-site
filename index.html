@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- SEO: title un meta description ar mērķa frāzi -->
   <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
   <meta name="description"
         content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā. Biedriem.lv ir kopīga platforma policistu, IT speciālistu un juristu arodbiedrībām.">
@@ -60,9 +59,17 @@
     <p>
       Biedriem.lv ir platforma, kur apvienotas policistu arodbiedrība, informācijas tehnoloģiju speciālistu arodbiedrība un latviešu juristu apvienība.
     </p>
+
+    
+  <div class="lang-switch">
+    <span>Valoda:</span>
+    <a href="index.html" class="active">LV</a> |
+    <a href="ru/index.html">RU</a> |
+    <a href="en/index.html">EN</a> |
+    <a href="de/index.html">DE</a>
+  </div>
   </header>
 
-  <!-- AUGŠĒJĀ lenta -->
   <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – augšā">
     <span class="news-track" id="newsTickerTop">
       Ielādē ziņas...
@@ -71,49 +78,102 @@
 
   <main class="home-main">
     <div class="org-list">
-      <a class="org-tile" href="npa/index.html">
-        <span class="org-title">
-          Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā
-        </span>
-      </a>
 
-      <a class="org-tile" href="itsa/index.html">
-        <span class="org-title">
-          Informācijas tehnoloģiju speciālistu arodbiedrība
-        </span>
-      </a>
 
-      <a class="org-tile" href="lja/index.html">
-        <span class="org-title">
-          Latviešu juristu apvienība
-        </span>
-      </a>
-    </div>
+  <div class="org-tile">
 
-    <!-- APAKŠĒJĀ lenta zem flīzēm -->
+    <a class="org-text" href="npa/index.html">
+      <span class="org-title">Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā</span>
+    </a>
+
+    <a class="org-logo-link" href="img/NPA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="img/NPA Logo.webp" type="image/webp">
+        <img class="org-logo" src="img/NPA Logo.png" alt="NPA logo">
+      </picture>
+    </a>
+  </div>
+
+  <div class="org-tile">
+    <a class="org-text" href="itsa/index.html">
+      <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
+    </a>
+
+    <a class="org-logo-link" href="img/ITSA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="img/ITSA Logo.webp" type="image/webp">
+        <img class="org-logo" src="img/ITSA Logo.png" alt="ITSA logo">
+      </picture>
+    </a>
+  </div>
+
+  <div class="org-tile">
+    <a class="org-text" href="lja/index.html">
+      <span class="org-title">Latviešu juristu apvienība</span>
+    </a>
+
+    <a class="org-logo-link" href="img/LJA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="img/LJA Logo.webp" type="image/webp">
+        <img class="org-logo" src="img/LJA Logo.png" alt="LJA logo">
+      </picture>
+    </a>
+  </div>
+
+</div>
+
     <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – apakšā">
-      <span class="news-track" id="newsTickerBottom">
-        Ielādē ziņas...
-      </span>
+  <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
+</div>
+
+<section class="greeting" aria-label="Ziemassvētku un Jaunā gada novēlējums">
+  <div class="greeting-card">
+    <div class="greeting-media">
+      <img src="img/V.Skrastina_Ziemassvetku_foto.png"
+           alt="Ziemassvētku un Jaunā gada novēlējums – svētku foto"
+           loading="lazy">
     </div>
+
+    <div class="greeting-text">
+      <h2>🎄 Ziemassvētku un Jaunā gada novēlējums</h2>
+
+      <p><strong>Cienījamie biedri, kolēģi un sadarbības partneri,</strong></p>
+
+      <p>
+        Ziemassvētku laikā vēlam mieru, sirds siltumu un drošības sajūtu Jūsu ģimenēs,
+        bet Jaunajā gadā — spēku, profesionālu pārliecību un taisnīgu darba vidi.
+      </p>
+
+      <p>
+        Lai 2026. gads nes skaidrus mērķus, saliedētību un savstarpēju cieņu,
+        stiprinot gan katru no mums individuāli, gan mūsu kopīgās vērtības.
+      </p>
+
+      <p>
+        Ar pateicību par uzticēšanos un sadarbību,<br>
+        <strong>Jūsu organizācijas – biedriem.lv</strong>
+      </p>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer>
     <p>&copy; 2008–2025 Biedriem.lv – policistu arodbiedrība un sadarbības organizācijas</p>
+    <p>Šobrīd vietnē: <strong><span id="onlineCount">0</span></strong></p>
   </footer>
 
   <script>
-    // LSM + LV portāls RSS
+
     const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
     const topTrack    = document.getElementById('newsTickerTop');
     const bottomTrack = document.getElementById('newsTickerBottom');
 
-    const speed  = 55;   // px sekundē – nedaudz ātrāk
+    const speed  = 55; 
     const stepMs = 40;
 
-    // katrai lentai savs stāvoklis
     function makeTicker(trackElement, containerElement) {
       let offset      = 0;
       let playing     = true;
@@ -167,7 +227,6 @@
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // Ielādējam LSM + LV portālu, apvienojam un ieliekam abās lentās
     Promise.all([
       fetch(RSS_LSM).then(r => r.json()).catch(() => null),
       fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
@@ -189,7 +248,6 @@
       topTrack.textContent    = finalText;
       bottomTrack.textContent = finalText;
 
-      // Tikai pēc satura ielikšanas startējam kustību
       makeTicker(topTrack,    topTrack.parentElement);
       makeTicker(bottomTrack, bottomTrack.parentElement);
     }).catch(() => {
@@ -197,6 +255,22 @@
       topTrack.textContent    = fallback;
       bottomTrack.textContent = fallback;
     });
+
+  let tabId = sessionStorage.getItem('tabId');
+  if (!tabId) {
+    tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+    sessionStorage.setItem('tabId', tabId);
+  }
+
+  fetch('/ping.php?tab=' + encodeURIComponent(tabId), { cache: 'no-store' }).catch(()=>{});
+
+  fetch('/online.php', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(n => {
+      const el = document.getElementById('onlineCount');
+      if (el) el.textContent = n;
+    })
+    .catch(()=>{});
   </script>
 </body>
 </html>
