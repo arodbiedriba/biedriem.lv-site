@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lentas – LJA (LV portāls + LSM) */
     .news-ticker {
       background: #0b4f2c;
       color: white;
@@ -39,16 +38,47 @@
       0%   { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
+
+    .lang-switch {
+      margin-top: 10px;
+      font-size: 1rem;
+    }
+
+    .lang-switch a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .lang-switch a.active {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
 <body>
   <header class="home-header home-header--lja">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/LJA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/LJA Logo.png" alt="LJA logo">
+    </picture>
+  </div>
     <h1>Latviešu juristu apvienība</h1>
+
+    <div class="lang-switch">
+      <span>Valoda:</span>
+      <a href="../lja/index.html" class="active">LV</a> |
+      <a href="../ru/lja/index.html">RU</a> |
+      <a href="../en/lja/index.html">EN</a> |
+      <a href="../de/lja/index.html">DE</a>
+    </div>
+
     <p class="subtagline">
       Biedrība, kas veicina tiesiskumu un demokrātiju Latvijā —<br>
       <strong>apvienojot juristus profesionālai sadarbībai un tiesiskai valstij.</strong>
     </p>
+
     <nav>
       <ul>
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
@@ -60,7 +90,6 @@
     </nav>
   </header>
 
-  <!-- AUGŠĒJĀ LENTA: LV portāls (juridiskās ziņas) -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerLjaLv">
       Ielādē LV portāla juridiskās ziņas...
@@ -92,7 +121,6 @@
     </section>
   </main>
 
-  <!-- APĀKŠĒJĀ LENTA: LSM (plašāks konteksts) -->
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerLjaLsm">
       Ielādē LSM tiesiskuma un sabiedrisko procesu ziņas...
@@ -104,9 +132,7 @@
   </footer>
 
   <script>
-    // LV portāls – augšējā lenta
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
-    // LSM – apakšējā lenta
     const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
 
     function extractTitles(data, max = 10) {
@@ -114,30 +140,24 @@
       return data.items.slice(0, max).map(item => item.title);
     }
 
-    // LV portāls
     fetch(RSS_LVPORTALS)
       .then(r => r.json())
       .then(data => {
         const titles = extractTitles(data, 10);
-        const text = titles.length
-          ? "⚖️ " + titles.join(" • ")
-          : "Nav pieejamu LV portāla juridisko ziņu.";
-        document.getElementById("tickerLjaLv").textContent = text;
+        document.getElementById("tickerLjaLv").textContent =
+          titles.length ? "⚖️ " + titles.join(" • ") : "Nav pieejamu LV portāla juridisko ziņu.";
       })
       .catch(() => {
         document.getElementById("tickerLjaLv").textContent =
           "Neizdevās ielādēt LV portāla juridiskās ziņas.";
       });
 
-    // LSM
     fetch(RSS_LSM)
       .then(r => r.json())
       .then(data => {
         const titles = extractTitles(data, 10);
-        const text = titles.length
-          ? "📰 " + titles.join(" • ")
-          : "Nav pieejamu LSM ziņu.";
-        document.getElementById("tickerLjaLsm").textContent = text;
+        document.getElementById("tickerLjaLsm").textContent =
+          titles.length ? "📰 " + titles.join(" • ") : "Nav pieejamu LSM ziņu.";
       })
       .catch(() => {
         document.getElementById("tickerLjaLsm").textContent =
