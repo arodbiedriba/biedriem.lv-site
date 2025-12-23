@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="../css/style.css">
 
   <style>
-    /* Ziņu lentas – ITSA (augšā CERT, apakšā LMT Technews) */
+
     .news-ticker {
-      background: #005b96; /* saskaņots ar ITSA header – zilgani tehnoloģisks tonis */
+      background: #005b96; 
       color: white;
       padding: 10px 0;
       overflow: hidden;
@@ -21,14 +21,14 @@
     }
 
     .news-ticker.secondary {
-      background: #004067; /* nedaudz tumšāks tonis apakšējai lentei */
+      background: #004067;
       margin-top: 20px;
     }
 
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; /* vienots lēns temps ar citām lapām */
+      animation: ticker 90s linear infinite; 
     }
 
     .news-ticker:hover .news-ticker-content,
@@ -45,7 +45,20 @@
 
 <body>
   <header class="home-header home-header--itsa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
+    </picture>
+  </div>
     <h1>Informācijas tehnoloģiju speciālistu arodbiedrība</h1>
+    <div class="lang-switch">
+      <span>Valoda:</span>
+      <a href="index.html" class="active">LV</a> |
+      <a href="../ru/itsa/index.html">RU</a> |
+      <a href="../en/itsa/index.html">EN</a> |
+      <a href="../de/itsa/index.html">DE</a>
+    </div>
     <p class="subtagline">
       IT speciālistu darba vides un profesionālo interešu aizstāvība —<br>
       <strong>par drošu, godīgu un ilgtspējīgu digitālo darba vidi Latvijā.</strong>
@@ -61,7 +74,6 @@
     </nav>
   </header>
 
-  <!-- AUGŠĒJĀ LENTA: CERT.LV ziņas (latviski, kiberdrošība) -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsaTop">
       Ielādē CERT.LV kiberdrošības ziņas...
@@ -92,7 +104,6 @@
     </section>
   </main>
 
-  <!-- APĀKŠĒJĀ LENTA: LMT Technews (tehnoloģiju jaunumi) -->
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerItsaBottom">
       Ielādē LMT Technews tehnoloģiju ziņas...
@@ -104,14 +115,9 @@
   </footer>
 
   <script>
-    // === RSS avoti (izmantojam rss2json kā starpnieku) ===
 
-    // CERT.LV "Visas ziņas" latviski – no RSS padevēm
-    // https://cert.lv/lv/rss/zinas.xml
     const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
 
-    // LMT jaunumi (latviskais RSS)
-    // https://www.lmt.lv/rss/lv/
     const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
 
     function extractTitles(items, max = 10) {
@@ -126,7 +132,6 @@
         .map(item => item.title);
     }
 
-    // AUGŠĒJĀ LENTA – CERT.LV (LATVISKI)
     fetch(RSS_CERT)
       .then(r => r.json())
       .then(data => {
@@ -144,7 +149,6 @@
           "Neizdevās ielādēt CERT.LV kiberdrošības ziņas.";
       });
 
-    // APĀKŠĒJĀ LENTA – LMT Technews
     fetch(RSS_LMT)
       .then(r => r.json())
       .then(data => {
