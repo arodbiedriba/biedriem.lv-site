@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts – IT Specialists Union</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
+    </picture>
+  </div>
+    <h1>Contacts</h1>
+
+    <div class="lang-switch">
+      <span>Language:</span>
+      <a href="../../itsa/contact.html">LV</a> |
+      <a href="../../ru/itsa/contact.html">RU</a> |
+      <a href="contact.html" class="active">EN</a> |
+      <a href="../../de/itsa/contact.html">DE</a>
+
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Back to homepage</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="partners.html">Partners</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <div class="contact-layout">
+
+      <section class="contact-card contact-info">
+        <h2>Get in touch</h2>
+        <p><strong>Address:</strong> Riga, Latvia</p>
+        <p><strong>Phone:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
+        <p><strong>Email:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+        <p class="contact-note">
+          Write or call us if you have questions about union membership,
+          working conditions, or your labour rights.
+        </p>
+      </section>
+
+
+      <section class="contact-card">
+        <h2>Send us a message</h2>
+        <form id="contactFormEn" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Full name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="For example, John Smith"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="example@mail.com"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="form-input"
+              placeholder="What is your question about?"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-textarea"
+              rows="5"
+              placeholder="Describe your question as clearly as possible."
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Send message</button>
+          </div>
+
+          <p class="form-hint">
+            By sending this message, you agree that we may use your contact information to respond.
+          </p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2025 IT Specialists Union</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactFormEn');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        window.location.href = "paldies.html";
+      } else {
+        alert("An error occurred. Please try again!");
+      }
+    });
+  </script>
+
+</body>
+</html>

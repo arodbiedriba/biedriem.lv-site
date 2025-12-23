@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты – Независимый профсоюз полицейских</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/NPA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
+    </picture>
+  </div>
+    <h1>Контакты</h1>
+
+    <div class="lang-switch">
+      <span>Язык:</span>
+      <a href="../../npa/contact.html">LV</a> |
+      <a href="contact.html" class="active">RU</a> |
+      <a href="../../en/npa/contact.html">EN</a> |
+      <a href="../../de/npa/contact.html">DE</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← На главную</a></li>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="partners.html">Партнёры</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <div class="contact-layout">
+      <section class="contact-card contact-info">
+        <h2>Связаться с НПА</h2>
+        <p><strong>Адрес:</strong> Рига, Латвия</p>
+        <p><strong>E-mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+        <p class="contact-note">
+          Если у вас есть вопросы о службе, коллективном договоре или защите ваших прав —
+          смело пишите профсоюзу.
+        </p>
+      </section>
+
+      <section class="contact-card">
+        <h2>Напишите нам</h2>
+        <form id="npaContactFormRu" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+          <div class="form-group">
+            <label for="name">Имя, фамилия</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Сообщение</label>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Отправить сообщение</button>
+          </div>
+
+          <p class="form-hint">
+            Отправляя сообщение, вы соглашаетесь получить ответ на указанный контакт.
+          </p>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2025 Независимый профсоюз полицейских</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('npaContactFormRu');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        window.location.href = "paldies.html";
+      } else {
+        alert("Произошла ошибка, попробуйте снова.");
+      }
+    });
+  </script>
+
+</body>
+</html>

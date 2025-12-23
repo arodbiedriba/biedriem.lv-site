@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профсоюз специалистов информационных технологий</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+
+    .news-ticker {
+      background: #005b96; 
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #004067;
+      margin-top: 20px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content,
+    .news-ticker.secondary:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header home-header--itsa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
+    </picture>
+  </div>
+    <h1>Профсоюз специалистов информационных технологий</h1>
+    <div class="lang-switch">
+        <span>Язык:</span>
+        <a href="../../itsa/index.html">LV</a> |
+        <a href="index.html" class="active">RU</a> |
+        <a href="../../en/itsa/index.html">EN</a> |
+        <a href="../../de/itsa/index.html">DE</a>
+    </div>
+
+    <p class="subtagline">
+      Защита условий труда и профессиональных интересов IT-специалистов —<br>
+      <strong>за безопасную, справедливую и устойчивую цифровую рабочую среду в Латвии.</strong>
+    </p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Назад на главную страницу</a></li>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="partners.html">Партнёры</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerItsaTop">
+      Загружаются новости по кибербезопасности от CERT.LV...
+    </span>
+  </div>
+
+  <main class="home-main itsa-theme">
+    <section>
+      <p>
+        Профсоюз специалистов информационных технологий (ITSA) объединяет работников IT-отрасли,
+        чтобы защищать их трудовые, социальные и профессиональные интересы, способствовать
+        качественной рабочей среде и ответственному развитию цифрового рынка.
+      </p>
+      <p>
+        Особое внимание ITSA уделяет вопросам кибербезопасности, защиты данных, удалённой работы
+        и рабочей нагрузки, а также справедливой оплате труда и сверхурочных.
+      </p>
+    </section>
+
+    <section>
+      <h2>Основные направления работы</h2>
+      <ul class="no-style">
+        <li>• Мониторинг вопросов трудовых прав и условий труда в IT-отрасли.</li>
+        <li>• Консультации по защите данных и требованиям кибербезопасности.</li>
+        <li>• Представительство интересов IT-специалистов в диалоге с работодателями и государственными учреждениями.</li>
+        <li>• Содействие лучшим практикам отрасли и профессиональной этике.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerItsaBottom">
+      Загружаются технологические новости LMT Technews...
+    </span>
+  </div>
+
+  <footer>
+    <p>&copy; 2008–2025 Профсоюз специалистов информационных технологий</p>
+  </footer>
+
+  <script>
+
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
+
+    const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
+
+    function extractTitles(items, max = 10) {
+      if (!items) return [];
+      return items.slice(0, max).map(item => item.title);
+    }
+
+    function extractTitlesSorted(items, max = 15) {
+      return items
+        .sort((a, b) => new Date(b.pubDate || b.pub_date || 0) - new Date(a.pubDate || a.pub_date || 0))
+        .slice(0, max)
+        .map(item => item.title);
+    }
+
+
+    fetch(RSS_CERT)
+      .then(r => r.json())
+      .then(data => {
+        const items = data.items || [];
+        const titles = extractTitlesSorted(items, 15);
+
+        const text = titles.length
+          ? "🔐 " + titles.join(" • ")
+          : "Нет доступных новостей по кибербезопасности от CERT.LV.";
+
+        document.getElementById("tickerItsaTop").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaTop").textContent =
+          "Не удалось загрузить новости по кибербезопасности от CERT.LV.";
+      });
+
+
+    fetch(RSS_LMT)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data.items || [], 12);
+        const text = titles.length
+          ? "💡 " + titles.join(" • ")
+          : "Нет доступных технологических новостей LMT Technews.";
+        document.getElementById("tickerItsaBottom").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaBottom").textContent =
+          "Не удалось загрузить технологические новости LMT Technews.";
+      });
+  </script>
+
+</body>
+</html>

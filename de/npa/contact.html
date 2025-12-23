@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Unabhängige Polizeigewerkschaft</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/NPA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
+    </picture>
+  </div>
+    <h1>Kontakt</h1>
+
+    <div class="lang-switch">
+      <span>Sprache:</span>
+      <a href="../../npa/contact.html">LV</a> |
+      <a href="../../ru/npa/contact.html">RU</a> |
+      <a href="../../en/npa/contact.html">EN</a> |
+      <a href="contact.html" class="active">DE</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Zurück zur Hauptseite</a></li>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="about.html">Über uns</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="partners.html">Partner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contact-page">
+    <div class="contact-layout">
+
+      <section class="contact-card contact-info">
+        <h2>Kontakt zur NPA</h2>
+        <p><strong>Adresse:</strong> Riga, Lettland</p>
+        <p><strong>E-Mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+        <p class="contact-note">
+          Wenn Sie Fragen zum Dienst, zum Kollektivvertrag oder zum Schutz Ihrer Rechte haben –  
+          zögern Sie nicht, die Gewerkschaft zu kontaktieren.
+        </p>
+      </section>
+
+      <section class="contact-card">
+        <h2>Schreiben Sie uns</h2>
+        <form id="npaContactFormDe" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+
+          <div class="form-group">
+            <label for="name">Vollständiger Name</label>
+            <input type="text" id="name" name="name" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" name="email" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Nachricht senden</button>
+          </div>
+
+          <p class="form-hint">
+            Mit dem Absenden dieser Nachricht erklären Sie sich einverstanden,  
+            eine Antwort über die von Ihnen angegebenen Kontaktdaten zu erhalten.
+          </p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2025 Unabhängige Polizeigewerkschaft</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('npaContactFormDe');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        window.location.href = "paldies.html";
+      } else {
+        alert("Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.");
+      }
+    });
+  </script>
+
+</body>
+</html>

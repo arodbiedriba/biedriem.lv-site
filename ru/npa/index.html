@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Независимый профсоюз полицейских</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .news-ticker {
+      background: #0c275c;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header home-header--npa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/NPA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
+    </picture>
+  </div>
+    <h1>Независимый профсоюз полицейских</h1>
+
+    <div class="lang-switch">
+      <span>Язык:</span>
+      <a href="../../npa/index.html">LV</a> |
+      <a href="index.html" class="active">RU</a> |
+      <a href="../../en/npa/index.html">EN</a> |
+      <a href="../../de/npa/index.html">DE</a>
+    </div>
+
+    <p class="subtagline">
+      Защита прав и интересов сотрудников полиции —<br>
+      <strong>единственный профсоюз сотрудников Государственной полиции с действующим коллективным договором.</strong>
+    </p>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Назад на главную</a></li>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="partners.html">Партнёры</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerPrimary">
+      Загружаются официальные новости...
+    </span>
+  </div>
+
+  <main class="home-main npa-theme">
+    <section>
+      <p>
+        Независимый профсоюз полицейских (НПА) объединяет сотрудников полиции, включая
+        должностных лиц со специальными званиями, для защиты их социальных, экономических и профессиональных интересов.
+      </p>
+      <p>
+        В данный момент обновляется сайт и размещается актуальная информация о коллективном договоре,
+        социальных гарантиях и дисциплинарной практике.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="kopligums-heading">Коллективный договор с Государственной полицией</h2>
+
+      <div class="agreement-image-block">
+        <a href="../../img/NPA_VP_Kopligums_master.png" target="_blank">
+          <picture>
+            <source srcset="../../img/NPA_VP_Kopligums_1400w.webp" type="image/webp">
+            <img
+              src="../../img/NPA_VP_Kopligums_master.png"
+              alt="Оригинальный подписанный коллективный договор НПА и Государственной полиции"
+              class="agreement-image"
+            >
+          </picture>
+        </a>
+        <p class="img-caption">
+          Оригинальный подписанный документ коллективного договора НПА и Государственной полиции
+        </p>
+      </div>
+
+      <p>
+        Коллективный договор, заключённый 19 октября 2006 года между НПА и Государственной полицией,
+        по-прежнему действует и применяется как к работникам по трудовым договорам, так и к должностным лицам
+        со специальными званиями.
+      </p>
+
+      <p>
+        <a class="btn" href="about.html#kopligums">Подробнее о действии коллективного договора</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2025 Независимый профсоюз полицейских</p>
+  </footer>
+
+  <script>
+
+    const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
+    const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+
+    function extractTitles(data, max = 8) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+    Promise.all([
+      fetch(RSS_IEM).then(r => r.json()).catch(() => null),
+      fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
+    ]).then(([iemData, lvData]) => {
+
+      let titles = [];
+      titles = titles.concat(extractTitles(iemData, 6));
+      titles = titles.concat(extractTitles(lvData, 6));
+
+      const text = titles.length
+        ? "🛂 " + titles.join(" • ")
+        : "Нет доступных официальных новостей.";
+
+      document.getElementById("tickerPrimary").textContent = text;
+
+    }).catch(() => {
+      document.getElementById("tickerPrimary").textContent =
+        "Не удалось загрузить официальные новости.";
+    });
+  </script>
+
+</body>
+</html>

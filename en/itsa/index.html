@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Specialists Union</title>
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <style>
+
+    .news-ticker {
+      background: #005b96; 
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #004067;
+      margin-top: 20px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content,
+    .news-ticker.secondary:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header home-header--itsa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
+    </picture>
+  </div>
+    <h1>IT Specialists Union</h1>
+
+    <div class="lang-switch">
+      <span>Language:</span>
+      <a href="../../itsa/index.html">LV</a> |
+      <a href="../../ru/itsa/index.html">RU</a> |
+      <a href="index.html" class="active">EN</a> |
+      <a href="../../de/itsa/index.html">DE</a>
+    </div>
+
+    <p class="subtagline">
+      Protection of working conditions and professional interests of IT specialists —<br>
+      <strong>for a safe, fair, and sustainable digital working environment in Latvia.</strong>
+    </p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Back to main page</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="partners.html">Partners</a></li>
+      </ul>
+    </nav>
+  </header>
+
+ 
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerItsaTop">
+      Loading cybersecurity news from CERT.LV...
+    </span>
+  </div>
+
+  <main class="home-main itsa-theme">
+    <section>
+      <p>
+        The IT Specialists Union (ITSA) brings together IT sector employees
+        to protect their labour, social and professional interests, and to promote
+        a high-quality working environment and responsible development of the digital market.
+      </p>
+      <p>
+        ITSA pays particular attention to cybersecurity, data protection, remote work
+        and workload issues, as well as fair remuneration and overtime payment practices.
+      </p>
+    </section>
+
+    <section>
+      <h2>Main areas of activity</h2>
+      <ul class="no-style">
+        <li>• Monitoring labour rights and working conditions in the IT sector.</li>
+        <li>• Consultations on data protection and cybersecurity requirements.</li>
+        <li>• Representing IT specialists’ interests in dialogue with employers and state institutions.</li>
+        <li>• Promoting best practices in the sector and professional ethics.</li>
+      </ul>
+    </section>
+  </main>
+
+
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerItsaBottom">
+      Loading LMT Technews technology news...
+    </span>
+  </div>
+
+  <footer>
+    <p>&copy; 2008–2025 IT Specialists Union</p>
+  </footer>
+
+  <script>
+
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
+
+    const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
+
+    function extractTitles(items, max = 10) {
+      if (!items) return [];
+      return items.slice(0, max).map(item => item.title);
+    }
+
+    function extractTitlesSorted(items, max = 15) {
+      return items
+        .sort((a, b) => new Date(b.pubDate || b.pub_date || 0) - new Date(a.pubDate || a.pub_date || 0))
+        .slice(0, max)
+        .map(item => item.title);
+    }
+
+    fetch(RSS_CERT)
+      .then(r => r.json())
+      .then(data => {
+        const items = data.items || [];
+        const titles = extractTitlesSorted(items, 15);
+
+        const text = titles.length
+          ? "🔐 " + titles.join(" • ")
+          : "No cybersecurity news available from CERT.LV.";
+
+        document.getElementById("tickerItsaTop").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaTop").textContent =
+          "Failed to load cybersecurity news from CERT.LV.";
+      });
+
+
+    fetch(RSS_LMT)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data.items || [], 12);
+        const text = titles.length
+          ? "💡 " + titles.join(" • ")
+          : "No technology news available from LMT Technews.";
+        document.getElementById("tickerItsaBottom").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaBottom").textContent =
+          "Failed to load technology news from LMT Technews.";
+      });
+  </script>
+
+</body>
+</html>

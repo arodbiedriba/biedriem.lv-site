@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latvian Lawyers Association</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .news-ticker {
+      background: #0b4f2c;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #145f38;
+      margin-top: 20px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header home-header--lja">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/LJA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/LJA Logo.png" alt="LJA logo">
+    </picture>
+  </div>
+    <h1>Latvian Lawyers Association</h1>
+
+    <div class="lang-switch">
+      <span>Language:</span>
+      <a href="../../lja/index.html">LV</a> |
+      <a href="../../ru/lja/index.html">RU</a> |
+      <a href="index.html" class="active">EN</a> |
+      <a href="../../de/lja/index.html">DE</a>
+    </div>
+
+    <p class="subtagline">
+      An organisation promoting justice and democracy in Latvia —<br>
+      <strong>uniting legal professionals for cooperation and a strong rule-of-law state.</strong>
+    </p>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Back to main page</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="partners.html">Partners</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerLjaLv">
+      Loading LV portal legal news...
+    </span>
+  </div>
+
+  <main class="home-main lja-theme">
+    <section>
+      <p>
+        The Latvian Lawyers Association (LJA) promotes justice and democracy in Latvia
+        by strengthening legal culture, applying legal instruments, and facilitating
+        professional dialogue between lawyers, state institutions, and society.
+      </p>
+    </section>
+
+    <section>
+      <h2>Legal Information</h2>
+      <ul class="no-style">
+        <li><strong>Name:</strong> Latviešu juristu apvienība</li>
+        <li><strong>Legal form:</strong> Association (biedrība, BDR)</li>
+        <li><strong>Registration number:</strong> 40008127112</li>
+        <li><strong>Registered in the Register of Associations and Foundations:</strong> 25.04.2008</li>
+        <li><strong>Certificate number and date:</strong> B009011, 25.04.2008</li>
+      </ul>
+
+      <h3>Mission</h3>
+      <p>
+        To ensure that Latvia develops as a democratic and law-governed state through legal means.
+      </p>
+    </section>
+  </main>
+
+ 
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerLjaLsm">
+      Loading LSM legal and social news...
+    </span>
+  </div>
+
+  <footer>
+    <p>&copy; 2008–2025 Latvian Lawyers Association</p>
+  </footer>
+
+  <script>
+    const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=eng";
+
+    function extractTitles(data, max = 10) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+  
+    fetch(RSS_LVPORTALS)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "⚖️ " + titles.join(" • ")
+          : "No legal news available from LV portal.";
+        document.getElementById("tickerLjaLv").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerLjaLv").textContent =
+          "Failed to load LV portal legal news.";
+      });
+
+ 
+    fetch(RSS_LSM)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data, 10);
+        const text = titles.length
+          ? "📰 " + titles.join(" • ")
+          : "No LSM news available.";
+        document.getElementById("tickerLjaLsm").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerLjaLsm").textContent =
+          "Failed to load LSM news.";
+      });
+  </script>
+
+</body>
+</html>

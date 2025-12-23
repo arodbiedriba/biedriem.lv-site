@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gewerkschaft der IT-Fachkräfte</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .news-ticker {
+      background: #005b96; 
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: default;
+      margin-bottom: 4px;
+    }
+
+    .news-ticker.secondary {
+      background: #004067; 
+      margin-top: 20px;
+    }
+
+    .news-ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 90s linear infinite;
+    }
+
+    .news-ticker:hover .news-ticker-content,
+    .news-ticker.secondary:hover .news-ticker-content {
+      animation-play-state: paused;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header home-header--itsa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
+    </picture>
+  </div>
+    <h1>Gewerkschaft der IT-Fachkräfte</h1>
+
+    <div class="lang-switch">
+      <span>Sprache:</span>
+      <a href="../../itsa/index.html">LV</a> |
+      <a href="../../ru/itsa/index.html">RU</a> |
+      <a href="../../en/itsa/index.html">EN</a> |
+      <a href="index.html" class="active">DE</a>
+    </div>
+
+    <p class="subtagline">
+      Schutz der Arbeitsbedingungen und der beruflichen Interessen von IT-Fachkräften —<br>
+      <strong>für ein sicheres, faires und nachhaltiges digitales Arbeitsumfeld in Lettland.</strong>
+    </p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Zurück zur Hauptseite</a></li>
+        <li><a href="index.html">Startseite</a></li>
+        <li><a href="about.html">Über uns</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="partners.html">Partner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="news-ticker">
+    <span class="news-ticker-content" id="tickerItsaTop">
+      Lade Cybersicherheitsmeldungen von CERT.LV ...
+    </span>
+  </div>
+
+  <main class="home-main itsa-theme">
+    <section>
+      <p>
+        Die Gewerkschaft der IT-Fachkräfte (ITSA) vereint Beschäftigte des IT-Sektors,
+        um ihre arbeits-, sozial- und berufsrechtlichen Interessen zu schützen
+        und ein qualitativ hochwertiges Arbeitsumfeld sowie eine verantwortungsvolle
+        Entwicklung des digitalen Marktes zu fördern.
+      </p>
+      <p>
+        Die ITSA legt besonderen Wert auf Themen wie Cybersicherheit, Datenschutz,
+        Remote-Arbeit und Arbeitsbelastung sowie auf eine faire Vergütung und Bezahlung von Überstunden.
+      </p>
+    </section>
+
+    <section>
+      <h2>Haupttätigkeitsbereiche</h2>
+      <ul class="no-style">
+        <li>• Beobachtung der Arbeitsrechte und Arbeitsbedingungen im IT-Sektor.</li>
+        <li>• Beratung zu Datenschutz und Anforderungen der Cybersicherheit.</li>
+        <li>• Vertretung der Interessen von IT-Fachkräften im Dialog mit Arbeitgebern und staatlichen Institutionen.</li>
+        <li>• Förderung bewährter Praktiken in der Branche und beruflicher Ethik.</li>
+      </ul>
+    </section>
+  </main>
+
+  <div class="news-ticker secondary">
+    <span class="news-ticker-content" id="tickerItsaBottom">
+      Lade Technologiemeldungen von LMT Technews ...
+    </span>
+  </div>
+
+  <footer>
+    <p>&copy; 2008–2025 Gewerkschaft der IT-Fachkräfte</p>
+  </footer>
+
+  <script>
+
+    const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
+
+    const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
+
+    function extractTitles(items, max = 10) {
+      if (!items) return [];
+      return items.slice(0, max).map(item => item.title);
+    }
+
+    function extractTitlesSorted(items, max = 15) {
+      return items
+        .sort((a, b) => new Date(b.pubDate || b.pub_date || 0) - new Date(a.pubDate || a.pub_date || 0))
+        .slice(0, max)
+        .map(item => item.title);
+    }
+
+    fetch(RSS_CERT)
+      .then(r => r.json())
+      .then(data => {
+        const items = data.items || [];
+        const titles = extractTitlesSorted(items, 15);
+
+        const text = titles.length
+          ? "🔐 " + titles.join(" • ")
+          : "Keine Cybersicherheitsmeldungen von CERT.LV verfügbar.";
+
+        document.getElementById("tickerItsaTop").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaTop").textContent =
+          "Fehler beim Laden der Cybersicherheitsmeldungen von CERT.LV.";
+      });
+
+    fetch(RSS_LMT)
+      .then(r => r.json())
+      .then(data => {
+        const titles = extractTitles(data.items || [], 12);
+        const text = titles.length
+          ? "💡 " + titles.join(" • ")
+          : "Keine Technologiemeldungen von LMT Technews verfügbar.";
+        document.getElementById("tickerItsaBottom").textContent = text;
+      })
+      .catch(() => {
+        document.getElementById("tickerItsaBottom").textContent =
+          "Fehler beim Laden der Technologiemeldungen von LMT Technews.";
+      });
+  </script>
+
+</body>
+</html>

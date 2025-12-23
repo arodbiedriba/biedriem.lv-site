@@ -1,0 +1,282 @@
+<?php
+require_once __DIR__ . '/../ping.php';          // отметиться онлайн
+require_once __DIR__ . '/../online_count.php';  // функция подсчёта
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профсоюз полицейских и другие партнёрские организации – biedriem.lv</title>
+  <meta name="description"
+        content="Neatkarīgā policistu arodbiedrība — профсоюз полицейских Латвии. Biedriem.lv — общая платформа профсоюзов полицейских, IT-специалистов и юристов.">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    .news-ticker {
+      background: #123b82;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-top: 20px;
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .news-track {
+      display: inline-block;
+      will-change: transform;
+      transform: translateX(0);
+      transition: transform 0.08s linear;
+      padding-left: 100%;
+    }
+
+    .org-title {
+      text-align: center !important;
+      width: 100%;
+      display: block;
+      font-size: 1.3rem;
+      line-height: 1.4;
+      padding: 10px 5px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    @media (max-width: 600px) {
+      .org-title {
+        font-size: 1.5rem;
+        padding: 15px 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="home-header">
+    <h1>Независимый профсоюз полицейских и партнёрские организации</h1>
+          <div class="lang-switch">
+    <span>Язык:</span>
+    <a href="../index.html">LV</a> |
+    <a href="index.html" class="active">RU</a> |
+    <a href="../en/index.html">EN</a> | 
+    <a href="../de/index.html">DE</a> 
+  </div>
+    <p>
+      Biedriem.lv — платформа, объединяющая профсоюз полицейских, профсоюз специалистов информационных
+      технологий и Латвийскую ассоциацию юристов.
+    </p>
+
+
+  </header>
+
+  
+  <div class="news-ticker" aria-label="Лента новостей LSM и портала LV — верхняя">
+    <span class="news-track" id="newsTickerTop">
+      Загружаются новости...
+    </span>
+  </div>
+
+  <main class="home-main">
+    <div class="org-list">
+
+  <div class="org-tile">
+    <a class="org-text" href="../ru/npa/index.html">
+      <span class="org-title">Независимый профсоюз полицейских — профсоюз полицейских Латвии</span>
+    </a>
+
+    <a class="org-logo-link" href="../img/NPA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="../img/NPA Logo.webp" type="image/webp">
+        <img class="org-logo" src="../img/NPA Logo.png" alt="Логотип NPA">
+      </picture>
+    </a>
+  </div>
+
+  <div class="org-tile">
+    <a class="org-text" href="../ru/itsa/index.html">
+      <span class="org-title">Профсоюз специалистов информационных технологий</span>
+    </a>
+
+    <a class="org-logo-link" href="../img/ITSA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="../img/ITSA Logo.webp" type="image/webp">
+        <img class="org-logo" src="../img/ITSA Logo.png" alt="Логотип ITSA">
+      </picture>
+    </a>
+  </div>
+
+  <div class="org-tile">
+    <a class="org-text" href="../ru/lja/index.html">
+      <span class="org-title">Объединение латвийских юристов</span>
+    </a>
+
+    <a class="org-logo-link" href="../img/LJA Logo.png" target="_blank" rel="noopener">
+      <picture class="org-logo-wrap">
+        <source srcset="../img/LJA Logo.webp" type="image/webp">
+        <img class="org-logo" src="../img/LJA Logo.png" alt="Логотип LJA">
+      </picture>
+    </a>
+  </div>
+
+</div>
+
+<div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – apakšā">
+  <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
+</div>
+
+<section class="greeting" aria-label="Ziemassvētku un Jaunā gada novēlējums">
+  <div class="greeting-card">
+    <div class="greeting-media">
+      <img src="../img/V.Skrastina_Ziemassvetku_foto.png"
+           alt="Ziemassvētku un Jaunā gada novēlējums – svētku foto"
+           loading="lazy">
+    </div>
+
+    <div class="greeting-text">
+      <section class="greeting-block" aria-label="Поздравление с Рождеством и Новым годом">
+  <h2>🎄 Рождественское и новогоднее поздравление</h2>
+
+  <p><strong>Уважаемые члены профсоюза, коллеги и партнёры,</strong></p>
+
+  <p>
+    В рождественские дни желаем мира, душевного тепла и чувства безопасности в ваших семьях,
+    а в Новом году — сил, профессиональной уверенности и справедливых условий труда.
+  </p>
+
+  <p>
+    Пусть 2026 год принесёт ясные цели, сплочённость и взаимное уважение,
+    укрепляя как каждого из нас по отдельности, так и наши общие ценности.
+  </p>
+
+  <p>
+    <strong>С благодарностью за доверие и сотрудничество,</strong><br>
+    Ваши организации — biedriem.lv
+  </p>
+</section>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2025 Biedriem.lv — профсоюз полицейских и партнёрские организации</p>
+    <p>Сейчас на сайте: <strong><span id="onlineCount">0</span></strong></p>
+  </footer>
+
+  <script>
+
+    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
+    const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+
+    const topTrack    = document.getElementById('newsTickerTop');
+    const bottomTrack = document.getElementById('newsTickerBottom');
+
+    const speed  = 55;  
+    const stepMs = 40;
+
+    function makeTicker(trackElement, containerElement) {
+      let offset      = 0;
+      let playing     = true;
+      let dragging    = false;
+      let dragStartX  = 0;
+      let offsetStart = 0;
+
+      function tick() {
+        if (!playing || dragging) return;
+        offset -= (speed * stepMs) / 1000;
+        const trackWidth = trackElement.offsetWidth;
+        if (-offset > trackWidth) {
+          offset = 0;
+        }
+        trackElement.style.transform = `translateX(${offset}px)`;
+      }
+
+      setInterval(tick, stepMs);
+
+      containerElement.addEventListener('mouseenter', () => {
+        playing = false;
+      });
+
+      containerElement.addEventListener('mouseleave', () => {
+        if (!dragging) playing = true;
+      });
+
+      containerElement.addEventListener('mousedown', (e) => {
+        dragging = true;
+        playing = false;
+        dragStartX = e.clientX;
+        offsetStart = offset;
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragStartX;
+        offset = offsetStart + dx;
+        trackElement.style.transform = `translateX(${offset}px)`;
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (!dragging) return;
+        dragging = false;
+        playing = true;
+      });
+    }
+
+    function extractTitles(data, max = 6) {
+      if (!data || !data.items) return [];
+      return data.items.slice(0, max).map(item => item.title);
+    }
+
+    Promise.all([
+      fetch(RSS_LSM).then(r => r.json()).catch(() => null),
+      fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
+    ]).then(([lsmData, lvData]) => {
+      const lsmTitles = extractTitles(lsmData, 6);
+      const lvTitles  = extractTitles(lvData, 6);
+
+      let allTitles = [];
+      allTitles = allTitles
+        .concat(lsmTitles.map(t => "📰 " + t))
+        .concat(lvTitles.map(t => "⚖️ " + t));
+
+      const text = allTitles.length
+        ? allTitles.join(" • ")
+        : "Нет доступных новостей LSM или портала LV.";
+
+      const finalText = allTitles.length ? text + " • " + text : text;
+
+      topTrack.textContent    = finalText;
+      bottomTrack.textContent = finalText;
+
+      makeTicker(topTrack,    topTrack.parentElement);
+      makeTicker(bottomTrack, bottomTrack.parentElement);
+    }).catch(() => {
+      const fallback = "Не удалось загрузить содержимое новостной ленты.";
+      topTrack.textContent    = fallback;
+      bottomTrack.textContent = fallback;
+    });
+  let tabId = sessionStorage.getItem('tabId');
+  if (!tabId) {
+    tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+    sessionStorage.setItem('tabId', tabId);
+  }
+
+  fetch('/ping.php?tab=' + encodeURIComponent(tabId), { cache: 'no-store' }).catch(()=>{});
+
+  fetch('/online.php', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(n => {
+      const el = document.getElementById('onlineCount');
+      if (el) el.textContent = n;
+    })
+    .catch(()=>{});
+  </script>
+</body>
+</html>
