@@ -39,7 +39,20 @@
 
 <body>
   <header class="home-header home-header--npa">
+    <div class="header-logo-center">
+    <picture>
+      <source srcset="../../img/NPA Logo.webp" type="image/webp">
+      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
+    </picture>
+  </div>
     <h1>Neatkarīgā policistu arodbiedrība</h1>
+    <div class="lang-switch">
+      <span>Valoda:</span>
+      <a href="index.html" class="active">LV</a> |
+      <a href="../ru/npa/index.html">RU</a> |
+      <a href="../en/npa/index.html">EN</a> |
+      <a href="../de/npa/index.html">DE</a>
+    </div>
     <p class="subtagline">
       Policijas darbinieku tiesību un interešu aizstāvība —<br>
       <strong>vienīgā Valsts policijas darbinieku arodbiedrība ar spēkā esošu koplīgumu.</strong>
@@ -56,7 +69,6 @@
     </nav>
   </header>
 
-  <!-- NPA PRIMĀRĀ LENTA: Iekšlietu ministrija + LV portāls -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerPrimary">
       Ielādē oficiālās ziņas...
@@ -78,7 +90,6 @@
     <section>
       <h2 class="kopligums-heading">Koplīgums ar Valsts policiju</h2>
 
-      <!-- KOPLĪGUMA FOTO BLOKS -->
       <div class="agreement-image-block">
         <a href="../img/NPA_VP_Kopligums_master.png" target="_blank">
           <picture>
@@ -111,7 +122,7 @@
   </footer>
 
   <script>
-    // RSS avoti: Iekšlietu ministrija + LV portāls caur rss2json
+
     const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
