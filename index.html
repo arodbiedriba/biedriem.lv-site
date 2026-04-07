@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
-  <meta name="description"
-        content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā.">
+  <meta name="description" content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā.">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -28,17 +27,34 @@
       will-change: transform;
     }
 
+    .org-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
     .org-tile {
       display: block;
       text-decoration: none;
       color: inherit;
       text-align: center;
       padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 200px;
+      transition: transform 0.2s;
+    }
+
+    .org-tile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
     .org-title {
       display: block;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       margin-bottom: 10px;
     }
 
@@ -69,14 +85,10 @@
 </div>
 
 <main class="home-main">
-
   <div class="org-list">
-
     <!-- NPA -->
     <a class="org-tile" href="npa/index.html">
-      <span class="org-title">
-        Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā
-      </span>
+      <span class="org-title">Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā</span>
       <picture>
         <source srcset="img/npa-logo.webp" type="image/webp">
         <img class="org-logo" src="img/npa-logo.png" alt="NPA logo">
@@ -85,9 +97,7 @@
 
     <!-- ITSA -->
     <a class="org-tile" href="itsa/index.html">
-      <span class="org-title">
-        Informācijas tehnoloģiju speciālistu arodbiedrība
-      </span>
+      <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
       <picture>
         <source srcset="img/itsa-logo.webp" type="image/webp">
         <img class="org-logo" src="img/itsa-logo.png" alt="ITSA logo">
@@ -96,26 +106,22 @@
 
     <!-- LJA -->
     <a class="org-tile" href="lja/index.html">
-      <span class="org-title">
-        Latviešu juristu apvienība
-      </span>
+      <span class="org-title">Latviešu juristu apvienība</span>
       <picture>
         <source srcset="img/lja-logo.webp" type="image/webp">
         <img class="org-logo" src="img/lja-logo.png" alt="LJA logo">
       </picture>
     </a>
-
   </div>
 
   <div class="news-ticker">
     <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
   </div>
-
 </main>
 
 <footer>
   <p>&copy; 2008–2025 Biedriem.lv</p>
-  <p>Online: <span id="onlineCount">0</span></p>
+  <p>Online: <span id="onlineCount">1</span> (statiskā versija)</p>
 </footer>
 
 <script>
@@ -184,37 +190,19 @@ Promise.all([
   fetch(RSS_LSM).then(r => r.json()).catch(()=>null),
   fetch(RSS_LVPORTALS).then(r => r.json()).catch(()=>null)
 ]).then(([lsm, lv]) => {
-
   const titles = [
     ...extractTitles(lsm).map(t => "📰 " + t),
     ...extractTitles(lv).map(t => "⚖️ " + t)
   ];
-
-  const text = titles.length
-    ? titles.join(" • ")
-    : "Nav pieejamu ziņu.";
-
+  const text = titles.length ? titles.join(" • ") : "Nav pieejamu ziņu.";
   topTrack.textContent = text;
   bottomTrack.textContent = text;
-
   makeTicker(topTrack, topTrack.parentElement);
   makeTicker(bottomTrack, bottomTrack.parentElement);
 });
 
-let tabId = sessionStorage.getItem('tabId');
-if (!tabId) {
-  tabId = crypto.randomUUID();
-  sessionStorage.setItem('tabId', tabId);
-}
-
-fetch('/ping.php?tab=' + tabId).catch(()=>{});
-
-fetch('/online.php')
-  .then(r => r.text())
-  .then(n => {
-    document.getElementById('onlineCount').textContent = n;
-  })
-  .catch(()=>{});
+// Online skaits - statisks, jo nav PHP backend
+document.getElementById('onlineCount').textContent = "1";
 </script>
 
 </body>
