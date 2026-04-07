@@ -161,6 +161,12 @@ main {
     min-height: 200px;
 }
 
+/* Piespiežam balto krāsu visam flīzes saturam */
+.org-tile,
+.org-tile * {
+    color: #fff;
+}
+
 /* Flīzes hover efekts */
 .org-tile:hover {
     transform: translateY(-3px);
