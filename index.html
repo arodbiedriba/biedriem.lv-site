@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
-  <meta name="description" content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā.">
+  <meta name="description" content="Neatkarīgā policistu arodbiedrība.">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -47,6 +47,7 @@
       border: 1px solid #ddd;
       border-radius: 10px;
       width: 200px;
+      min-height: 220px;
       transition: transform 0.2s;
     }
 
@@ -73,7 +74,7 @@
 
 <header class="home-header">
   <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
-  <p>Biedriem.lv apvieno policistu, IT un juristu arodbiedrības.</p>
+  <p>Biedriem.lv apvieno juristus, policistu un IT arodbiedrības.</p>
 
   <div class="lang-switch">
     <span>Valoda:</span>
@@ -88,122 +89,4 @@
   <span class="news-track" id="newsTickerTop">Ielādē ziņas...</span>
 </div>
 
-<main class="home-main">
-  <div class="org-list">
-    <!-- NPA -->
-    <a class="org-tile" href="npa/index.html">
-      <span class="org-title">Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā</span>
-      <picture>
-        <source srcset="img/npa-logo.webp" type="image/webp">
-        <img class="org-logo" src="img/npa-logo.png" alt="NPA logo">
-      </picture>
-    </a>
-
-    <!-- ITSA -->
-    <a class="org-tile" href="itsa/index.html">
-      <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
-      <picture>
-        <source srcset="img/itsa-logo.webp" type="image/webp">
-        <img class="org-logo" src="img/itsa-logo.png" alt="ITSA logo">
-      </picture>
-    </a>
-
-    <!-- LJA -->
-    <a class="org-tile" href="lja/index.html">
-      <span class="org-title">Latviešu juristu apvienība</span>
-      <picture>
-        <source srcset="img/lja-logo.webp" type="image/webp">
-        <img class="org-logo" src="img/lja-logo.png" alt="LJA logo">
-      </picture>
-    </a>
-  </div>
-
-  <div class="news-ticker">
-    <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
-  </div>
-</main>
-
-<footer>
-  <p>&copy; 2008–2025 Biedriem.lv</p>
-</footer>
-
-<script>
-const RSS_LSM = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
-const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
-
-const topTrack = document.getElementById('newsTickerTop');
-const bottomTrack = document.getElementById('newsTickerBottom');
-
-function makeTicker(track, container) {
-  let offset = 0;
-  let dragging = false;
-  let startX = 0;
-  let startOffset = 0;
-  let playing = true;
-
-  track.innerHTML += " " + track.innerHTML;
-
-  function animate() {
-    if (playing && !dragging) {
-      offset -= 0.5;
-      if (-offset >= track.scrollWidth / 2) offset = 0;
-      track.style.transform = `translateX(${offset}px)`;
-    }
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  container.addEventListener('mouseenter', () => playing = false);
-  container.addEventListener('mouseleave', () => playing = true);
-
-  container.addEventListener('mousedown', e => {
-    dragging = true;
-    startX = e.clientX;
-    startOffset = offset;
-  });
-
-  window.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    offset = startOffset + (e.clientX - startX);
-    track.style.transform = `translateX(${offset}px)`;
-  });
-
-  window.addEventListener('mouseup', () => dragging = false);
-
-  container.addEventListener('touchstart', e => {
-    dragging = true;
-    startX = e.touches[0].clientX;
-    startOffset = offset;
-  });
-
-  container.addEventListener('touchmove', e => {
-    if (!dragging) return;
-    offset = startOffset + (e.touches[0].clientX - startX);
-    track.style.transform = `translateX(${offset}px)`;
-  });
-
-  container.addEventListener('touchend', () => dragging = false);
-}
-
-function extractTitles(data) {
-  return data?.items?.slice(0, 6).map(i => i.title) || [];
-}
-
-Promise.all([
-  fetch(RSS_LSM).then(r => r.json()).catch(()=>null),
-  fetch(RSS_LVPORTALS).then(r => r.json()).catch(()=>null)
-]).then(([lsm, lv]) => {
-  const titles = [
-    ...extractTitles(lsm).map(t => "📰 " + t),
-    ...extractTitles(lv).map(t => "⚖️ " + t)
-  ];
-  const text = titles.length ? titles.join(" • ") : "Nav pieejamu ziņu.";
-  topTrack.textContent = text;
-  bottomTrack.textContent = text;
-  makeTicker(topTrack, topTrack.parentElement);
-  makeTicker(bottomTrack, bottomTrack.parentElement);
-});
-</script>
-
-</body>
-</html>
+<main 
