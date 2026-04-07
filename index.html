@@ -36,7 +36,10 @@
     }
 
     .org-tile {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       color: inherit;
       text-align: center;
@@ -61,6 +64,7 @@
     .org-logo {
       max-width: 120px;
       height: auto;
+      display: block;
     }
   </style>
 </head>
@@ -121,7 +125,6 @@
 
 <footer>
   <p>&copy; 2008–2025 Biedriem.lv</p>
-  <p>Online: <span id="onlineCount">1</span> (statiskā versija)</p>
 </footer>
 
 <script>
@@ -200,9 +203,6 @@ Promise.all([
   makeTicker(topTrack, topTrack.parentElement);
   makeTicker(bottomTrack, bottomTrack.parentElement);
 });
-
-// Online skaits - statisks, jo nav PHP backend
-document.getElementById('onlineCount').textContent = "1";
 </script>
 
 </body>
