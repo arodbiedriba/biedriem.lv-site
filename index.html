@@ -6,7 +6,7 @@
 
   <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
   <meta name="description"
-        content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā. Biedriem.lv ir kopīga platforma policistu, IT speciālistu un juristu arodbiedrībām.">
+        content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā.">
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -18,49 +18,43 @@
       overflow: hidden;
       white-space: nowrap;
       font-size: 18px;
-      font-weight: 500;
       cursor: pointer;
-      margin-top: 20px;
-      margin-bottom: 4px;
-      position: relative;
+      margin: 20px 0 4px;
     }
 
     .news-track {
-      display: inline-block;
+      display: inline-flex;
+      gap: 40px;
       will-change: transform;
-      transform: translateX(0);
-      transition: transform 0.08s linear;
-      padding-left: 100%;
+    }
+
+    .org-tile {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      padding: 15px;
     }
 
     .org-title {
-      text-align: center !important;
-      width: 100%;
       display: block;
       font-size: 1.3rem;
-      line-height: 1.4;
-      padding: 10px 5px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 600px) {
-      .org-title {
-        font-size: 1.5rem;
-        padding: 15px 8px;
-      }
+    .org-logo {
+      max-width: 120px;
+      height: auto;
     }
   </style>
 </head>
 
 <body>
-  <header class="home-header">
-    <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
-    <p>
-      Biedriem.lv ir platforma, kur apvienotas policistu arodbiedrība, informācijas tehnoloģiju speciālistu arodbiedrība un latviešu juristu apvienība.
-    </p>
 
-    
+<header class="home-header">
+  <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
+  <p>Biedriem.lv apvieno policistu, IT un juristu arodbiedrības.</p>
+
   <div class="lang-switch">
     <span>Valoda:</span>
     <a href="index.html" class="active">LV</a> |
@@ -68,179 +62,160 @@
     <a href="en/index.html">EN</a> |
     <a href="de/index.html">DE</a>
   </div>
-  </header>
+</header>
 
-  <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – augšā">
-    <span class="news-track" id="newsTickerTop">
-      Ielādē ziņas...
-    </span>
-  </div>
-
-  <main class="home-main">
-    <div class="org-list">
-
-
-  <div class="org-tile">
-
-    <a class="org-text" href="npa/index.html">
-      <span class="org-title">Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā</span>
-    </a>
-
-    <a class="org-logo-link" href="img/NPA Logo.png" target="_blank" rel="noopener">
-      <picture class="org-logo-wrap">
-        <source srcset="img/NPA Logo.webp" type="image/webp">
-        <img class="org-logo" src="img/NPA Logo.png" alt="NPA logo">
-      </picture>
-    </a>
-  </div>
-
-  <div class="org-tile">
-    <a class="org-text" href="itsa/index.html">
-      <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
-    </a>
-
-    <a class="org-logo-link" href="img/ITSA Logo.png" target="_blank" rel="noopener">
-      <picture class="org-logo-wrap">
-        <source srcset="img/ITSA Logo.webp" type="image/webp">
-        <img class="org-logo" src="img/ITSA Logo.png" alt="ITSA logo">
-      </picture>
-    </a>
-  </div>
-
-  <div class="org-tile">
-    <a class="org-text" href="lja/index.html">
-      <span class="org-title">Latviešu juristu apvienība</span>
-    </a>
-
-    <a class="org-logo-link" href="img/LJA Logo.png" target="_blank" rel="noopener">
-      <picture class="org-logo-wrap">
-        <source srcset="img/LJA Logo.webp" type="image/webp">
-        <img class="org-logo" src="img/LJA Logo.png" alt="LJA logo">
-      </picture>
-    </a>
-  </div>
-
+<div class="news-ticker">
+  <span class="news-track" id="newsTickerTop">Ielādē ziņas...</span>
 </div>
 
-    <div class="news-ticker" aria-label="LSM un LV portāla ziņu lente – apakšā">
-  <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
-</div>
+<main class="home-main">
 
-  </main>
+  <div class="org-list">
 
-  <footer>
-    <p>&copy; 2008–2025 Biedriem.lv – policistu arodbiedrība un sadarbības organizācijas</p>
-    
-  </footer>
+    <!-- NPA -->
+    <a class="org-tile" href="npa/index.html">
+      <span class="org-title">
+        Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā
+      </span>
+      <picture>
+        <source srcset="img/npa-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/npa-logo.png" alt="NPA logo">
+      </picture>
+    </a>
 
-  <script>
+    <!-- ITSA -->
+    <a class="org-tile" href="itsa/index.html">
+      <span class="org-title">
+        Informācijas tehnoloģiju speciālistu arodbiedrība
+      </span>
+      <picture>
+        <source srcset="img/itsa-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </a>
 
-    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
-    const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+    <!-- LJA -->
+    <a class="org-tile" href="lja/index.html">
+      <span class="org-title">
+        Latviešu juristu apvienība
+      </span>
+      <picture>
+        <source srcset="img/lja-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/lja-logo.png" alt="LJA logo">
+      </picture>
+    </a>
 
-    const topTrack    = document.getElementById('newsTickerTop');
-    const bottomTrack = document.getElementById('newsTickerBottom');
+  </div>
 
-    const speed  = 55; 
-    const stepMs = 40;
+  <div class="news-ticker">
+    <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
+  </div>
 
-    function makeTicker(trackElement, containerElement) {
-      let offset      = 0;
-      let playing     = true;
-      let dragging    = false;
-      let dragStartX  = 0;
-      let offsetStart = 0;
+</main>
 
-      function tick() {
-        if (!playing || dragging) return;
-        offset -= (speed * stepMs) / 1000;
-        const trackWidth = trackElement.offsetWidth;
-        if (-offset > trackWidth) {
-          offset = 0;
-        }
-        trackElement.style.transform = `translateX(${offset}px)`;
-      }
+<footer>
+  <p>&copy; 2008–2025 Biedriem.lv</p>
+  <p>Online: <span id="onlineCount">0</span></p>
+</footer>
 
-      setInterval(tick, stepMs);
+<script>
+const RSS_LSM = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
+const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
-      containerElement.addEventListener('mouseenter', () => {
-        playing = false;
-      });
+const topTrack = document.getElementById('newsTickerTop');
+const bottomTrack = document.getElementById('newsTickerBottom');
 
-      containerElement.addEventListener('mouseleave', () => {
-        if (!dragging) playing = true;
-      });
+function makeTicker(track, container) {
+  let offset = 0;
+  let dragging = false;
+  let startX = 0;
+  let startOffset = 0;
+  let playing = true;
 
-      containerElement.addEventListener('mousedown', (e) => {
-        dragging = true;
-        playing = false;
-        dragStartX = e.clientX;
-        offsetStart = offset;
-      });
+  track.innerHTML += " " + track.innerHTML;
 
-      window.addEventListener('mousemove', (e) => {
-        if (!dragging) return;
-        const dx = e.clientX - dragStartX;
-        offset = offsetStart + dx;
-        trackElement.style.transform = `translateX(${offset}px)`;
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (!dragging) return;
-        dragging = false;
-        playing = true;
-      });
+  function animate() {
+    if (playing && !dragging) {
+      offset -= 0.5;
+      if (-offset >= track.scrollWidth / 2) offset = 0;
+      track.style.transform = `translateX(${offset}px)`;
     }
-
-    function extractTitles(data, max = 6) {
-      if (!data || !data.items) return [];
-      return data.items.slice(0, max).map(item => item.title);
-    }
-
-    Promise.all([
-      fetch(RSS_LSM).then(r => r.json()).catch(() => null),
-      fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
-    ]).then(([lsmData, lvData]) => {
-      const lsmTitles = extractTitles(lsmData, 6);
-      const lvTitles  = extractTitles(lvData, 6);
-
-      let allTitles = [];
-      allTitles = allTitles
-        .concat(lsmTitles.map(t => "📰 " + t))
-        .concat(lvTitles.map(t => "⚖️ " + t));
-
-      const text = allTitles.length
-        ? allTitles.join(" • ")
-        : "Nav pieejamu LSM vai LV portāla ziņu.";
-
-      const finalText = allTitles.length ? text + " • " + text : text;
-
-      topTrack.textContent    = finalText;
-      bottomTrack.textContent = finalText;
-
-      makeTicker(topTrack,    topTrack.parentElement);
-      makeTicker(bottomTrack, bottomTrack.parentElement);
-    }).catch(() => {
-      const fallback = "Neizdevās ielādēt ziņu lentes saturu.";
-      topTrack.textContent    = fallback;
-      bottomTrack.textContent = fallback;
-    });
-
-  let tabId = sessionStorage.getItem('tabId');
-  if (!tabId) {
-    tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
-    sessionStorage.setItem('tabId', tabId);
+    requestAnimationFrame(animate);
   }
+  animate();
 
-  fetch('/ping.php?tab=' + encodeURIComponent(tabId), { cache: 'no-store' }).catch(()=>{});
+  container.addEventListener('mouseenter', () => playing = false);
+  container.addEventListener('mouseleave', () => playing = true);
 
-  fetch('/online.php', { cache: 'no-store' })
-    .then(r => r.text())
-    .then(n => {
-      const el = document.getElementById('onlineCount');
-      if (el) el.textContent = n;
-    })
-    .catch(()=>{});
-  </script>
+  container.addEventListener('mousedown', e => {
+    dragging = true;
+    startX = e.clientX;
+    startOffset = offset;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    offset = startOffset + (e.clientX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+
+  window.addEventListener('mouseup', () => dragging = false);
+
+  container.addEventListener('touchstart', e => {
+    dragging = true;
+    startX = e.touches[0].clientX;
+    startOffset = offset;
+  });
+
+  container.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    offset = startOffset + (e.touches[0].clientX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+
+  container.addEventListener('touchend', () => dragging = false);
+}
+
+function extractTitles(data) {
+  return data?.items?.slice(0, 6).map(i => i.title) || [];
+}
+
+Promise.all([
+  fetch(RSS_LSM).then(r => r.json()).catch(()=>null),
+  fetch(RSS_LVPORTALS).then(r => r.json()).catch(()=>null)
+]).then(([lsm, lv]) => {
+
+  const titles = [
+    ...extractTitles(lsm).map(t => "📰 " + t),
+    ...extractTitles(lv).map(t => "⚖️ " + t)
+  ];
+
+  const text = titles.length
+    ? titles.join(" • ")
+    : "Nav pieejamu ziņu.";
+
+  topTrack.textContent = text;
+  bottomTrack.textContent = text;
+
+  makeTicker(topTrack, topTrack.parentElement);
+  makeTicker(bottomTrack, bottomTrack.parentElement);
+});
+
+let tabId = sessionStorage.getItem('tabId');
+if (!tabId) {
+  tabId = crypto.randomUUID();
+  sessionStorage.setItem('tabId', tabId);
+}
+
+fetch('/ping.php?tab=' + tabId).catch(()=>{});
+
+fetch('/online.php')
+  .then(r => r.text())
+  .then(n => {
+    document.getElementById('onlineCount').textContent = n;
+  })
+  .catch(()=>{});
+</script>
+
 </body>
 </html>
