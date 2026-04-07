@@ -3,49 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partneri - Neatkarīgā policistu arodbiedrība</title>
-  <link rel="stylesheet" href="../css/style.css">
+
+  <title>Policistu arodbiedrība un citas sadarbības organizācijas – biedriem.lv</title>
+  <meta name="description" content="Neatkarīgā policistu arodbiedrība – policistu arodbiedrība Latvijā.">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    .news-ticker {
+      background: #123b82;
+      color: white;
+      padding: 10px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 20px 0 4px;
+    }
+
+    .news-track {
+      display: inline-flex;
+      gap: 40px;
+      will-change: transform;
+    }
+
+    .org-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .org-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+      text-align: center;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 200px;
+      min-height: 220px;
+      transition: transform 0.2s;
+    }
+
+    .org-tile:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .org-title {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .org-logo {
+      max-width: 120px;
+      height: auto;
+      display: block;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
-    <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/NPA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
-    </picture>
+
+<header class="home-header">
+  <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
+  <p>Biedriem.lv apvieno policistu, IT un juristu arodbiedrības.</p>
+
+  <div class="lang-switch">
+    <span>Valoda:</span>
+    <a href="index.html" class="active">LV</a> |
+    <a href="ru/index.html">RU</a> |
+    <a href="en/index.html">EN</a> |
+    <a href="de/index.html">DE</a>
   </div>
-    <h1>Partneri</h1>
+</header>
 
-    <div class="lang-switch">
-      <span>Valoda:</span>
-      <a href="partners.html" class="active">LV</a> |
-      <a href="../ru/npa/partners.html">RU</a> |
-      <a href="../en/npa/partners.html">EN</a> |
-      <a href="../de/npa/partners.html">DE</a>
-    </div>
+<div class="news-ticker">
+  <span class="news-track" id="newsTickerTop">Ielādē ziņas...</span>
+</div>
 
-    <nav>
-      <ul>
-        <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
-        <li><a href="index.html">Sākums</a></li>
-        <li><a href="about.html">Par mums</a></li>
-        <li><a href="contact.html">Kontakti</a></li>
-        <li><a href="partners.html">Partneri</a></li>
-      </ul>
-    </nav>
-  </header>
+<main class="home-main">
+  <div class="org-list">
+    <!-- NPA -->
+    <a class="org-tile" href="npa/index.html">
+      <span class="org-title">Neatkarīgā policistu arodbiedrība — policistu arodbiedrība Latvijā</span>
+      <picture>
+        <source srcset="img/npa-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/npa-logo.png" alt="NPA logo">
+      </picture>
+    </a>
 
-  <main>
-    <section>
-      <p>
-        Neatkarīgā policistu arodbiedrība sadarbojas ar citām arodbiedrībām, juristiem un nevalstiskajām
-        organizācijām, lai nodrošinātu pēc iespējas labāku policijas darbinieku interešu pārstāvību.
-      </p>
-    </section>
-  </main>
+    <!-- ITSA -->
+    <a class="org-tile" href="itsa/index.html">
+      <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
+      <picture>
+        <source srcset="img/itsa-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </a>
 
-  <footer>
-    <p>&copy; 2008–2025 Neatkarīgā policistu arodbiedrība</p>
-  </footer>
+    <!-- LJA -->
+    <a class="org-tile" href="lja/index.html">
+      <span class="org-title">Latviešu juristu apvienība</span>
+      <picture>
+        <source srcset="img/lja-logo.webp" type="image/webp">
+        <img class="org-logo" src="img/lja-logo.png" alt="LJA logo">
+      </picture>
+    </a>
+  </div>
+
+  <div class="news-ticker">
+    <span class="news-track" id="newsTickerBottom">Ielādē ziņas...</span>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2008–2025 Biedriem.lv</p>
+</footer>
+
+<script>
+const RSS_LSM = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
+const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
+
+const topTrack = document.getElementById('newsTickerTop');
+const bottomTrack = document.getElementById('newsTickerBottom');
+
+function makeTicker(track, container) {
+  let offset = 0;
+  let dragging = false;
+  let startX = 0;
+  let startOffset = 0;
+  let playing = true;
+
+  track.innerHTML += " " + track.innerHTML;
+
+  function animate() {
+    if (playing && !dragging) {
+      offset -= 0.5;
+      if (-offset >= track.scrollWidth / 2) offset = 0;
+      track.style.transform = `translateX(${offset}px)`;
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  container.addEventListener('mouseenter', () => playing = false);
+  container.addEventListener('mouseleave', () => playing = true);
+
+  container.addEventListener('mousedown', e => {
+    dragging = true;
+    startX = e.clientX;
+    startOffset = offset;
+  });
+
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    offset = startOffset + (e.clientX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+
+  window.addEventListener('mouseup', () => dragging = false);
+
+  container.addEventListener('touchstart', e => {
+    dragging = true;
+    startX = e.touches[0].clientX;
+    startOffset = offset;
+  });
+
+  container.addEventListener('touchmove', e => {
+    if (!dragging) return;
+    offset = startOffset + (e.touches[0].clientX - startX);
+    track.style.transform = `translateX(${offset}px)`;
+  });
+
+  container.addEventListener('touchend', () => dragging = false);
+}
+
+function extractTitles(data) {
+  return data?.items?.slice(0, 6).map(i => i.title) || [];
+}
+
+Promise.all([
+  fetch(RSS_LSM).then(r => r.json()).catch(()=>null),
+  fetch(RSS_LVPORTALS).then(r => r.json()).catch(()=>null)
+]).then(([lsm, lv]) => {
+  const titles = [
+    ...extractTitles(lsm).map(t => "📰 " + t),
+    ...extractTitles(lv).map(t => "⚖️ " + t)
+  ];
+  const text = titles.length ? titles.join(" • ") : "Nav pieejamu ziņu.";
+  topTrack.textContent = text;
+  bottomTrack.textContent = text;
+  makeTicker(topTrack, topTrack.parentElement);
+  makeTicker(bottomTrack, bottomTrack.parentElement);
+});
+</script>
+
 </body>
 </html>
