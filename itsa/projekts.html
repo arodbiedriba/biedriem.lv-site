@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <title>Datu ievades forma</title>
+</head>
+<body>
+    <h3>Datu ievades forma uzdevumam</h3>
+    <form id="taskForm">
+        <label for="caseNumber">Lietas numurs:</label><br>
+        <input type="text" id="caseNumber" name="caseNumber" maxlength="14" required><br><br>
+        
+        <label for="taskName">Uzdevuma nosaukums:</label><br>
+        <input type="text" id="taskName" name="taskName" required><br><br>
+        
+        <label for="deadline">Termiņš:</label><br>
+        <input type="date" id="deadline" name="deadline" required><br><br>
+        
+        <label for="priority">Prioritāte:</label><br>
+        <select id="priority" name="priority" required>
+            <option value="augsta">Augsta</option>
+            <option value="vidēja">Vidēja</option>
+            <option value="zema">Zema</option>
+        </select><br><br>
+        
+        <button type="button" onclick="submitForm()">Iesniegt</button>
+    </form>
+
+    <script>
+        function submitForm() {
+            const caseNumber = document.getElementById('caseNumber').value;
+            const taskName = document.getElementById('taskName').value;
+            const deadline = document.getElementById('deadline').value;
+            const priority = document.getElementById('priority').value;
+
+            if(caseNumber && taskName && deadline && priority) {
+                console.log("Lietas numurs:", caseNumber);
+                console.log("Uzdevuma nosaukums:", taskName);
+                console.log("Termiņš:", deadline);
+                console.log("Prioritāte:", priority);
+                alert("Dati veiksmīgi iesniegti!");
+                document.getElementById("taskForm").reset();
+            } else {
+                alert("Lūdzu, aizpildiet visus laukus!");
+            }
+        }
+    </script>
+</body>
+</html>
