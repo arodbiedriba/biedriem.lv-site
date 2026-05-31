@@ -34,18 +34,26 @@
       0%   { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
+
+    /* Header logo centrēšana */
+    .header-logo-center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 
 <body>
   <header class="home-header home-header--npa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../img/npa-logo.webp" type="image/webp">
-      <img class="header-logo" src="../img/npa-logo.png" alt="NPA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../img/npa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../img/npa-logo.png" alt="NPA logo">
+      </picture>
+    </div>
+
     <h1>Neatkarīgā policistu arodbiedrība</h1>
+
     <div class="lang-switch">
       <span>Valoda:</span>
       <a href="index.html" class="active">LV</a> |
@@ -53,6 +61,7 @@
       <a href="../en/npa/index.html">EN</a> |
       <a href="../de/npa/index.html">DE</a>
     </div>
+
     <p class="subtagline">
       Policijas darbinieku tiesību un interešu aizstāvība —<br>
       <strong>vienīgā Valsts policijas darbinieku arodbiedrība ar spēkā esošu koplīgumu.</strong>
@@ -91,11 +100,11 @@
       <h2 class="kopligums-heading">Koplīgums ar Valsts policiju</h2>
 
       <div class="agreement-image-block">
-        <a href="../img/NPA_VP_Kopligums_master.png" target="_blank">
+        <a href="../img/npa_vp_kopligums_master.png" target="_blank">
           <picture>
-            <source srcset="../img/NPA_VP_Kopligums_1400w.webp" type="image/webp">
+            <source srcset="../img/npa_vp_kopligums_1400w.webp" type="image/webp">
             <img
-              src="../img/NPA_VP_Kopligums_master.png"
+              src="../img/npa_vp_kopligums_master.png"
               alt="Neatkarīgās policistu arodbiedrības un Valsts policijas koplīguma parakstītais dokuments"
               class="agreement-image"
             >
@@ -122,7 +131,6 @@
   </footer>
 
   <script>
-
     const RSS_IEM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.iem.gov.lv/lv/rss.xml";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
@@ -144,7 +152,8 @@
         ? "🛂 " + titles.join(" • ")
         : "Nav pieejamu oficiālo ziņu.";
 
-      document.getElementById("tickerPrimary").textContent = text;
+      // Nepārtrauktai lentei — dublējam tekstu
+      document.getElementById("tickerPrimary").textContent = text + " • " + text;
 
     }).catch(() => {
       document.getElementById("tickerPrimary").textContent =
