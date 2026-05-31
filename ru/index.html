@@ -6,7 +6,7 @@
 
   <title>Профсоюз полиции и партнерские организации – biedriem.lv</title>
   <meta name="description"
-        content="Независимый профсоюз полицейских — Профсоюз полицейских Латвии. Biedriem.lv — совместная платформа профсоюзов полицейских, IT-специалистов и объединения юристов.">
+        content="Независимый профсоюз полицейских, профсоюз IT‑специалистов и объединение юристов Латвии — совместная платформа biedriem.lv.">
 
   <link rel="stylesheet" href="../css/style.css">
 
@@ -28,26 +28,59 @@
     .news-track {
       display: inline-block;
       will-change: transform;
-      transform: translateX(0);
-      transition: transform 0.08s linear;
       padding-left: 100%;
     }
 
+    /* Vienota flīžu sistēma */
+    .org-list {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, max-content));
+      justify-content: center;
+      gap: 24px;
+      padding: 28px 0;
+    }
+
+    .org-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      text-decoration: none;
+      background: linear-gradient(135deg, #004B8D, #002F5F);
+      color: #fff;
+      padding: 26px 22px;
+      border-radius: 16px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+      gap: 18px;
+      min-height: 200px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .org-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(0, 47, 95, 0.65);
+    }
+
     .org-title {
-      text-align: center !important;
-      width: 100%;
-      display: block;
-      font-size: 1.3rem;
+      font-weight: 700;
+      font-size: 1.05rem;
       line-height: 1.4;
-      padding: 10px 5px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
+      color: #fff;
+    }
+
+    .org-logo {
+      width: 92px;
+      height: 92px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.12));
     }
 
     @media (max-width: 600px) {
-      .org-title {
-        font-size: 1.5rem;
-        padding: 15px 8px;
+      .org-logo {
+        width: 72px;
+        height: 72px;
       }
     }
   </style>
@@ -66,76 +99,54 @@
     </div>
 
     <p>
-      Biedriem.lv — это платформа, объединяющая Независимый профсоюз полицейских, профсоюз IT-специалистов и объединение юристов Латвии.
+      Biedriem.lv — платформа, объединяющая Независимый профсоюз полицейских,
+      профсоюз IT‑специалистов и объединение юристов Латвии.
     </p>
-
   </header>
 
   <div class="news-ticker" aria-label="Новости LSM и LV Portal — верхняя лента">
-    <span class="news-track" id="newsTickerTop">
-      Загрузка новостей...
-    </span>
+    <span class="news-track" id="newsTickerTop">Загрузка новостей...</span>
   </div>
 
-  
   <main class="home-main">
     <div class="org-list">
 
-      <div class="org-tile">
-        <a class="org-text" href="npa/index.html">
-          <span class="org-title">
-            Независимый профсоюз полицейских — Профсоюз полицейских Латвии
-          </span>
-        </a>
+      <!-- NPA -->
+      <a class="org-tile" href="npa/index.html">
+        <span class="org-title">Независимый профсоюз полицейских Латвии</span>
+        <picture>
+          <source srcset="../img/npa-logo.webp" type="image/webp">
+          <img class="org-logo" src="../img/npa-logo.png" alt="NPA логотип">
+        </picture>
+      </a>
 
-        <a class="org-logo-link" href="npa/index.html">
-          <picture class="org-logo-wrap">
-            <source srcset="../img/NPA Logo.webp" type="image/webp">
-            <img class="org-logo" src="../img/NPA Logo.png" alt="NPA логотип">
-          </picture>
-        </a>
-      </div>
+      <!-- ITSA -->
+      <a class="org-tile" href="itsa/index.html">
+        <span class="org-title">Профсоюз IT‑специалистов</span>
+        <picture>
+          <source srcset="../img/itsa-logo.webp" type="image/webp">
+          <img class="org-logo" src="../img/itsa-logo.png" alt="ITSA логотип">
+        </picture>
+      </a>
 
-      <div class="org-tile">
-        <a class="org-text" href="itsa/index.html">
-          <span class="org-title">
-            Профсоюз IT-специалистов
-          </span>
-        </a>
-
-        <a class="org-logo-link" href="itsa/index.html">
-          <picture class="org-logo-wrap">
-            <source srcset="../img/ITSA Logo.webp" type="image/webp">
-            <img class="org-logo" src="../img/ITSA Logo.png" alt="ITSA логотип">
-          </picture>
-        </a>
-      </div>
-
-      <div class="org-tile">
-        <a class="org-text" href="lja/index.html">
-          <span class="org-title">
-            Объединение юристов Латвии
-          </span>
-        </a>
-
-        <a class="org-logo-link" href="lja/index.html">
-          <picture class="org-logo-wrap">
-            <source srcset="../img/LJA Logo.webp" type="image/webp">
-            <img class="org-logo" src="../img/LJA Logo.png" alt="LJA логотип">
-          </picture>
-        </a>
-      </div>
+      <!-- LJA -->
+      <a class="org-tile" href="lja/index.html">
+        <span class="org-title">Объединение юристов Латвии</span>
+        <picture>
+          <source srcset="../img/lja-logo.webp" type="image/webp">
+          <img class="org-logo" src="../img/lja-logo.png" alt="LJA логотип">
+        </picture>
+      </a>
 
     </div>
-
-<div class="news-ticker" aria-label="Новости LSM и LV Portal — нижняя лента">
-  <span class="news-track" id="newsTickerBottom">Загрузка новостей...</span>
-</div>
-
   </main>
 
+  <div class="news-ticker" aria-label="Новости LSM и LV Portal — нижняя лента">
+    <span class="news-track" id="newsTickerBottom">Загрузка новостей...</span>
+  </div>
+
   <footer>
-    <p>&copy; 2008–2025 Biedriem.lv — профсоюзы полицейских, IT-специалистов и объединение юристов</p>
+    <p>&copy; 2008–2026 Biedriem.lv — профсоюзы полицейских, IT‑специалистов и объединение юристов</p>
   </footer>
 
   <script>
@@ -145,98 +156,35 @@
     const topTrack    = document.getElementById('newsTickerTop');
     const bottomTrack = document.getElementById('newsTickerBottom');
 
-    const speed  = 55;
-    const stepMs = 40;
-
-    function makeTicker(trackElement, containerElement) {
-      let offset      = 0;
-      let playing     = true;
-      let dragging    = false;
-      let dragStartX  = 0;
-      let offsetStart = 0;
-
-      function tick() {
-        if (!playing || dragging) return;
-        offset -= (speed * stepMs) / 1000;
-        const trackWidth = trackElement.offsetWidth;
-        if (-offset > trackWidth) offset = 0;
-        trackElement.style.transform = `translateX(${offset}px)`;
-      }
-
-      setInterval(tick, stepMs);
-
-      containerElement.addEventListener('mouseenter', () => playing = false);
-      containerElement.addEventListener('mouseleave', () => { if (!dragging) playing = true; });
-
-      containerElement.addEventListener('mousedown', (e) => {
-        dragging = true;
-        playing  = false;
-        dragStartX = e.clientX;
-        offsetStart = offset;
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (!dragging) return;
-        offset = offsetStart + (e.clientX - dragStartX);
-        trackElement.style.transform = `translateX(${offset}px)`;
-      });
-
-      window.addEventListener('mouseup', () => {
-        if (!dragging) return;
-        dragging = false;
-        playing = true;
-      });
+    function extractTitles(data) {
+      return data?.items?.slice(0, 6).map(i => i.title) || [];
     }
 
-    function extractTitles(data, max = 6) {
-      if (!data || !data.items) return [];
-      return data.items.slice(0, max).map(item => item.title);
+    function makeTicker(track, container) {
+      let offset = 0;
+      function animate() {
+        offset -= 0.5;
+        if (-offset >= track.scrollWidth) offset = 0;
+        track.style.transform = `translateX(${offset}px)`;
+        requestAnimationFrame(animate);
+      }
+      animate();
     }
 
     Promise.all([
-      fetch(RSS_LSM).then(r => r.json()).catch(() => null),
-      fetch(RSS_LVPORTALS).then(r => r.json()).catch(() => null)
-    ])
-    .then(([lsmData, lvData]) => {
-      const lsmTitles = extractTitles(lsmData, 6);
-      const lvTitles  = extractTitles(lvData, 6);
-
-      let allTitles = []
-        .concat(lsmTitles.map(t => "📰 " + t))
-        .concat(lvTitles.map(t => "⚖️ " + t));
-
-      const text = allTitles.length
-        ? allTitles.join(" • ")
-        : "Нет доступных новостей от LSM или LV Portal.";
-
-      const finalText = allTitles.length ? text + " • " + text : text;
-
-      topTrack.textContent    = finalText;
-      bottomTrack.textContent = finalText;
-
+      fetch(RSS_LSM).then(r => r.json()).catch(()=>null),
+      fetch(RSS_LVPORTALS).then(r => r.json()).catch(()=>null)
+    ]).then(([lsm, lv]) => {
+      const titles = [
+        ...extractTitles(lsm).map(t => "📰 " + t),
+        ...extractTitles(lv).map(t => "⚖️ " + t)
+      ];
+      const text = titles.length ? titles.join(" • ") : "Нет доступных новостей.";
+      topTrack.textContent = text;
+      bottomTrack.textContent = text;
       makeTicker(topTrack, topTrack.parentElement);
       makeTicker(bottomTrack, bottomTrack.parentElement);
-    })
-    .catch(() => {
-      const fallback = "Не удалось загрузить новости.";
-      topTrack.textContent    = fallback;
-      bottomTrack.textContent = fallback;
     });
-  let tabId = sessionStorage.getItem('tabId');
-  if (!tabId) {
-    tabId = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
-    sessionStorage.setItem('tabId', tabId);
-  }
-
-  fetch('/ping.php?tab=' + encodeURIComponent(tabId), { cache: 'no-store' }).catch(()=>{});
-
-  fetch('/online.php', { cache: 'no-store' })
-    .then(r => r.text())
-    .then(n => {
-      const el = document.getElementById('onlineCount');
-      if (el) el.textContent = n;
-    })
-    .catch(()=>{});
   </script>
 
 </body>
