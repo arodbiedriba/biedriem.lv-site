@@ -5,22 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kontakt – Gewerkschaft der IT-Fachkräfte</title>
   <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .header-logo-center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>Kontakt</h1>
 
     <div class="lang-switch">
       <span>Sprache:</span>
       <a href="../../itsa/contact.html">LV</a> |
       <a href="../../ru/itsa/contact.html">RU</a> |
-      <a href="../en/contact.html">EN</a> |
+      <a href="../../en/itsa/contact.html">EN</a> |
       <a href="contact.html" class="active">DE</a>
     </div>
 
@@ -29,19 +38,34 @@
         <li><a href="../index.html">← Zurück zur Startseite</a></li>
         <li><a href="../index.html">Startseite</a></li>
         <li><a href="about.html">Über uns</a></li>
-        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="contact.html" class="active">Kontakt</a></li>
         <li><a href="partners.html">Partner</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
+  <main class="contact-page itsa-theme">
     <div class="contact-layout">
+
       <section class="contact-card contact-info">
         <h2>Kontakt aufnehmen</h2>
-        <p><strong>Adresse:</strong> Riga, Lettland</p>
-        <p><strong>Telefon:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
-        <p><strong>E-Mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+
+        <p><strong>Vollständiger Name:</strong><br>
+          Gewerkschaft der IT-Fachkräfte (ITSA)
+        </p>
+
+        <p><strong>Adresse:</strong><br>
+          Riga, Lettland
+        </p>
+
+        <p><strong>Telefon:</strong><br>
+          <a href="tel:+37127886624">+371 2788 6624</a>
+        </p>
+
+        <p><strong>E‑Mail:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
         <p class="contact-note">
           Schreiben oder rufen Sie uns an, wenn Sie Fragen zur Gewerkschaftsmitgliedschaft,
           zu Arbeitsbedingungen oder zu Ihren Arbeitsrechten haben.
@@ -50,52 +74,26 @@
 
       <section class="contact-card">
         <h2>Nachricht senden</h2>
+
         <form id="contactFormDe" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
           <div class="form-group">
             <label for="name">Vollständiger Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form-input"
-              placeholder="Zum Beispiel: Max Mustermann"
-              required
-            >
+            <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
           <div class="form-group">
-            <label for="email">E-Mail</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-input"
-              placeholder="beispiel@mail.com"
-              required
-            >
+            <label for="email">E‑Mail</label>
+            <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
           <div class="form-group">
             <label for="subject">Betreff</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              class="form-input"
-              placeholder="Worum geht es?"
-            >
+            <input type="text" id="subject" name="subject" class="form-input">
           </div>
 
           <div class="form-group">
             <label for="message">Nachricht</label>
-            <textarea
-              id="message"
-              name="message"
-              class="form-textarea"
-              rows="5"
-              placeholder="Beschreiben Sie Ihr Anliegen so klar wie möglich."
-              required
-            ></textarea>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
           </div>
 
           <div class="form-actions">
@@ -107,11 +105,12 @@
           </p>
         </form>
       </section>
+
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Gewerkschaft der IT-Fachkräfte</p>
+    <p>&copy; 2008–2026 Gewerkschaft der IT-Fachkräfte</p>
   </footer>
 
   <script>
