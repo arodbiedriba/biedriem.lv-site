@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IT Specialists Union</title>
-  <link rel="stylesheet" href="/css/style.css">
-
+  <link rel="stylesheet" href="../../css/style.css">
 
   <style>
-
     .news-ticker {
       background: #005b96; 
       color: white;
@@ -47,11 +45,12 @@
 <body>
   <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>IT Specialists Union</h1>
 
     <div class="lang-switch">
@@ -66,9 +65,10 @@
       Protection of working conditions and professional interests of IT specialists —<br>
       <strong>for a safe, fair, and sustainable digital working environment in Latvia.</strong>
     </p>
+
     <nav>
       <ul>
-        <li><a href="../index.html">← Back to main page</a></li>
+        <li><a href="../../index.html">← Back to main page</a></li>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About us</a></li>
         <li><a href="contact.html">Contacts</a></li>
@@ -77,7 +77,6 @@
     </nav>
   </header>
 
- 
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsaTop">
       Loading cybersecurity news from CERT.LV...
@@ -108,7 +107,6 @@
     </section>
   </main>
 
-
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerItsaBottom">
       Loading LMT Technews technology news...
@@ -116,13 +114,11 @@
   </div>
 
   <footer>
-    <p>&copy; 2008–2025 IT Specialists Union</p>
+    <p>&copy; 2008–2026 IT Specialists Union</p>
   </footer>
 
   <script>
-
     const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
-
     const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
 
     function extractTitles(items, max = 10) {
@@ -153,7 +149,6 @@
         document.getElementById("tickerItsaTop").textContent =
           "Failed to load cybersecurity news from CERT.LV.";
       });
-
 
     fetch(RSS_LMT)
       .then(r => r.json())
