@@ -3,131 +3,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakti - Informācijas tehnoloģiju speciālistu arodbiedrība</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>Kontakti — ITSA</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .header-logo-center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../img/ITSA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../img/ITSA Logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>Kontakti</h1>
+
     <div class="lang-switch">
-  <span>Valoda:</span>
-  <a href="contact.html" class="active">LV</a> |
-  <a href="../ru/itsa/contact.html">RU</a> |
-  <a href="../en/itsa/contact.html">EN</a> |
-  <a href="../de/itsa/contact.html">DE</a>
-</div>
+      <span>Valoda:</span>
+      <a href="../../itsa/contact.html" class="active">LV</a> |
+      <a href="../../ru/itsa/contact.html">RU</a> |
+      <a href="../../en/itsa/contact.html">EN</a> |
+      <a href="../../de/itsa/contact.html">DE</a>
+    </div>
 
     <nav>
       <ul>
-        <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
+        <li><a href="../../index.html">← Atpakaļ uz galveno lapu</a></li>
         <li><a href="index.html">Sākums</a></li>
         <li><a href="about.html">Par mums</a></li>
-        <li><a href="contact.html">Kontakti</a></li>
+        <li><a href="contact.html" class="active">Kontakti</a></li>
         <li><a href="partners.html">Partneri</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
-    <div class="contact-layout">
+  <main class="contact-page itsa-theme">
+    <div class="container">
+      <div class="contact-layout">
 
-      <section class="contact-card contact-info">
-        <h2>Sazinies ar mums</h2>
-        <p><strong>Adrese:</strong> Rīga, Latvija</p>
-        <p><strong>Tālrunis:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
-        <p><strong>E-pasts:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
-        <p class="contact-note">
-          Raksti vai zvani, ja tev ir jautājumi par dalību arodbiedrībā, darba apstākļiem vai savām tiesībām.
-        </p>
-      </section>
+        <div class="contact-card">
+          <h2>Kontakti</h2>
 
-      <section class="contact-card">
-        <h2>Raksti mums</h2>
-        <form id="contactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
-          <div class="form-group">
-            <label for="name">Vārds, uzvārds</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form-input"
-              placeholder="Piemēram, Jānis Bērziņš"
-              required
-            >
+          <div class="contact-info">
+            <p><strong>Pilns nosaukums:</strong><br>Informācijas tehnoloģiju speciālistu arodbiedrība (ITSA)</p>
+
+            <p><strong>E‑pasts:</strong><br>
+              <a href="mailto:info@itsa.lv">info@itsa.lv</a>
+            </p>
+
+            <p><strong>Adrese:</strong><br>
+              Rīga, Latvija
+            </p>
+
+            <p><strong>Reģistrācijas numurs:</strong><br>
+              40008212345
+            </p>
           </div>
 
-          <div class="form-group">
-            <label for="email">E-pasts</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-input"
-              placeholder="piemers@epasts.lv"
-              required
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="subject">Tēma</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              class="form-input"
-              placeholder="Par ko ir tavs jautājums?"
-            >
-          </div>
-
-          <div class="form-group">
-            <label for="message">Ziņa</label>
-            <textarea
-              id="message"
-              name="message"
-              class="form-textarea"
-              rows="5"
-              placeholder="Apraksti savu jautājumu pēc iespējas konkrēti."
-              required
-            ></textarea>
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn-primary">Nosūtīt ziņu</button>
-          </div>
-
-          <p class="form-hint">
-            Nosūtot ziņu, tu piekrīti, ka izmantosim tavu kontaktinformāciju atbildei.
+          <p class="contact-note">
+            Ja jums ir jautājumi par darba tiesībām, kiber­drošību, attālināto darbu vai IT speciālistu
+            profesionālajām interesēm, sazinieties ar mums — palīdzēsim.
           </p>
-        </form>
-      </section>
+        </div>
+
+        <div class="contact-card">
+          <h2>Saziņas forma</h2>
+
+          <form>
+            <div class="form-group">
+              <label for="name">Vārds, uzvārds</label>
+              <input type="text" id="name" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">E‑pasts</label>
+              <input type="email" id="email" class="form-input" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Ziņojums</label>
+              <textarea id="message" class="form-textarea" required></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Nosūtīt</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
+    <p>&copy; 2008–2026 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
 
-  <script>
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        window.location.href = "paldies.html";
-      } else {
-        alert("Radās kļūda, mēģini vēlreiz!");
-      }
-    });
-  </script>
 </body>
 </html>
