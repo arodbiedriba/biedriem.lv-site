@@ -34,7 +34,7 @@ header h1 {
     font-size: 2rem;
 }
 
-header p {
+header:not(.home-header) p {
     margin-top: 0.5rem;
     color: #555;
 }
