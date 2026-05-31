@@ -6,10 +6,10 @@
   <title>Informācijas tehnoloģiju speciālistu arodbiedrība</title>
   <link rel="stylesheet" href="../css/style.css">
 
+  <!-- ITSA ziņu lentes stils -->
   <style>
-
     .news-ticker {
-      background: #005b96; 
+      background: #005b96;
       color: white;
       padding: 10px 0;
       overflow: hidden;
@@ -28,7 +28,7 @@
     .news-ticker-content {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 90s linear infinite; 
+      animation: ticker 90s linear infinite;
     }
 
     .news-ticker:hover .news-ticker-content,
@@ -44,14 +44,18 @@
 </head>
 
 <body>
+
+  <!-- HEADER -->
   <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../img/itsa-logo.webp" type="image/webp">
-      <img class="header-logo" src="../img/itsa-logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>Informācijas tehnoloģiju speciālistu arodbiedrība</h1>
+
     <div class="lang-switch">
       <span>Valoda:</span>
       <a href="index.html" class="active">LV</a> |
@@ -59,10 +63,12 @@
       <a href="../en/itsa/index.html">EN</a> |
       <a href="../de/itsa/index.html">DE</a>
     </div>
+
     <p class="subtagline">
       IT speciālistu darba vides un profesionālo interešu aizstāvība —<br>
       <strong>par drošu, godīgu un ilgtspējīgu digitālo darba vidi Latvijā.</strong>
     </p>
+
     <nav>
       <ul>
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
@@ -74,13 +80,16 @@
     </nav>
   </header>
 
+  <!-- TOP NEWS TICKER -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsaTop">
       Ielādē CERT.LV kiberdrošības ziņas...
     </span>
   </div>
 
+  <!-- MAIN CONTENT -->
   <main class="home-main itsa-theme">
+
     <section>
       <p>
         Informācijas tehnoloģiju speciālistu arodbiedrība (ITSA) apvieno IT nozares darbiniekus, lai aizstāvētu
@@ -102,22 +111,24 @@
         <li>• Nozares labās prakses un profesionālās ētikas veicināšana.</li>
       </ul>
     </section>
+
   </main>
 
+  <!-- BOTTOM NEWS TICKER -->
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerItsaBottom">
       Ielādē LMT Technews tehnoloģiju ziņas...
     </span>
   </div>
 
+  <!-- FOOTER -->
   <footer>
     <p>&copy; 2008–2026 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
 
+  <!-- RSS SCRIPT -->
   <script>
-
     const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
-
     const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
 
     function extractTitles(items, max = 10) {
@@ -137,11 +148,9 @@
       .then(data => {
         const items = data.items || [];
         const titles = extractTitlesSorted(items, 15);
-
         const text = titles.length
           ? "🔐 " + titles.join(" • ")
           : "Nav pieejamu CERT.LV kiberdrošības ziņu.";
-
         document.getElementById("tickerItsaTop").textContent = text;
       })
       .catch(() => {
