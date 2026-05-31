@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakti - Neatkarīgā policistu arodbiedrība</title>
+  <title>Kontakti — Neatkarīgā policistu arodbiedrība</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--npa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/NPA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
-    </picture>
-  </div>
+      <div class="logo-3d">
+        <picture>
+          <source srcset="../img/npa-logo.webp" type="image/webp">
+          <img src="../img/npa-logo.png" alt="NPA logo">
+        </picture>
+      </div>
+    </div>
+
     <h1>Kontakti</h1>
 
     <div class="lang-switch">
@@ -29,18 +33,30 @@
         <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
         <li><a href="index.html">Sākums</a></li>
         <li><a href="about.html">Par mums</a></li>
-        <li><a href="contact.html">Kontakti</a></li>
+        <li><a href="contact.html" class="active">Kontakti</a></li>
         <li><a href="partners.html">Partneri</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
+  <main class="contact-page npa-theme">
     <div class="contact-layout">
+
       <section class="contact-card contact-info">
         <h2>Sazinies ar NPA</h2>
-        <p><strong>Adrese:</strong> Rīga, Latvija</p>
-        <p><strong>E-pasts:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+
+        <p><strong>Pilns nosaukums:</strong><br>
+          Neatkarīgā policistu arodbiedrība
+        </p>
+
+        <p><strong>E‑pasts:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
+        <p><strong>Adrese:</strong><br>
+          Rīga, Latvija
+        </p>
+
         <p class="contact-note">
           Ja tev ir jautājumi par dienestu, koplīgumu vai savu tiesību aizsardzību,
           droši raksti arodbiedrībai.
@@ -49,6 +65,7 @@
 
       <section class="contact-card">
         <h2>Raksti mums</h2>
+
         <form id="npaContactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
           <div class="form-group">
             <label for="npa-name">Vārds, uzvārds</label>
@@ -56,7 +73,7 @@
           </div>
 
           <div class="form-group">
-            <label for="npa-email">E-pasts</label>
+            <label for="npa-email">E‑pasts</label>
             <input type="email" id="npa-email" name="email" class="form-input" required>
           </div>
 
@@ -74,11 +91,12 @@
           </p>
         </form>
       </section>
+
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Neatkarīgā policistu arodbiedrība</p>
+    <p>&copy; 2008–2026 Neatkarīgā policistu arodbiedrība</p>
   </footer>
 
   <script>
@@ -97,5 +115,6 @@
       }
     });
   </script>
+
 </body>
 </html>
