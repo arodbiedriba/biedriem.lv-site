@@ -59,10 +59,20 @@ header:not(.home-header) p {
     opacity: 1;
 }
 
+/* ===== LOGO PAMATA NOTEIKUMS ===== */
+/* ŠIS IR DOMĀTS TIKAI NPA 3D LOGO */
 .header-logo {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/* ===== ITSA un LJA LOGO LABOJUMS ===== */
+/* Šie logo nedrīkst izstiepties kā NPA vairogs */
+.home-header--itsa .header-logo,
+.home-header--lja .header-logo {
+    max-width: 180px;
+    height: auto;
 }
 
 /* ===== Navigācija ===== */
@@ -79,12 +89,12 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #007ACC;
+    color: #ffffff;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #005FA3;
+    color: #ffdd55;
 }
 
 /* ===== Saturs ===== */
@@ -125,19 +135,12 @@ main {
     box-shadow: 0 4px 10px rgba(0, 95, 163, 0.25);
 }
 
-.no-style {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 /* ===== Sākumlapas flīzes ===== */
 
 .home-main {
     padding: 2rem 1rem 3rem;
 }
 
-/* Flīžu režģis */
 .org-list {
     max-width: 960px;
     margin: 0 auto;
@@ -148,7 +151,6 @@ main {
     padding: 28px 0;
 }
 
-/* Viena flīze */
 .org-tile {
     display: flex;
     flex-direction: column;
@@ -166,26 +168,22 @@ main {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Piespiežam baltu krāsu visam flīzes saturam */
 .org-tile,
 .org-tile * {
     color: #fff;
 }
 
-/* Hover efekts */
 .org-tile:hover {
     transform: translateY(-3px);
     box-shadow: 0 18px 36px rgba(0, 47, 95, 0.65);
 }
 
-/* Nosaukums */
 .org-title {
     font-weight: 700;
     font-size: 1.05rem;
     line-height: 1.4;
 }
 
-/* Logo */
 .org-logo {
     width: 92px;
     height: 92px;
@@ -441,19 +439,7 @@ footer {
     color: #004b6b;
 }
 
-/* ===== Globālā navigācija (visām lapām) ===== */
-
-nav a {
-    color: #ffffff; /* balts teksts uz tumšiem headeriem */
-    font-weight: bold;
-    text-decoration: none;
-}
-
-nav a:hover {
-    color: #ffdd55; /* gaišs hover, redzams uz tumša fona */
-}
-
-/* ===== 3D rotācija ar kantes imitāciju ===== */
+/* ===== 3D rotācija ar kantes imitāciju (TIKAI NPA) ===== */
 
 .logo-3d {
   width: 180px;
@@ -473,7 +459,6 @@ nav a:hover {
   filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
 }
 
-/* Kantes imitācija */
 .logo-3d::before {
   content: "";
   position: absolute;
@@ -497,11 +482,3 @@ nav a:hover {
   0%, 100% { opacity: 0; }
   45%, 55% { opacity: 1; }
 }
-
-/* ITSA un LJA logo nedrīkst būt 100% */
-.home-header--itsa .header-logo,
-.home-header--lja .header-logo {
-    max-width: 180px;
-    height: auto;
-}
-
