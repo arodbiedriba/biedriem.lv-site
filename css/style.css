@@ -439,3 +439,15 @@ footer {
 .itsa-theme h3 {
     color: #004b6b;
 }
+
+/* ===== Globālā navigācija (visām lapām) ===== */
+
+nav a {
+    color: #ffffff; /* balts teksts uz tumšiem headeriem */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #ffdd55; /* gaišs hover, redzams uz tumša fona */
+}
