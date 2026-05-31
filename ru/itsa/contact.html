@@ -5,15 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Контакты – Профсоюз специалистов информационных технологий</title>
   <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    /* ITSA logo must NOT stretch like NPA 3D logo */
+    .home-header--itsa .header-logo {
+      max-width: 180px;
+      height: auto;
+    }
+
+    .header-logo-center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>Контакты</h1>
 
     <div class="lang-switch">
@@ -29,73 +44,61 @@
         <li><a href="../index.html">← Назад на главную страницу</a></li>
         <li><a href="index.html">Главная</a></li>
         <li><a href="about.html">О нас</a></li>
-        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="contact.html" class="active">Контакты</a></li>
         <li><a href="partners.html">Партнёры</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
+  <main class="contact-page itsa-theme">
     <div class="contact-layout">
+
       <section class="contact-card contact-info">
         <h2>Свяжитесь с нами</h2>
-        <p><strong>Адрес:</strong> Рига, Латвия</p>
-        <p><strong>Телефон:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
-        <p><strong>E-mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+
+        <p><strong>Полное название:</strong><br>
+          Профсоюз специалистов информационных технологий (ITSA)
+        </p>
+
+        <p><strong>Адрес:</strong><br>
+          Рига, Латвия
+        </p>
+
+        <p><strong>Телефон:</strong><br>
+          <a href="tel:+37127886624">+371 2788 6624</a>
+        </p>
+
+        <p><strong>E‑mail:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
         <p class="contact-note">
-          Пишите или звоните, если у вас есть вопросы о членстве в профсоюзе,
-          условиях труда или ваших правах.
+          Пишите или звоните, если у вас есть вопросы о членстве, условиях труда или защите ваших прав.
         </p>
       </section>
 
       <section class="contact-card">
         <h2>Напишите нам</h2>
+
         <form id="contactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
           <div class="form-group">
             <label for="name">Имя и фамилия</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form-input"
-              placeholder="Например, Иван Иванов"
-              required
-            >
+            <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
           <div class="form-group">
             <label for="email">Электронная почта</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-input"
-              placeholder="primer@epasts.lv"
-              required
-            >
+            <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
           <div class="form-group">
             <label for="subject">Тема</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              class="form-input"
-              placeholder="О чём ваш вопрос?"
-            >
+            <input type="text" id="subject" name="subject" class="form-input">
           </div>
 
           <div class="form-group">
             <label for="message">Сообщение</label>
-            <textarea
-              id="message"
-              name="message"
-              class="form-textarea"
-              rows="5"
-              placeholder="Опишите свой вопрос как можно более конкретно."
-              required
-            ></textarea>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
           </div>
 
           <div class="form-actions">
@@ -103,15 +106,16 @@
           </div>
 
           <p class="form-hint">
-            Отправляя сообщение, вы соглашаетесь с тем, что мы используем ваши контактные данные для ответа.
+            Отправляя сообщение, вы соглашаетесь на использование ваших данных для ответа.
           </p>
         </form>
       </section>
+
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Профсоюз специалистов информационных технологий</p>
+    <p>&copy; 2008–2026 Профсоюз специалистов информационных технологий</p>
   </footer>
 
   <script>
@@ -130,5 +134,6 @@
       }
     });
   </script>
+
 </body>
 </html>
