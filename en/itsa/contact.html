@@ -5,15 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacts – IT Specialists Union</title>
   <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .header-logo-center {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+  </style>
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/ITSA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/ITSA Logo.png" alt="ITSA logo">
-    </picture>
-  </div>
+      <picture>
+        <source srcset="../../img/itsa-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/itsa-logo.png" alt="ITSA logo">
+      </picture>
+    </div>
+
     <h1>Contacts</h1>
 
     <div class="lang-switch">
@@ -22,7 +31,6 @@
       <a href="../../ru/itsa/contact.html">RU</a> |
       <a href="contact.html" class="active">EN</a> |
       <a href="../../de/itsa/contact.html">DE</a>
-
     </div>
 
     <nav>
@@ -30,75 +38,62 @@
         <li><a href="../index.html">← Back to homepage</a></li>
         <li><a href="../index.html">Home</a></li>
         <li><a href="about.html">About us</a></li>
-        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="contact.html" class="active">Contacts</a></li>
         <li><a href="partners.html">Partners</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
+  <main class="contact-page itsa-theme">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
         <h2>Get in touch</h2>
-        <p><strong>Address:</strong> Riga, Latvia</p>
-        <p><strong>Phone:</strong> <a href="tel:+37127886624">+371 2788 6624</a></p>
-        <p><strong>Email:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+
+        <p><strong>Full name:</strong><br>
+          IT Specialists Union (ITSA)
+        </p>
+
+        <p><strong>Address:</strong><br>
+          Riga, Latvia
+        </p>
+
+        <p><strong>Phone:</strong><br>
+          <a href="tel:+37127886624">+371 2788 6624</a>
+        </p>
+
+        <p><strong>Email:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
         <p class="contact-note">
           Write or call us if you have questions about union membership,
           working conditions, or your labour rights.
         </p>
       </section>
 
-
       <section class="contact-card">
         <h2>Send us a message</h2>
+
         <form id="contactFormEn" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
           <div class="form-group">
             <label for="name">Full name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="form-input"
-              placeholder="For example, John Smith"
-              required
-            >
+            <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-input"
-              placeholder="example@mail.com"
-              required
-            >
+            <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              class="form-input"
-              placeholder="What is your question about?"
-            >
+            <input type="text" id="subject" name="subject" class="form-input">
           </div>
 
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              class="form-textarea"
-              rows="5"
-              placeholder="Describe your question as clearly as possible."
-              required
-            ></textarea>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
           </div>
 
           <div class="form-actions">
@@ -110,11 +105,12 @@
           </p>
         </form>
       </section>
+
     </div>
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 IT Specialists Union</p>
+    <p>&copy; 2008–2026 IT Specialists Union</p>
   </footer>
 
   <script>
