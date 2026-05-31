@@ -451,3 +451,82 @@ nav a {
 nav a:hover {
     color: #ffdd55; /* gaišs hover, redzams uz tumša fona */
 }
+
+/* ===== 3D rotācija ar kantes imitāciju ===== */
+
+.logo-3d {
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  perspective: 1200px;
+  position: relative;
+}
+
+.logo-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+
+  transform-style: preserve-3d;
+  animation: spinShield 6s linear infinite;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
+}
+
+/* Kantes imitācija */
+.logo-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0));
+  transform: translateZ(-1px);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+@keyframes spinShield {
+  0%   { transform: rotateY(0deg); }
+  40%  { transform: rotateY(70deg); }
+  50%  { transform: rotateY(90deg); }
+  60%  { transform: rotateY(110deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Kad logo ir “uz sāniem”, parādās kante */
+@keyframes spinShield {
+  0%   { transform: rotateY(0deg); }
+  40%  { transform: rotateY(70deg); }
+  50%  { transform: rotateY(90deg); }
+  60%  { transform: rotateY(110deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.logo-3d img {
+  animation: spinShield 6s linear infinite;
+}
+
+.logo-3d {
+  --edge-visible: 0;
+}
+
+@keyframes spinShield {
+  0%   { transform: rotateY(0deg); }
+  40%  { transform: rotateY(70deg); }
+  50%  { transform: rotateY(90deg); }
+  60%  { transform: rotateY(110deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.logo-3d img {
+  animation: spinShield 6s linear infinite;
+}
+
+.logo-3d::before {
+  animation: edgeFade 6s linear infinite;
+}
+
+@keyframes edgeFade {
+  0%, 100% { opacity: 0; }
+  45%, 55% { opacity: 1; }
+}
