@@ -1,258 +1,108 @@
 /* ============================================================
-   GLOBAL BASE STYLES
+   CONTACT PAGE LAYOUT (RESTORED & OPTIMIZED)
 ============================================================ */
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
+.contact-page {
+    padding: 1.5rem 1rem 2rem;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #222;
-    line-height: 1.5;
+.contact-layout {
+    display: grid;
+    gap: 1.5rem;
 }
 
-a {
-    color: inherit;
+@media (min-width: 768px) {
+    .contact-layout {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        align-items: flex-start;
+    }
+}
+
+/* Contact info block */
+.contact-info p {
+    margin: 0.3rem 0;
+}
+
+.contact-info a {
+    color: #007ACC;
     text-decoration: none;
 }
 
-/* ============================================================
-   HEADER STYLES
-============================================================ */
-
-/* Default header for internal pages */
-header {
-    background-color: #ffffff;
-    padding: 1.5rem 1rem;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2rem;
-}
-
-header:not(.home-header) p {
-    margin-top: 0.5rem;
-    color: #555;
-}
-
-/* Hero header for organization home pages */
-.home-header {
-    color: #ffffff;
-    text-align: center;
-    padding: 2.5rem 1rem 2rem;
-    border-bottom: none;
-}
-
-.home-header h1 {
-    margin: 0 0 0.5rem;
-    font-size: 2rem;
-}
-
-.home-header p {
-    margin: 0;
-    font-size: 1rem;
+.contact-info a:hover {
+    text-decoration: underline;
 }
 
 /* ============================================================
-   LOGO SYSTEM (FULLY FIXED)
+   CONTACT FORM ELEMENTS
 ============================================================ */
 
-/* UNIVERSAL LOGO RULE — applies to ALL organizations */
-.header-logo {
-    max-width: 180px;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
-
-/* 3D rotating NPA logo — separate, non-conflicting */
-.logo-3d {
-    width: 180px;
-    height: 180px;
-    margin: 0 auto;
-    perspective: 1200px;
-    position: relative;
-}
-
-.logo-3d img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    transform-style: preserve-3d;
-    animation: spinShield 6s linear infinite;
-    filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
-}
-
-.logo-3d::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.25), rgba(0,0,0,0));
-    transform: translateZ(-1px);
-    opacity: 0;
-    pointer-events: none;
-    animation: edgeFade 6s linear infinite;
-}
-
-@keyframes spinShield {
-  0%   { transform: rotateY(0deg); }
-  40%  { transform: rotateY(70deg); }
-  50%  { transform: rotateY(90deg); }
-  60%  { transform: rotateY(110deg); }
-  100% { transform: rotateY(360deg); }
-}
-
-@keyframes edgeFade {
-  0%, 100% { opacity: 0; }
-  45%, 55% { opacity: 1; }
-}
-
-/* ============================================================
-   ORGANIZATION HEADER COLORS
-============================================================ */
-
-.home-header--npa {
-    background: linear-gradient(135deg, #003B70, #001F4D);
-}
-
-.home-header--lja {
-    background: linear-gradient(135deg, #145214, #06330a);
-}
-
-.home-header--itsa {
-    background: linear-gradient(135deg, #005b96, #00335b);
-}
-
-/* ============================================================
-   ORGANIZATION THEME COLORS
-============================================================ */
-
-.npa-theme {
-    color: #0c275c;
-}
-
-.lja-theme {
-    color: #145214;
-}
-
-.itsa-theme {
-    color: #004b6b;
-}
-
-.lja-theme h2,
-.lja-theme h3 {
-    color: #145214;
-}
-
-.itsa-theme h2,
-.itsa-theme h3 {
-    color: #004b6b;
-}
-
-/* ============================================================
-   NAVIGATION
-============================================================ */
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0 0 0;
+.form-group {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
 }
 
-nav a {
-    color: #ffffff;
-    font-weight: bold;
+.form-group label {
+    font-weight: 600;
+    font-size: 0.95rem;
 }
 
-nav a:hover {
-    color: #ffdd55;
+.form-input,
+.form-textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: #fafafa;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
 
-/* ============================================================
-   CONTENT LAYOUT
-============================================================ */
-
-main {
-    padding: 1.5rem 1rem;
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #007ACC;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.18);
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1rem;
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
-/* ============================================================
-   BUTTONS
-============================================================ */
+.form-actions {
+    margin-top: 0.5rem;
+}
 
-.btn,
-.org-btn,
-.pdf-button {
-    display: block;
+/* Submit button */
+.btn-primary {
+    display: inline-block;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
     background-color: #007ACC;
     color: #ffffff;
-    padding: 1rem;
-    border-radius: 6px;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.1s;
 }
 
-.btn:hover,
-.org-btn:hover,
-.pdf-button:hover {
+.btn-primary:hover {
     background-color: #005FA3;
     transform: translateY(-1px);
     box-shadow: 0 4px 10px rgba(0, 95, 163, 0.25);
 }
 
-/* ============================================================
-   CONTACT CARDS
-============================================================ */
-
-.contact-card {
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    border: 1px solid #e2e2e2;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
-.contact-card h2 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-.contact-note {
-    margin-top: 1rem;
-    font-size: 0.95rem;
-    color: #555;
-}
-
-/* ============================================================
-   FOOTER
-============================================================ */
-
-footer {
-    margin-top: 2rem;
-    text-align: center;
-    padding: 1.5rem;
-    font-size: 0.9rem;
-    background-color: #f5f5f5;
-    color: #444;
+.form-hint {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: #666;
 }
