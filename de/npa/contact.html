@@ -6,14 +6,18 @@
   <title>Kontakt – Unabhängige Polizeigewerkschaft</title>
   <link rel="stylesheet" href="../../css/style.css">
 </head>
+
 <body>
-  <header>
+  <header class="home-header home-header--npa">
     <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/NPA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/NPA Logo.png" alt="NPA logo">
-    </picture>
-  </div>
+      <div class="logo-3d">
+        <picture>
+          <source srcset="../../img/npa-logo.webp" type="image/webp">
+          <img class="header-logo" src="../../img/npa-logo.png" alt="NPA logo">
+        </picture>
+      </div>
+    </div>
+
     <h1>Kontakt</h1>
 
     <div class="lang-switch">
@@ -29,19 +33,30 @@
         <li><a href="../index.html">← Zurück zur Hauptseite</a></li>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="about.html">Über uns</a></li>
-        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="contact.html" class="active">Kontakt</a></li>
         <li><a href="partners.html">Partner</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="contact-page">
+  <main class="contact-page npa-theme">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
         <h2>Kontakt zur NPA</h2>
-        <p><strong>Adresse:</strong> Riga, Lettland</p>
-        <p><strong>E-Mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
+
+        <p><strong>Vollständiger Name:</strong><br>
+          Unabhängige Polizeigewerkschaft
+        </p>
+
+        <p><strong>E‑Mail:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
+        <p><strong>Adresse:</strong><br>
+          Riga, Lettland
+        </p>
+
         <p class="contact-note">
           Wenn Sie Fragen zum Dienst, zum Kollektivvertrag oder zum Schutz Ihrer Rechte haben –  
           zögern Sie nicht, die Gewerkschaft zu kontaktieren.
@@ -50,6 +65,7 @@
 
       <section class="contact-card">
         <h2>Schreiben Sie uns</h2>
+
         <form id="npaContactFormDe" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
 
           <div class="form-group">
@@ -58,7 +74,7 @@
           </div>
 
           <div class="form-group">
-            <label for="email">E-Mail</label>
+            <label for="email">E‑Mail</label>
             <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
@@ -82,7 +98,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2008–2025 Unabhängige Polizeigewerkschaft</p>
+    <p>&copy; 2008–2026 Unabhängige Polizeigewerkschaft</p>
   </footer>
 
   <script>
