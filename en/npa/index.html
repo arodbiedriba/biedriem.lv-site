@@ -44,13 +44,13 @@
 <body>
   <header class="home-header home-header--npa">
     <div class="header-logo-center">
-  <div class="logo-3d">
-    <picture>
-      <source srcset="../../img/npa-logo.webp" type="image/webp">
-      <img src="../../img/npa-logo.png" alt="NPA logo">
-    </picture>
-  </div>
-</div>
+      <div class="logo-3d">
+        <picture>
+          <source srcset="../../img/npa-logo.webp" type="image/webp">
+          <img src="../../img/npa-logo.png" alt="NPA logo">
+        </picture>
+      </div>
+    </div>
 
     <h1>Independent Police Union</h1>
 
@@ -152,7 +152,6 @@
         ? "🛂 " + titles.join(" • ")
         : "No official news available.";
 
-      // Nepārtrauktai lentei — dublējam tekstu
       document.getElementById("tickerPrimary").textContent = text + " • " + text;
 
     }).catch(() => {
