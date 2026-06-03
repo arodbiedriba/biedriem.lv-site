@@ -362,3 +362,14 @@ footer {
         object-fit: contain;
     }
 }
+
+/* ============================================================
+   PARTNERU LOGOTIPI — DROŠAIS REŽĪMS
+============================================================ */
+
+.org-logo {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
