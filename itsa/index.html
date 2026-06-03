@@ -6,7 +6,6 @@
   <title>Informācijas tehnoloģiju speciālistu arodbiedrība</title>
   <link rel="stylesheet" href="../css/style.css">
 
-  <!-- ITSA ziņu lentes stils -->
   <style>
     .news-ticker {
       background: #005b96;
@@ -45,16 +44,15 @@
 
 <body>
 
-  <!-- HEADER -->
   <header class="home-header home-header--itsa">
     <div class="header-logo-center">
-  <div class="logo-3d">
-    <picture>
-      <source srcset="../../img/itsa-logo.webp" type="image/webp">
-      <img src="../../img/itsa-logo.png" alt="ITSA logo">
-    </picture>
-  </div>
-</div>
+      <div class="logo-3d">
+        <picture>
+          <source srcset="../../img/itsa-logo.webp" type="image/webp">
+          <img src="../../img/itsa-logo.png" alt="ITSA logo">
+        </picture>
+      </div>
+    </div>
 
     <h1>Informācijas tehnoloģiju speciālistu arodbiedrība</h1>
 
@@ -82,14 +80,12 @@
     </nav>
   </header>
 
-  <!-- TOP NEWS TICKER -->
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerItsaTop">
       Ielādē CERT.LV kiberdrošības ziņas...
     </span>
   </div>
 
-  <!-- MAIN CONTENT -->
   <main class="home-main itsa-theme">
 
     <section>
@@ -116,19 +112,16 @@
 
   </main>
 
-  <!-- BOTTOM NEWS TICKER -->
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerItsaBottom">
       Ielādē LMT Technews tehnoloģiju ziņas...
     </span>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>&copy; 2008–2026 Informācijas tehnoloģiju speciālistu arodbiedrība</p>
   </footer>
 
-  <!-- RSS SCRIPT -->
   <script>
     const RSS_CERT = "https://api.rss2json.com/v1/api.json?rss_url=https://cert.lv/lv/rss/zinas.xml";
     const RSS_LMT  = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lmt.lv/rss/lv/";
