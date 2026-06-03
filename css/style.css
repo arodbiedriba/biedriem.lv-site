@@ -1,4 +1,212 @@
 /* ============================================================
+   GLOBAL BASE STYLES
+============================================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ============================================================
+   HEADER STYLES
+============================================================ */
+
+/* Default header for internal pages */
+header {
+    background-color: #ffffff;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header:not(.home-header) p {
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+/* Hero header for organization home pages */
+.home-header {
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem 2rem;
+    border-bottom: none;
+}
+
+.home-header h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+}
+
+.home-header p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* Main index header (restored) */
+.home-header--main {
+    background: linear-gradient(135deg, #004B8D, #002F5F);
+    color: #ffffff;
+}
+
+/* ============================================================
+   LOGO SYSTEM
+============================================================ */
+
+.header-logo {
+    max-width: 180px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   ORGANIZATION HEADER COLORS
+============================================================ */
+
+.home-header--npa {
+    background: linear-gradient(135deg, #003B70, #001F4D);
+}
+
+.home-header--lja {
+    background: linear-gradient(135deg, #145214, #06330a);
+}
+
+.home-header--itsa {
+    background: linear-gradient(135deg, #005b96, #00335b);
+}
+
+/* ============================================================
+   ORGANIZATION THEME COLORS
+============================================================ */
+
+.npa-theme {
+    color: #0c275c;
+}
+
+.lja-theme {
+    color: #145214;
+}
+
+.itsa-theme {
+    color: #004b6b;
+}
+
+.lja-theme h2,
+.lja-theme h3 {
+    color: #145214;
+}
+
+.itsa-theme h2,
+.itsa-theme h3 {
+    color: #004b6b;
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffdd55;
+}
+
+/* ============================================================
+   CONTENT LAYOUT
+============================================================ */
+
+main {
+    padding: 1.5rem 1rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.btn,
+.org-btn,
+.pdf-button {
+    display: block;
+    background-color: #007ACC;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover,
+.org-btn:hover,
+.pdf-button:hover {
+    background-color: #005FA3;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 95, 163, 0.25);
+}
+
+/* ============================================================
+   CONTACT CARDS
+============================================================ */
+
+.contact-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #e2e2e2;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+}
+
+.contact-card h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.contact-note {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ============================================================
    CONTACT PAGE LAYOUT (RESTORED & OPTIMIZED)
 ============================================================ */
 
@@ -18,7 +226,6 @@
     }
 }
 
-/* Contact info block */
 .contact-info p {
     margin: 0.3rem 0;
 }
@@ -76,7 +283,6 @@
     margin-top: 0.5rem;
 }
 
-/* Submit button */
 .btn-primary {
     display: inline-block;
     padding: 0.7rem 1.4rem;
@@ -105,4 +311,17 @@
     margin-top: 0.75rem;
     font-size: 0.85rem;
     color: #666;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+footer {
+    margin-top: 2rem;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    background-color: #f5f5f5;
+    color: #444;
 }
