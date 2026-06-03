@@ -325,3 +325,35 @@ footer {
     background-color: #f5f5f5;
     color: #444;
 }
+/* ============================
+   LOGO DROŠAIS REŽĪMS (VISIEM)
+   ============================ */
+.header-logo,
+.home-header img {
+    max-width: 180px;
+    height: auto;
+}
+
+/* ============================
+   NPA 3D LOGO
+   ============================ */
+.logo-3d {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+.logo-3d img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* ============================
+   ITSA un LJA LOGO
+   ============================ */
+.home-header--itsa .header-logo,
+.home-header--lja .header-logo {
+    max-width: 180px;
+    height: auto;
+}
