@@ -27,7 +27,6 @@
       padding-left: 100%;
     }
 
-    /* Vienota flīžu sistēma visām valodām */
     .org-list {
       max-width: 960px;
       margin: 0 auto;
@@ -84,7 +83,7 @@
 
 <body>
 
-<header class="home-header">
+<header class="home-header home-header--main">
   <h1>Neatkarīgā policistu arodbiedrība un sadarbības organizācijas</h1>
   <p>Biedriem.lv apvieno policistu, IT un juristu arodbiedrības.</p>
 
@@ -105,7 +104,6 @@
 
   <div class="org-list">
 
-    <!-- NPA -->
     <a class="org-tile" href="npa/index.html">
       <span class="org-title">Neatkarīgā policistu arodbiedrība</span>
       <picture>
@@ -114,7 +112,6 @@
       </picture>
     </a>
 
-    <!-- ITSA -->
     <a class="org-tile" href="itsa/index.html">
       <span class="org-title">Informācijas tehnoloģiju speciālistu arodbiedrība</span>
       <picture>
@@ -123,7 +120,6 @@
       </picture>
     </a>
 
-    <!-- LJA -->
     <a class="org-tile" href="lja/index.html">
       <span class="org-title">Latviešu juristu apvienība</span>
       <picture>
@@ -145,7 +141,6 @@
 </footer>
 
 <script>
-/* Ziņu lenta – identiska visām valodām */
 const RSS_LSM = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lv";
 const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
 
@@ -156,7 +151,7 @@ function extractTitles(data) {
   return data?.items?.slice(0, 6).map(i => i.title) || [];
 }
 
-function makeTicker(track, container) {
+function makeTicker(track) {
   let offset = 0;
   function animate() {
     offset -= 0.5;
@@ -178,8 +173,8 @@ Promise.all([
   const text = titles.length ? titles.join(" • ") : "Nav pieejamu ziņu.";
   topTrack.textContent = text;
   bottomTrack.textContent = text;
-  makeTicker(topTrack, topTrack.parentElement);
-  makeTicker(bottomTrack, bottomTrack.parentElement);
+  makeTicker(topTrack);
+  makeTicker(bottomTrack);
 });
 </script>
 
