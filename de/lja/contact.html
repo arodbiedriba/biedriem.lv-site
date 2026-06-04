@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt — Lettische Juristenvereinigung</title>
+  <title>Kontakt – Lettische Juristenvereinigung</title>
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -28,7 +28,7 @@
 
     <nav>
       <ul>
-        <li><a href="../index.html">← Zurück zur Hauptseite</a></li>
+        <li><a href="index.html">← Zurück zur Startseite</a></li>
         <li><a href="index.html">Startseite</a></li>
         <li><a href="about.html">Über uns</a></li>
         <li><a href="contact.html" class="active">Kontakt</a></li>
@@ -37,41 +37,30 @@
     </nav>
   </header>
 
-  <main class="contact-page lja-theme">
+  <main class="contact-page">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
-        <h2>Kontakt zur LJV</h2>
-
-        <p><strong>Vollständiger Name:</strong><br>
-          Lettische Juristenvereinigung
-        </p>
-
-        <p><strong>E‑Mail:</strong><br>
-          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
-        </p>
-
-        <p><strong>Adresse:</strong><br>
-          Riga, Lettland
-        </p>
-
+        <h2>Kontakt zur LJA</h2>
+        <p><strong>Adresse:</strong> Riga, Lettland</p>
+        <p><strong>E‑mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
         <p class="contact-note">
-          Wenn Sie Fragen zu juristischen Prozessen, Gesetzgebung oder professioneller Unterstützung haben,
-          können Sie uns jederzeit schreiben.
+          Wenn Sie Fragen zur Organisation oder zu Kooperationsmöglichkeiten haben —  
+          kontaktieren Sie uns gerne.
         </p>
       </section>
 
       <section class="contact-card">
         <h2>Schreiben Sie uns</h2>
-
         <form id="ljaContactFormDe" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+
           <div class="form-group">
             <label for="name">Vollständiger Name</label>
             <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
           <div class="form-group">
-            <label for="email">E‑Mail</label>
+            <label for="email">E‑mail</label>
             <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
@@ -85,7 +74,7 @@
           </div>
 
           <p class="form-hint">
-            Mit dem Absenden erklären Sie sich einverstanden, eine Antwort an die angegebene Kontaktadresse zu erhalten.
+            Mit dem Absenden der Nachricht stimmen Sie zu, eine Antwort an die angegebene Kontaktadresse zu erhalten.
           </p>
         </form>
       </section>
@@ -109,10 +98,4 @@
       if (response.ok) {
         window.location.href = "paldies.html";
       } else {
-        alert("Es ist ein Fehler aufgetreten, bitte versuchen Sie es erneut.");
-      }
-    });
-  </script>
-
-</body>
-</html>
+        alert
