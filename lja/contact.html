@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakti — Latviešu juristu apvienība</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <header class="home-header home-header--lja">
+    <div class="header-logo-center">
+      <picture>
+        <source srcset="../img/lja-logo.webp" type="image/webp">
+        <img class="header-logo" src="../img/lja-logo.png" alt="LJA logo">
+      </picture>
+    </div>
+
+    <h1>Kontakti</h1>
+
+    <div class="lang-switch">
+      <span>Valoda:</span>
+      <a href="contact.html" class="active">LV</a> |
+      <a href="../ru/lja/contact.html">RU</a> |
+      <a href="../en/lja/contact.html">EN</a> |
+      <a href="../de/lja/contact.html">DE</a>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
+        <li><a href="index.html">Sākums</a></li>
+        <li><a href="about.html">Par mums</a></li>
+        <li><a href="contact.html" class="active">Kontakti</a></li>
+        <li><a href="partners.html">Partneri</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="contact-page lja-theme">
+    <div class="contact-layout">
+
+      <section class="contact-card contact-info">
+        <h2>Sazinies ar LJA</h2>
+
+        <p><strong>Pilns nosaukums:</strong><br>
+          Latviešu juristu apvienība
+        </p>
+
+        <p><strong>E‑pasts:</strong><br>
+          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
+        </p>
+
+        <p><strong>Adrese:</strong><br>
+          Rīga, Latvija
+        </p>
+
+        <p class="contact-note">
+          Ja tev ir jautājumi par juridiskiem procesiem, normatīvajiem aktiem vai profesionālo atbalstu,
+          droši raksti apvienībai.
+        </p>
+      </section>
+
+      <section class="contact-card">
+        <h2>Raksti mums</h2>
+
+        <form id="ljaContactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+          <div class="form-group">
+            <label for="lja-name">Vārds, uzvārds</label>
+            <input type="text" id="lja-name" name="name" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lja-email">E‑pasts</label>
+            <input type="email" id="lja-email" name="email" class="form-input" required>
+          </div>
+
+          <div class="form-group">
+            <label for="lja-message">Ziņa</label>
+            <textarea id="lja-message" name="message" class="form-textarea" rows="5" required></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Nosūtīt ziņu</button>
+          </div>
+
+          <p class="form-hint">
+            Nosūtot ziņu, tu piekrīti saņemt atbildi uz norādīto kontaktinformāciju.
+          </p>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2008–2026 Latviešu juristu apvienība</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('ljaContactForm');
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        window.location.href = "paldies.html";
+      } else {
+        alert("Radās kļūda, mēģini vēlreiz!");
+      }
+    });
+  </script>
+
+</body>
+</html>
