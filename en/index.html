@@ -31,7 +31,6 @@
       padding-left: 100%;
     }
 
-    /* Unified tiles layout */
     .org-list {
       max-width: 960px;
       margin: 0 auto;
@@ -87,7 +86,7 @@
 </head>
 
 <body>
-  <header class="home-header">
+  <header class="home-header home-header--main">
     <h1>Independent Police Union and Partner Organizations</h1>
 
     <div class="lang-switch">
@@ -104,15 +103,14 @@
     </p>
   </header>
 
-  <div class="news-ticker" aria-label="LSM and LV Portal news — top ticker">
+  <div class="news-ticker">
     <span class="news-track" id="newsTickerTop">Loading news...</span>
   </div>
 
   <main class="home-main">
     <div class="org-list">
 
-      <!-- NPA -->
-      <a class="org-tile" href="npa/index.html">
+      <a class="org-tile" href="../npa/index.html">
         <span class="org-title">Independent Police Union of Latvia</span>
         <picture>
           <source srcset="../img/npa-logo.webp" type="image/webp">
@@ -120,8 +118,7 @@
         </picture>
       </a>
 
-      <!-- ITSA -->
-      <a class="org-tile" href="itsa/index.html">
+      <a class="org-tile" href="../itsa/index.html">
         <span class="org-title">Information Technology Specialists Union</span>
         <picture>
           <source srcset="../img/itsa-logo.webp" type="image/webp">
@@ -129,8 +126,7 @@
         </picture>
       </a>
 
-      <!-- LJA -->
-      <a class="org-tile" href="lja/index.html">
+      <a class="org-tile" href="../lja/index.html">
         <span class="org-title">Latvian Lawyers’ Association</span>
         <picture>
           <source srcset="../img/lja-logo.webp" type="image/webp">
@@ -141,7 +137,7 @@
     </div>
   </main>
 
-  <div class="news-ticker" aria-label="LSM and LV Portal news — bottom ticker">
+  <div class="news-ticker">
     <span class="news-track" id="newsTickerBottom">Loading news...</span>
   </div>
 
@@ -160,7 +156,7 @@
       return data?.items?.slice(0, 6).map(i => i.title) || [];
     }
 
-    function makeTicker(track, container) {
+    function makeTicker(track) {
       let offset = 0;
       function animate() {
         offset -= 0.5;
@@ -187,13 +183,8 @@
       topTrack.textContent    = text;
       bottomTrack.textContent = text;
 
-      makeTicker(topTrack, topTrack.parentElement);
-      makeTicker(bottomTrack, bottomTrack.parentElement);
-    })
-    .catch(() => {
-      const fallback = "Failed to load news.";
-      topTrack.textContent    = fallback;
-      bottomTrack.textContent = fallback;
+      makeTicker(topTrack);
+      makeTicker(bottomTrack);
     });
   </script>
 
