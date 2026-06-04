@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контакты — Латвийская ассоциация юристов</title>
+  <title>Контакты – Объединение юристов Латвии</title>
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -28,8 +28,8 @@
 
     <nav>
       <ul>
-        <li><a href="../index.html">← На главную страницу</a></li>
-        <li><a href="index.html">Начало</a></li>
+        <li><a href="index.html">← На главную страницу</a></li>
+        <li><a href="index.html">Главная</a></li>
         <li><a href="about.html">О нас</a></li>
         <li><a href="contact.html" class="active">Контакты</a></li>
         <li><a href="partners.html">Партнёры</a></li>
@@ -37,36 +37,25 @@
     </nav>
   </header>
 
-  <main class="contact-page lja-theme">
+  <main class="contact-page">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
-        <h2>Связаться с ЛАЮ</h2>
-
-        <p><strong>Полное название:</strong><br>
-          Латвийская ассоциация юристов
-        </p>
-
-        <p><strong>E‑mail:</strong><br>
-          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
-        </p>
-
-        <p><strong>Адрес:</strong><br>
-          Рига, Латвия
-        </p>
-
+        <h2>Связаться с LJA</h2>
+        <p><strong>Адрес:</strong> Рига, Латвия</p>
+        <p><strong>E‑mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
         <p class="contact-note">
-          Если у вас есть вопросы о юридических процессах, нормативных актах или профессиональной поддержке —
-          смело пишите ассоциации.
+          Если у вас есть вопросы о деятельности организации или сотрудничестве —  
+          смело обращайтесь.
         </p>
       </section>
 
       <section class="contact-card">
-        <h2>Напишите нам</h2>
-
+        <h2>Написать нам</h2>
         <form id="ljaContactFormRu" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+
           <div class="form-group">
-            <label for="name">Имя, фамилия</label>
+            <label for="name">Имя и фамилия</label>
             <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
@@ -85,7 +74,7 @@
           </div>
 
           <p class="form-hint">
-            Отправляя сообщение, вы соглашаетесь получить ответ на указанный контакт.
+            Отправляя сообщение, вы соглашаетесь получить ответ на указанные контактные данные.
           </p>
         </form>
       </section>
@@ -94,7 +83,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2008–2026 Латвийская ассоциация юристов</p>
+    <p>&copy; 2008–2026 Объединение юристов Латвии</p>
   </footer>
 
   <script>
@@ -109,7 +98,7 @@
       if (response.ok) {
         window.location.href = "paldies.html";
       } else {
-        alert("Произошла ошибка, попробуйте снова.");
+        alert("Произошла ошибка. Попробуйте ещё раз.");
       }
     });
   </script>
