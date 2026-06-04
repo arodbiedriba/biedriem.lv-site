@@ -5,75 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lettische Juristenvereinigung</title>
   <link rel="stylesheet" href="../../css/style.css">
-
-  <style>
-    .news-ticker {
-      background: #0b4f2c;
-      color: white;
-      padding: 10px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      font-size: 18px;
-      font-weight: 500;
-      cursor: default;
-      margin-bottom: 4px;
-    }
-
-    .news-ticker.secondary {
-      background: #145f38;
-      margin-top: 20px;
-    }
-
-    .news-ticker-content {
-      display: inline-block;
-      padding-left: 100%;
-      animation: ticker 90s linear infinite;
-    }
-
-    .news-ticker:hover .news-ticker-content {
-      animation-play-state: paused;
-    }
-
-    @keyframes ticker {
-      0%   { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-  </style>
 </head>
 
 <body>
-
-
   <header class="home-header home-header--lja">
 
+    <div class="header-logo-center">
+      <picture>
+        <source srcset="../../img/lja-logo.webp" type="image/webp">
+        <img class="header-logo" src="../../img/lja-logo.png" alt="LJA logo">
+      </picture>
+    </div>
 
-  <div class="header-logo-center">
-    <picture>
-      <source srcset="../../img/LJA Logo.webp" type="image/webp">
-      <img class="header-logo" src="../../img/LJA Logo.png" alt="LJA logo">
-    </picture>
-  </div>
+    <h1>Lettische Juristenvereinigung</h1>
 
-  <h1>Lettische Juristenvereinigung</h1>
+    <div class="lang-switch">
+      <span>Sprache:</span>
+      <a href="../../lja/index.html">LV</a> |
+      <a href="../../ru/lja/index.html">RU</a> |
+      <a href="../../en/lja/index.html">EN</a> |
+      <a href="index.html" class="active">DE</a>
+    </div>
 
-  <div class="lang-switch">
-    <span>Sprache:</span>
-    <a href="../../lja/index.html">LV</a> |
-    <a href="../../ru/lja/index.html">RU</a> |
-    <a href="../../en/lja/index.html">EN</a> |
-    <a href="index.html" class="active">DE</a>
-  </div>
+    <p class="subtagline">
+      Eine Organisation, die die Entwicklung von Rechtsstaatlichkeit und Demokratie in Lettland fördert —<br>
+      <strong>indem sie Juristen für professionelle Zusammenarbeit vereint.</strong>
+    </p>
 
-  <p class="subtagline">
-    Eine Organisation, die Rechtsstaatlichkeit und Demokratie in Lettland fördert —<br>
-    <strong>indem sie Juristen für professionelle Zusammenarbeit und ein starkes rechtsstaatliches System vereint.</strong>
-  </p>
+    <nav>
+      <ul>
+        <li><a href="../index.html">← Zurück zur Hauptseite</a></li>
+        <li><a href="index.html" class="active">Startseite</a></li>
+        <li><a href="about.html">Über uns</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+        <li><a href="partners.html">Partner</a></li>
+      </ul>
+    </nav>
 
-</header>
+  </header>
 
   <div class="news-ticker">
     <span class="news-ticker-content" id="tickerLjaLv">
-      Juristische Nachrichten des LV-Portals werden geladen...
+      Juristische Nachrichten werden geladen...
     </span>
   </div>
 
@@ -81,41 +54,41 @@
     <section>
       <p>
         Die Lettische Juristenvereinigung (LJA) stärkt die Rechtsstaatlichkeit und Demokratie in Lettland,
-        fördert die juristische Kultur, nutzt rechtliche Instrumente und schafft einen professionellen Dialog
-        zwischen Juristen, staatlichen Institutionen und der Gesellschaft.
+        fördert die Rechtskultur und schafft einen professionellen Dialog zwischen Juristen,
+        staatlichen Institutionen und der Gesellschaft.
       </p>
     </section>
 
     <section>
-      <h2>Rechtliche Angaben</h2>
+      <h2>Registrierungsdaten</h2>
       <ul class="no-style">
         <li><strong>Name:</strong> Latviešu juristu apvienība</li>
-        <li><strong>Rechtsform:</strong> Verein (biedrība, BDR)</li>
+        <li><strong>Rechtsform:</strong> Verein (BDR)</li>
         <li><strong>Registrierungsnummer:</strong> 40008127112</li>
-        <li><strong>Eintragung im Register der Vereine und Stiftungen:</strong> 25.04.2008</li>
-        <li><strong>Zertifikatsnummer und Datum:</strong> B009011, 25.04.2008</li>
+        <li><strong>Registrierungsdatum:</strong> 25.04.2008</li>
+        <li><strong>Zertifikatsnummer:</strong> B009011</li>
       </ul>
 
-      <h3>Mission</h3>
+      <h3>Ziel</h3>
       <p>
-        Durch rechtliche Mittel sicherzustellen, dass Lettland ein demokratischer und rechtsstaatlicher Staat bleibt.
+        Durch rechtliche Mittel die Entwicklung eines demokratischen und rechtsstaatlichen Lettlands fördern.
       </p>
     </section>
   </main>
 
   <div class="news-ticker secondary">
     <span class="news-ticker-content" id="tickerLjaLsm">
-      LSM-Nachrichten werden geladen...
+      LSM‑Nachrichten werden geladen...
     </span>
   </div>
 
   <footer>
-    <p>&copy; 2008–2025 Lettische Juristenvereinigung</p>
+    <p>&copy; 2008–2026 Lettische Juristenvereinigung</p>
   </footer>
 
   <script>
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
-    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=en";
+    const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=lat";
 
     function extractTitles(data, max = 10) {
       if (!data || !data.items) return [];
@@ -126,28 +99,16 @@
       .then(r => r.json())
       .then(data => {
         const titles = extractTitles(data, 10);
-        const text = titles.length
-          ? "⚖️ " + titles.join(" • ")
-          : "Keine juristischen Nachrichten vom LV-Portal verfügbar.";
-        document.getElementById("tickerLjaLv").textContent = text;
-      })
-      .catch(() => {
         document.getElementById("tickerLjaLv").textContent =
-          "LV-Portal-Nachrichten konnten nicht geladen werden.";
+          titles.length ? "⚖️ " + titles.join(" • ") : "Keine juristischen Nachrichten verfügbar.";
       });
 
     fetch(RSS_LSM)
       .then(r => r.json())
       .then(data => {
         const titles = extractTitles(data, 10);
-        const text = titles.length
-          ? "📰 " + titles.join(" • ")
-          : "Keine LSM-Nachrichten verfügbar.";
-        document.getElementById("tickerLjaLsm").textContent = text;
-      })
-      .catch(() => {
         document.getElementById("tickerLjaLsm").textContent =
-          "LSM-Nachrichten konnten nicht geladen werden.";
+          titles.length ? "📰 " + titles.join(" • ") : "Keine LSM‑Nachrichten verfügbar.";
       });
   </script>
 
