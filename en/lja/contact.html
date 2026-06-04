@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacts — Latvian Lawyers Association</title>
+  <title>Contacts – Latvian Lawyers Association</title>
   <link rel="stylesheet" href="../../css/style.css">
 </head>
 
@@ -28,7 +28,7 @@
 
     <nav>
       <ul>
-        <li><a href="../index.html">← Back to main page</a></li>
+        <li><a href="index.html">← Back to main page</a></li>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About us</a></li>
         <li><a href="contact.html" class="active">Contacts</a></li>
@@ -37,34 +37,23 @@
     </nav>
   </header>
 
-  <main class="contact-page lja-theme">
+  <main class="contact-page">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
-        <h2>Contact the LLA</h2>
-
-        <p><strong>Full name:</strong><br>
-          Latvian Lawyers Association
-        </p>
-
-        <p><strong>E‑mail:</strong><br>
-          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
-        </p>
-
-        <p><strong>Address:</strong><br>
-          Riga, Latvia
-        </p>
-
+        <h2>Contact LJA</h2>
+        <p><strong>Address:</strong> Riga, Latvia</p>
+        <p><strong>E‑mail:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
         <p class="contact-note">
-          If you have questions about legal processes, legislation or professional support,
-          feel free to contact the association.
+          If you have questions about the organisation or cooperation opportunities —  
+          feel free to contact us.
         </p>
       </section>
 
       <section class="contact-card">
         <h2>Write to us</h2>
-
         <form id="ljaContactFormEn" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
+
           <div class="form-group">
             <label for="name">Full name</label>
             <input type="text" id="name" name="name" class="form-input" required>
@@ -85,7 +74,7 @@
           </div>
 
           <p class="form-hint">
-            By sending this message, you agree to receive a reply to the contact information provided.
+            By sending this message, you agree to receive a reply using the contact details you provided.
           </p>
         </form>
       </section>
@@ -109,7 +98,7 @@
       if (response.ok) {
         window.location.href = "paldies.html";
       } else {
-        alert("An error occurred, please try again.");
+        alert("An error occurred. Please try again.");
       }
     });
   </script>
