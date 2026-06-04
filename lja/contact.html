@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakti — Latviešu juristu apvienība</title>
+  <title>Kontakti – Latviešu juristu apvienība</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -28,7 +28,7 @@
 
     <nav>
       <ul>
-        <li><a href="../index.html">← Atpakaļ uz galveno lapu</a></li>
+        <li><a href="index.html">← Atpakaļ uz sākumlapu</a></li>
         <li><a href="index.html">Sākums</a></li>
         <li><a href="about.html">Par mums</a></li>
         <li><a href="contact.html" class="active">Kontakti</a></li>
@@ -37,51 +37,40 @@
     </nav>
   </header>
 
-  <main class="contact-page lja-theme">
+  <main class="contact-page">
     <div class="contact-layout">
 
       <section class="contact-card contact-info">
         <h2>Sazinies ar LJA</h2>
-
-        <p><strong>Pilns nosaukums:</strong><br>
-          Latviešu juristu apvienība
-        </p>
-
-        <p><strong>E‑pasts:</strong><br>
-          <a href="mailto:info@biedriem.lv">info@biedriem.lv</a>
-        </p>
-
-        <p><strong>Adrese:</strong><br>
-          Rīga, Latvija
-        </p>
-
+        <p><strong>Adrese:</strong> Rīga, Latvija</p>
+        <p><strong>E‑pasts:</strong> <a href="mailto:info@biedriem.lv">info@biedriem.lv</a></p>
         <p class="contact-note">
-          Ja tev ir jautājumi par juridiskiem procesiem, normatīvajiem aktiem vai profesionālo atbalstu,
-          droši raksti apvienībai.
+          Ja tev ir jautājumi par biedrību, tās darbību vai sadarbības iespējām —  
+          droši sazinies ar mums.
         </p>
       </section>
 
       <section class="contact-card">
         <h2>Raksti mums</h2>
+        <form id="ljaContactFormLv" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
 
-        <form id="ljaContactForm" action="https://formspree.io/f/xzzwkaaq" method="POST" novalidate>
           <div class="form-group">
-            <label for="lja-name">Vārds, uzvārds</label>
-            <input type="text" id="lja-name" name="name" class="form-input" required>
+            <label for="name">Vārds, uzvārds</label>
+            <input type="text" id="name" name="name" class="form-input" required>
           </div>
 
           <div class="form-group">
-            <label for="lja-email">E‑pasts</label>
-            <input type="email" id="lja-email" name="email" class="form-input" required>
+            <label for="email">E‑pasts</label>
+            <input type="email" id="email" name="email" class="form-input" required>
           </div>
 
           <div class="form-group">
-            <label for="lja-message">Ziņa</label>
-            <textarea id="lja-message" name="message" class="form-textarea" rows="5" required></textarea>
+            <label for="message">Ziņojums</label>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required></textarea>
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="btn-primary">Nosūtīt ziņu</button>
+            <button type="submit" class="btn-primary">Sūtīt ziņu</button>
           </div>
 
           <p class="form-hint">
@@ -98,7 +87,7 @@
   </footer>
 
   <script>
-    const form = document.getElementById('ljaContactForm');
+    const form = document.getElementById('ljaContactFormLv');
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const response = await fetch(form.action, {
@@ -109,7 +98,7 @@
       if (response.ok) {
         window.location.href = "paldies.html";
       } else {
-        alert("Radās kļūda, mēģini vēlreiz!");
+        alert("Radās kļūda. Lūdzu, mēģini vēlreiz.");
       }
     });
   </script>
