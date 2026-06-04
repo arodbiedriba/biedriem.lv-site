@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Независимый профсоюз полицейских и партнёрские организации – biedriem.lv</title>
 
-  <title>Профсоюз полиции и партнерские организации – biedriem.lv</title>
   <meta name="description"
         content="Независимый профсоюз полицейских, профсоюз IT‑специалистов и объединение юристов Латвии — совместная платформа biedriem.lv.">
 
   <link rel="stylesheet" href="../css/style.css">
 
+  <!-- SLĪDOŠĀ LENTA – PILNS CSS -->
   <style>
     .news-ticker {
       background: #123b82;
@@ -87,8 +88,8 @@
 </head>
 
 <body>
-  <header class="home-header">
-    <h1>Независимый профсоюз полицейских и партнерские организации</h1>
+  <header class="home-header home-header--main">
+    <h1>Независимый профсоюз полицейских и партнёрские организации</h1>
 
     <div class="lang-switch">
       <span>Язык:</span>
@@ -104,6 +105,7 @@
     </p>
   </header>
 
+  <!-- AUGŠĒJĀ LENTA -->
   <div class="news-ticker" aria-label="Новости LSM и LV Portal — верхняя лента">
     <span class="news-track" id="newsTickerTop">Загрузка новостей...</span>
   </div>
@@ -112,7 +114,7 @@
     <div class="org-list">
 
       <!-- NPA -->
-      <a class="org-tile" href="npa/index.html">
+      <a class="org-tile" href="../npa/index.html">
         <span class="org-title">Независимый профсоюз полицейских Латвии</span>
         <picture>
           <source srcset="../img/npa-logo.webp" type="image/webp">
@@ -121,7 +123,7 @@
       </a>
 
       <!-- ITSA -->
-      <a class="org-tile" href="itsa/index.html">
+      <a class="org-tile" href="../itsa/index.html">
         <span class="org-title">Профсоюз IT‑специалистов</span>
         <picture>
           <source srcset="../img/itsa-logo.webp" type="image/webp">
@@ -130,7 +132,7 @@
       </a>
 
       <!-- LJA -->
-      <a class="org-tile" href="lja/index.html">
+      <a class="org-tile" href="../lja/index.html">
         <span class="org-title">Объединение юристов Латвии</span>
         <picture>
           <source srcset="../img/lja-logo.webp" type="image/webp">
@@ -141,6 +143,7 @@
     </div>
   </main>
 
+  <!-- APakšējā lenta -->
   <div class="news-ticker" aria-label="Новости LSM и LV Portal — нижняя лента">
     <span class="news-track" id="newsTickerBottom">Загрузка новостей...</span>
   </div>
@@ -149,6 +152,7 @@
     <p>&copy; 2008–2026 Biedriem.lv — профсоюзы полицейских, IT‑специалистов и объединение юристов</p>
   </footer>
 
+  <!-- PILNS, LABOTS TICKER JS -->
   <script>
     const RSS_LSM       = "https://api.rss2json.com/v1/api.json?rss_url=https://www.lsm.lv/rss/?lang=ru";
     const RSS_LVPORTALS = "https://api.rss2json.com/v1/api.json?rss_url=https://lvportals.lv/rss";
@@ -160,7 +164,7 @@
       return data?.items?.slice(0, 6).map(i => i.title) || [];
     }
 
-    function makeTicker(track, container) {
+    function makeTicker(track) {
       let offset = 0;
       function animate() {
         offset -= 0.5;
@@ -179,11 +183,14 @@
         ...extractTitles(lsm).map(t => "📰 " + t),
         ...extractTitles(lv).map(t => "⚖️ " + t)
       ];
+
       const text = titles.length ? titles.join(" • ") : "Нет доступных новостей.";
+
       topTrack.textContent = text;
       bottomTrack.textContent = text;
-      makeTicker(topTrack, topTrack.parentElement);
-      makeTicker(bottomTrack, bottomTrack.parentElement);
+
+      makeTicker(topTrack);
+      makeTicker(bottomTrack);
     });
   </script>
 
